@@ -56,4 +56,24 @@ Romero indentificó tres grupos fundamentales cada uno con sus propios objetivos
 Las restricciones para un horario pueden ser muchas y variadas. A continuación se presentan algunas de 
 las más comunes:
 
+\begin{description}
+	\item[Asignación de recursos] Un recurso puede ser asignado a otro recurso de tipo diferente o a un encuentro.
+		Por ejemplo, un profesor prefiere impartir sus clases en una determinada aula o un exámen debe ser realizado
+		en un determinado edificio.
+	\item[Asignación de tiempo] Un encuentro o un recurso debe ser asignado a un tiempo. Esta restricción puede
+		ser usada para específicar días en los que un profesor no está disponible, o para pre-asignar un
+		tiempo a un determinado encuentro.
+	\item[Restricción de tiempo entre encuentros] Ejemplos comunes de esta clase de restricción son que un encuentro
+		deba suceder antes de otro, o que un conjunto de exámenes deba realizarse simultaneamente.
+	\item[Esparcimiento de encuentros] Los encuentros deben estar esparcidos en el tiempo. Por ejemplo, un
+		estudiante no debe tener más de un exámen el mismo día.
+	\item[Coherencia entre encuentros] Estas restricciones son diseñadas para producir un horario más organizado
+		y conveniente. A menudo entran en contradicción con el esparcimiento de encuentros. Ejemplos de ellas es,
+		que un profesor prefiera dar todos sus turnos en los primeros tres dias de la semana, dejándole los
+		últimos dos dias libre.
+	\item[Capacidad de las aulas] La cantidad de estudiantes no debe exceder la capacidad del aula.
+	\item[Continuidad] Cualquier restricción cuyo propósito sea asegurar que el horario sea constante y predecible.
+		Por ejemplo, conferencias de la misma asignatura deben ser programadas en la misma aula o en el mismo tiempo.
+\end{description}
+
 \section{Problema de Satisfacción de Restricciones}
