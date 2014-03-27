@@ -27,15 +27,15 @@ Se diferencian principalmente en:
 		puede necesitar más de un aula, pero en un aula solo puede ser impartida una clase a la vez.
 \end{itemize}
 
-Carter defiende con respecto al problema del horario de exámenes: \emph{el principal reto es programar los
+Carter defiende con respecto al problema del horario de exámenes: "\emph{el principal reto es programar los
 exámenes para un período de tiempo limitado evitando conflictos y satisfaciendo un número de restricciones
-colaterales}. \cite{Carter's summary} Con conflictos se refiere a que el horario requiera de un recurso
+colaterales}". \cite{Carter's summary} Con conflictos se refiere a que el horario requiera de un recurso
 al mismo tiempo en lugares distintos. Las restricciones colaterales varian entre instituciones, y entre
 horarios para clases y horarios para exámenes. Pueden existir una infinidad de restricciones colaterales.
 Reto es la palabra apropiada para usar en estos casos.
-Como Bloomfield y McSharry dicen: \emph{Dependiendo del tamaño de los departamentos y de la diversidad
+Como Bloomfield y McSharry dicen: "\emph{Dependiendo del tamaño de los departamentos y de la diversidad
 de cursos que ofrecen, el tiempo requerido para diseñar un horario de clases puede ir desde una simple
-tarde de trabajo hasta un mes de arduo trabajo.} \cite{Bloomfield and McSharry says}
+tarde de trabajo hasta un mes de arduo trabajo}". \cite{Bloomfield and McSharry says}
 
 El proceso de diseño de un horario se vuelve más difícil por el hecho de que involucra a muchas personas.
 Romero indentificó tres grupos fundamentales cada uno con sus propios objetivos y necesidades. \cite{Romero}
@@ -89,5 +89,35 @@ Las restricciones son usualmente dividadas entre las categorias fuertes y débil
 
 Descrita la complejidad del problema, una herramienta computacional tendria una gran utilidad en la realización
 de esta complicada tarea.
+
+El problema de los horarios puede variar enormente entre distintas universidades. El Grupo de Planificación
+y Programación Automatizada de la Universidad de Nottingham lanzó una encuesta \cite{survey of University of Nottingham} sobre la planificación de exámenes en las universidades británicas. La encuesta fue enviada a
+95 universidades, de ellas respondieron 56.
+
+La encuesta mostró cuan distinto puede ser el problema de los horarios entre las diferentes instituciones.
+Por ejemplo, el número de exámenes a planificar puede variar desde unos cientos hasta medio millar por sesión,
+y los estudiantes involucrados pueden ser desde unos quinientos hasta unos veinte mil. Como dijo un
+encargado de programar un horario, "\emph{Existen muchas variaciones en cuanto a la generación de un horario,
+podriamos escribir un libro}".
+
+Uno de los mayores problemas para las universidades es encontrar locales en los que realizar los exámenes.
+Varias universidades resuelven el problema de la insuficiencia de aulas alquilando locales externos a la
+universidad. Esto puede resolver el problema en parte, pero si estos locales son utilizados en otras funciones
+su disponibilidad se vuelve impredecible. También hay que considerar que estos locales no siempre están cerca de
+la universidad, causando que los estudiantes necesiten más tiempo para trasladarse de un local a otro.
+
+De las universidades que respondieron la encuesta, sorprende que el 42\% no se apoyan en ninguna herramienta
+computacional para realizar este proceso. Una posible razón para esto es que en varias universidades el
+horario de un curso no cambia significativamente con respecto al anterior. Aquellas universidades que no
+se apoyan en el horario del curso anterior ni en alguna herramienta computacional demoran al menos cuatro
+semanas en diseñar su horario.
+
+Otra razón para la falta de automatización en este proceso es producto de que los encargados de diseñar el horario
+algunas veces desconfian de los beneficios que esto podria traer. El departamento de exámenes de una universidad
+dijo que ellos podian "\emph{ver las desventajas de un sistema completamente automatizado. Preferimos trabajar
+desde la etapa inicial del diseño con una tabla y un lapiz. Esto permite una vista general del progreso de la
+generación mejor que un sistema computacional basado en preguntas.}"
+
+\includegraphics[scale=1]{Graphics/computer_usage}pepep
 
 \section{Problema de Satisfacción de Restricciones}
