@@ -10,6 +10,8 @@ en dirección a crear un estándar que permita comparar un sistema con otro. En 
 las principales técnicas y trabajos recientes en cuanto a horarios, sea de clases o de exámenes, y servirá
 como una introducción a este campo de investigación.
 
+\subsection{Definición del problema}
+
 Un horario (timetable en Inglés) es una asignación de un conjunto de encuentros en un tiempo determinado.
 Un encuentro es una combinación de recursos (aulas, personas o materiales de clase), algunos de ellos pueden
 ser específicados por el problema y otros deben ser asignados como parte de la solución. La generación de un
@@ -17,12 +19,12 @@ horiario se conoce que pertenece a la clase de problemas llamada NP-completo, ha
 algoritmo polinomial que pueda darle solución.
 
 Existen algunas variaciones fundamentales para el problema de los horarios. La generación de un horario para
-la universidad puede ser dividido en dos principales categorias, horario para clases u horario para exámenes.
+la universidad puede ser dividido en dos principales categorias, horario para clases y horario para exámenes.
 Se diferencian principalmente en:
 
 \begin{itemize}
 	\item Los exámenes deben ser planificados de forma tal que un estudiante no tenga más de un exámen al
-		mismo tiempo, pero las clases usualmente son planificadas antes que los estudiantes la matriculen.
+		mismo tiempo, pero las clases usualmente son planificadas antes que los estudiantes las matriculen.
 	\item El espacio también es una restricción, diferentes exámenes pueden compartir la misma aula o un exámen
 		puede necesitar más de un aula, pero en un aula solo puede ser impartida una clase a la vez.
 \end{itemize}
@@ -90,6 +92,8 @@ Las restricciones son usualmente dividadas entre las categorias fuertes y débil
 Descrita la complejidad del problema, una herramienta computacional tendria una gran utilidad en la realización
 de esta complicada tarea.
 
+\subsection{Encuesta realizada en universidades británicas}
+
 El problema de los horarios puede variar enormente entre distintas universidades. El Grupo de Planificación
 y Programación Automatizada de la Universidad de Nottingham lanzó una encuesta \cite{survey of University of Nottingham} sobre la planificación de exámenes en las universidades británicas. La encuesta fue enviada a
 95 universidades, de ellas respondieron 56.
@@ -142,5 +146,11 @@ generación de horarios:
 		es mayor a la capacidad de las aulas de exámenes}". Esta metodología depende de la naturaleza del curso
 		asociado al horario.
 \end{itemize}
+
+La encuesta demostró la gran necesidad de automatizar este proceso. Habiendo dicho esto, cualquier sistema
+para que sea útil debe satisfacer la gran cantidad de criterios disimiles que existen entorno a este problema.
+El principal problema es que el sistema debe ser capaz de generar horarios de gran calidad a pesar de las enormes
+variaciones de este proceso encontradas en las diferentes universidades encuestadas. El sistema debe ser compatible
+con trabajos hechos con anterioridad, debe ser fácil de usar y satisfacer todas las necesidades de los departamentos y facultades.
 
 \section{Problema de Satisfacción de Restricciones}
