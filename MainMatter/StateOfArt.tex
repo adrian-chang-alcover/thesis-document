@@ -164,6 +164,24 @@ a condiciones distintas. Con el paso del tiempo las técnicas se vuelven más so
 de satisfacer nuevas necesidades.
 
 No es fácil expresar claro y precisamente los requerimientos para un horario real. Los requerimientos básicos
-como "cada clase debe tener un profesor" o "nadie debe estar en dos lugares distintos al mismo tiempo"
+como 'cada clase debe tener un profesor' o 'nadie debe estar en dos lugares distintos al mismo tiempo' son
+fáciles de expresar, pero las 'restricciones colaterales' como el aula ideal para impartir una asignatura o
+el orden cronológico entre clases son muy difíciles de representar y por consiguiente de leer y entender. Esa
+es la razón por qué es tan difícil adaptar un sistema hecho para otra institución a nuestras necesidades.
+
+Un proyecto en desarrollo por la Universidad de Nottingham conjunto con la Universidad de Napier, la Universidad
+de Reading, la Universidad de Sydney y la Universidad de Toronto intenta encontrar una forma de escribir cualquier
+requerimiento, usando fórmulas lógicas. Esto permitirá utilizar herramientas desarrolladas por otras entidades tan
+solo redefiniendo nuestros propios requerimientos.
+
+\subsection{Técnicas para automatizar el diseño de un horario}
+
+Para instancias del problema heurísticas específicas pueden dar buenos resultados, pero con el devenir del tiempo
+los horarios de universidades se han vuelto más complejos. Actualmente hay una tendencia que fue confirmada
+con las presentaciones de la primera conferencia internacional de 'Practice And Theory of Automated Timetabling'
+\cite{D Abramson and J Abela}, de resolver el problema con algoritmos más generales, o metaheurísticas, como
+recocido simulado, algoritmos evolutivos y búsqueda tabú. Las herísticas específicas pueden ser utilizadas
+para disminuir el número de posibles soluciones a procesar o para optimizar localmente una solución. Programación
+Lógica de Restricciones (Constraint Logic Programming) es también otra técnica utilizada.
 
 \section{Problema de Satisfacción de Restricciones}
