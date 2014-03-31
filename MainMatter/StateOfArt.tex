@@ -29,15 +29,15 @@ Se diferencian principalmente en:
 		puede necesitar más de un aula, pero en un aula solo puede ser impartida una clase a la vez.
 \end{itemize}
 
-Carter defiende con respecto al problema del horario de exámenes: "\emph{el principal reto es programar los
+Carter defiende con respecto al problema del horario de exámenes: ``\emph{el principal reto es programar los
 exámenes para un período de tiempo limitado evitando conflictos y satisfaciendo un número de restricciones
-colaterales}". \cite{Carter's summary} Con conflictos se refiere a que el horario requiera de un recurso
+colaterales}'' \cite{Carter's summary} Con conflictos se refiere a que el horario requiera de un recurso
 al mismo tiempo en lugares distintos. Las restricciones colaterales varian entre instituciones, y entre
 horarios para clases y horarios para exámenes. Pueden existir una infinidad de restricciones colaterales.
 Reto es la palabra apropiada para usar en estos casos.
-Como Bloomfield y McSharry dicen: "\emph{Dependiendo del tamaño de los departamentos y de la diversidad
+Como Bloomfield y McSharry dicen: ``\emph{Dependiendo del tamaño de los departamentos y de la diversidad
 de cursos que ofrecen, el tiempo requerido para diseñar un horario de clases puede ir desde una simple
-tarde de trabajo hasta un mes de arduo trabajo}". \cite{Bloomfield and McSharry says}
+tarde de trabajo hasta un mes de arduo trabajo}''. \cite{Bloomfield and McSharry says}
 
 El proceso de diseño de un horario se vuelve más difícil por el hecho de que involucra a muchas personas.
 Romero indentificó tres grupos fundamentales cada uno con sus propios objetivos y necesidades. \cite{Romero}
@@ -101,8 +101,8 @@ y Programación Automatizada de la Universidad de Nottingham lanzó una encuesta
 La encuesta mostró cuan distinto puede ser el problema de los horarios entre las diferentes instituciones.
 Por ejemplo, el número de exámenes a planificar puede variar desde unos cientos hasta medio millar por sesión,
 y los estudiantes involucrados pueden ser desde unos quinientos hasta unos veinte mil. Como dijo un
-encargado de programar el horario, "\emph{Existen muchas variaciones en cuanto a la generación de un horario,
-podriamos escribir un libro}".
+encargado de programar el horario, ``\emph{Existen muchas variaciones en cuanto a la generación de un horario,
+podriamos escribir un libro}''.
 
 Uno de los mayores problemas para las universidades es encontrar locales en los que realizar los exámenes.
 Varias universidades resuelven el problema de la insuficiencia de aulas alquilando locales externos a la
@@ -118,9 +118,9 @@ semanas en diseñar su horario.
 
 Otra razón para la falta de automatización en este proceso es producto de que los encargados de diseñar el horario
 algunas veces desconfian de los beneficios que esto podria traer. El departamento de exámenes de una universidad
-dijo que ellos podian "\emph{ver las desventajas de un sistema completamente automatizado. Preferimos trabajar
+dijo que ellos podian ``\emph{ver las desventajas de un sistema completamente automatizado. Preferimos trabajar
 desde la etapa inicial del diseño con una tabla y un lapiz. Esto permite una vista general del progreso de la
-generación mejor que un sistema computacional basado en preguntas.}"
+generación mejor que un sistema computacional basado en preguntas.}''
 
 \begin{figure}
 	\includegraphics{Graphics/computer_usage}
@@ -141,9 +141,9 @@ generación de horarios:
 		son independientes entre ellos. Sin embargo, muchas universidades británicas están adoptando una
 		organización modular, lo que implica que esta metodología no es siempre válida.
 	\item Construir el horario de exámenes modificando el horario de clases. Una institución que casualmente
-		estaba desarrollando un nuevo sistema, dijo: "\emph{Esto, por supuesto no está del todo bien, porque
+		estaba desarrollando un nuevo sistema, dijo: ``\emph{Esto, por supuesto no está del todo bien, porque
 		pueden haber varias conferencias en diferentes intervalos de tiempo o el número de estudiantes involucrados
-		es mayor a la capacidad de las aulas de exámenes}". Esta metodología depende de la naturaleza del curso
+		es mayor a la capacidad de las aulas de exámenes}''. Esta metodología depende de la naturaleza del curso
 		asociado al horario.
 \end{itemize}
 
@@ -164,8 +164,8 @@ a condiciones distintas. Con el paso del tiempo las técnicas se vuelven más so
 de satisfacer nuevas necesidades.
 
 No es fácil expresar claro y precisamente los requerimientos para un horario real. Los requerimientos básicos
-como 'cada clase debe tener un profesor' o 'nadie debe estar en dos lugares distintos al mismo tiempo' son
-fáciles de expresar, pero las 'restricciones colaterales' como el aula ideal para impartir una asignatura o
+como ``cada clase debe tener un profesor'' o ``nadie debe estar en dos lugares distintos al mismo tiempo'' son
+fáciles de expresar, pero las ``restricciones colaterales'' como el aula ideal para impartir una asignatura o
 el orden cronológico entre clases son muy difíciles de representar y por consiguiente de leer y entender. Esa
 es la razón por qué es tan difícil adaptar un sistema hecho para otra institución a nuestras necesidades.
 
@@ -178,10 +178,22 @@ solo redefiniendo nuestros propios requerimientos.
 
 Para instancias del problema heurísticas específicas pueden dar buenos resultados, pero con el devenir del tiempo
 los horarios de universidades se han vuelto más complejos. Actualmente hay una tendencia que fue confirmada
-con las presentaciones de la primera conferencia internacional de 'Practice And Theory of Automated Timetabling'
+con las presentaciones de la primera conferencia internacional de ``Practice And Theory of Automated Timetabling''
 \cite{D Abramson and J Abela}, de resolver el problema con algoritmos más generales, o metaheurísticas, como
 recocido simulado, algoritmos evolutivos y búsqueda tabú. Las herísticas específicas pueden ser utilizadas
 para disminuir el número de posibles soluciones a procesar o para optimizar localmente una solución. Programación
 Lógica de Restricciones (Constraint Logic Programming) es también otra técnica utilizada.
+
+\subsubsection{Algoritmos genéticos}
+
+Los algoritmos genéticos son análogos a la evolución propuesta por Darwin. Una población de horarios válidos
+es mantenida. Los mejores horarios son seleccionados para formar las bases de la próxima generación, mejorando
+la calidad de la población al mismo tiempo que se mantiene la diversidad.
+
+La representación genética más común para un horario es una larga cadena de bits codificando cuándo y dónde
+debe ocurrir un encuentro. Siendo así, los pares de los horarios seleccionados puden ser cruzados cortando
+la cadena y pasando a sus descendientes información de ambos padres.
+
+
 
 \section{Problema de Satisfacción de Restricciones}
