@@ -219,6 +219,20 @@ EK Burke and DG Elliman and RF Weare 2, EK Burke and DG Elliman and RF Weare 3}.
 trabaja a nivel de período, tomando encuentros planificados de ambos padres primero, y luego planificando
 otros de acuerdo a la heurística de ordenamiento, hasta que no se puedan planificar más encuentros. Este tipo de operador de cruzamiento permite un uso eficiente de las aulas porque siempre trata de asignar un encuentro dondequiera que sea posible.
 
-\subsubsection{memetic algorithms}
+\subsubsection{algoritmos mem\'eticos}
+
+Los algoritmos mem\'eticos son una extensión de los algoritmos gen\'eticos, basados en un modelo de cómo las ideas evolucionan. La unidad básica de las ideas son los memes, los que a diferencia de los genes, pueden ser mejorados durante su ciclo de vida. Es por eso que un simple algoritmo de búsqueda local (hill-climbing) es usado por intervalos
+para asegurarse que todos los horarios miembros de la población son óptimos locales.
+
+La Universidad de Nottingham se encuentra desarrollando algoritmos mem\'eticos para horarios de exámenes \cite{EK Burke and JP Newall and RF Weare}. Un operador de mutación es aplicado a los miembros seleccionados de la población. Despues de mutar cada miembro seleccionado este es optimizado por un algoritmo de optimización local. Esta combinación genera soluciones con buena calidad.
+
+La Universidad de Napier está trabajando con algoritmos mem\'eticos para diseñar sus horarios de clases \cite{B Paechter and A Cumming and MG Norman and H Luchian}. Su codificación de horario especifica una lista de intervalos de tiempo propuestos para cada evento. Estos intervalos de tiempo son analizados en orden y el intervalo más conveniente es movido hacia el tope de la lista. El operador de recombinación construye una nueva lista de intervalos propuestos tomándolos de los padres correspondientes.
+
+\subsubsection{recocido simulado}
+
+Recocido simulado es una estrategia de búsqueda que sigue la pista de una solución factible. En cada iteración un vecino es generado, otro horario factible, ligero y aleatoriamente alterado por el horario actual. Este nuevo horario es aceptado si es mejor que el anterior. Si el nuevo horarario no es mejor este aún puede ser aceptado con una probabilidad relacionada al parámetro llamado temperatura. La temperatura y por tanto la probabilidad de que un vecino de menor calidad sea aceptado decrece con cada iteración o tras un número de iteraciones (este número puede ser constante o puede crecer a medida que la temperatura disminuya). Este proceso es análogo al proceso de enfriamiento de un recocido real. Un incoveniente del recocido simulado es que el proceso de enfriamiento puede tomar gran tiempo en aras de obtener buenos resultados.
+
+En el TISSUE de Swansea se ha aplicado satisfactoriamente esta t\'ecnica en la generación de horarios para exámenes
+\cite{J Thompson and KA Dowsland, J Thompson and KA Dowsland 2}.
 
 \section{Problema de Satisfacción de Restricciones}
