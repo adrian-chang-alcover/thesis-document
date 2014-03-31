@@ -194,8 +194,20 @@ la calidad de la población al mismo tiempo que se mantiene la diversidad.
 
 La representación genética más común para un horario es una larga cadena de bits codificando cuándo y dónde
 debe ocurrir un encuentro. Siendo así, los pares de los horarios seleccionados puden ser cruzados cortando
-la cadena y pasando a sus descendientes información de ambos padres.
+la cadena y pasando a sus descendientes información de ambos padres. No obstante, Corne, Ross y Fang proponen
+una conveniente operación de mutación para ser más exitoso el cruzamiento \cite{D Corne and P Ross and HL Fang}.
+Su sistema, GATT, está siendo usado para generar el horario de la Universidad de Edinburgh y algunas otras
+instituciones.
 
+Paechter y Cumming desarrollaron ``Neeps and Tatties'' un sistema que se ha estado usando en el departamento
+de Ciencia de la Computación de la Universidad de Napier. Su algoritmo genético codifica un horario como una ordenación
+de eventos, que debe ser introducido a un programa especial que utiliza ese orden para producir un horario
+. Este algoritmo necesita un operador de permutación 
+que cambie el orden de los eventos heredados por el padre.
 
+El Grupo de Planificación y Programación Automatizada de la Universidad de Nottingham ha estado desarrollando
+algoritmos genéticos para horarios de exámenes utilizando un alto grado de conocimiento heurístico, para generar
+una población inicial y para los operadores genéticos \cite{EK Burke and DG Elliman and RF Weare 1, 
+EK Burke and DG Elliman and RF Weare 2, EK Burke and DG Elliman and RF Weare 3}
 
 \section{Problema de Satisfacción de Restricciones}
