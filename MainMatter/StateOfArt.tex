@@ -239,4 +239,10 @@ En el TISSUE de Swansea se ha aplicado satisfactoriamente esta t\'ecnica en la g
 
 Al igual que recocido simulado, búsqueda tabu mantiene solo un horario factible. La diferencia radica en cómo se acepta el movimiento hacia un horario vecino. Búsqueda tabu mantiene una lista de moviemientos tabu, representando horarios que, han sido visitados recientemente pero que son prohibidos en aras de evitar areas ya visitadas y así escapar de óptimos locales. La lista tabu usualmente tiene un tamaño fijo, los movimientos tabu más viejos son eliminados para dar espacio a nuevos movimientos tabu. Puede darse el caso que un movimiento tabu alcance una buena solución es por eso que es mantenida la mejor solución encontrada hasta el momento. Si un horario tabu alcanza la mejor solución registrada entonces este horario es eliminado de la lista.
 
+Búsqueda tabu ha sido aplicada satisfactoriamente por Boufflet y N\`egre para generar horarios de exámenes en la Universidad de Tecnología de Compi\`egne \cite{JP Boufflet and S Negre}. Su lista tabu contiene los siete últimos movimientos. Si de los vecinos del horario actual no existe uno mejor, entonces se selecciona un horario de la lista tabu.
+
+Formulando el problema de los horarios como un problema de asignación, Hertz desarrolló y aplicó el algoritmo tabu TATI \cite{A Hertz}, el cual más tarde adaptó para resolver horarios más complejos y restringidos de la vida real \cite{A Hertz 2}. La duración de una clase no es fijada y existen diez tipos diferentes de movimientos (mover una clase a otro día, cambiar la duración de una clase, etc). Sin embargo, luego de un número de iteraciones es tabu mover una clase hacia su día original.
+
+\subsubsection{programación lógica de restricciones}
+
 \section{Problema de Satisfacción de Restricciones}
