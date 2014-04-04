@@ -258,11 +258,11 @@ El problema de los horarios puede variar considerablemente entre universidades, 
 
 Un módulo para horarios de universidad está siendo desarrollado por el Grupo de Planificación y Programación Automatizada de la Universidad de Nottingham, el cual incorpora un sistema altamente flexible en el que los objetos (dígase encuentros y recursos) pueden ser definidos y agrupados. Por simplicidad, la siguiente descripción trata sobre recursos, pero los encuentros pueden ser definidos y agrupados de la misma manera.
 
-Cada tipo de recurso (ejemplo aulas) tiene en conjunto de atributos que permite definir recursos individuales. En la tabla \ref{table:atributes} se muestran cuatro atributos de las aulas.
+Cada tipo de recurso (ejemplo aulas) tiene en conjunto de atributos que permite definir recursos individuales. En la tabla \ref{table:atributes} se muestran cuatro atributos que las aulas pueden tener.
 
 \begin{table}
 	\caption{Conjunto de atributos para las aulas}
-%	\begin{center}
+	\begin{center}
 		\label{table:atributes}
 		\begin{tabular}{lp{7.5cm}r}
 			Nombre del atributo & Valores del atributo \\ \hline
@@ -271,7 +271,13 @@ Cada tipo de recurso (ejemplo aulas) tiene en conjunto de atributos que permite 
 			Edificio &\ Edificio al que pertenece el aula \\
 			Capacidad &\ Cantidad de estudiantes que el aula puede tener
 		\end{tabular}
-%	\end{center}
+	\end{center}
 \end{table}
+
+El encargado de diseñar el horario puede adicionar, modificar o eliminar atributos de cualquier tipo con el objetivo de modificar la información que se tiene sobre los recursos. Existen dos formas de manipular los datos de los recursos.
+
+\begin{description}
+	\item[mediante recursos] Buscando o cambiando los valores de sus atributos. Ejemplo, el encargado pudiese querer saber a qu\'e edificio pertenece un local determinado, o a un edificio asignar un nuevo local.
+\end{description}
 
 \section{Problema de Satisfacción de Restricciones}
