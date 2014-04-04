@@ -178,8 +178,7 @@ solo redefiniendo nuestros propios requerimientos.
 
 \subsection{Técnicas para automatizar el diseño de un horario}
 
-Para instancias del problema heurísticas específicas pueden dar buenos resultados, pero con el devenir del tiempo
-los horarios de universidades se han vuelto más complejos. Actualmente hay una tendencia que fue confirmada
+Para determinadas instancias del problema heurísticas específicas pueden dar buenos resultados, pero con el devenir del tiempo los horarios de universidades se han vuelto más complejos. Actualmente hay una tendencia que fue confirmada
 con las presentaciones de la primera conferencia internacional de ``Practice And Theory of Automated Timetabling''
 \cite{D Abramson and J Abela}, de resolver el problema con algoritmos más generales, o metaheurísticas, como
 recocido simulado, algoritmos evolutivos y búsqueda tabú. Las herísticas específicas pueden ser utilizadas
@@ -213,11 +212,11 @@ de eventos, que debe ser introducido a un programa especial que utiliza ese orde
 que cambie el orden de los eventos heredados por el padre.
 
 El Grupo de Planificación y Programación Automatizada de la Universidad de Nottingham ha estado desarrollando
-algoritmos genéticos para horarios de exámenes utilizando un alto grado de conocimiento heurístico, para generar
+algoritmos genéticos para horarios de exámenes utilizando un alto grado de conocimiento heurístico para generar
 una población inicial y para los operadores genéticos \cite{EK Burke and DG Elliman and RF Weare 1, 
 EK Burke and DG Elliman and RF Weare 2, EK Burke and DG Elliman and RF Weare 3}. El operador de cruzamiento
 trabaja a nivel de período, tomando encuentros planificados de ambos padres primero, y luego planificando
-otros de acuerdo a la heurística de ordenamiento, hasta que no se puedan planificar más encuentros. Este tipo de operador de cruzamiento permite un uso eficiente de las aulas porque siempre trata de asignar un encuentro dondequiera que sea posible.
+otros de acuerdo a la heurística de ordenamiento hasta que no se puedan planificar más encuentros. Este tipo de operador de cruzamiento permite un uso eficiente de las aulas porque siempre trata de asignar un encuentro dondequiera que sea posible.
 
 \subsubsection{algoritmos mem\'eticos}
 
@@ -237,12 +236,20 @@ En el TISSUE de Swansea se ha aplicado satisfactoriamente esta t\'ecnica en la g
 
 \subsubsection{búsqueda tabu}
 
-Al igual que recocido simulado, búsqueda tabu mantiene solo un horario factible. La diferencia radica en cómo se acepta el movimiento hacia un horario vecino. Búsqueda tabu mantiene una lista de moviemientos tabu, representando horarios que, han sido visitados recientemente pero que son prohibidos en aras de evitar areas ya visitadas y así escapar de óptimos locales. La lista tabu usualmente tiene un tamaño fijo, los movimientos tabu más viejos son eliminados para dar espacio a nuevos movimientos tabu. Puede darse el caso que un movimiento tabu alcance una buena solución es por eso que es mantenida la mejor solución encontrada hasta el momento. Si un horario tabu alcanza la mejor solución registrada entonces este horario es eliminado de la lista.
+Al igual que recocido simulado, búsqueda tabu mantiene solo un horario factible. La diferencia radica en cómo se acepta el movimiento hacia un horario vecino. Búsqueda tabu mantiene una lista de movimientos tabu, representando horarios que, han sido visitados recientemente pero que son prohibidos en aras de evitar areas ya visitadas y así escapar de óptimos locales. La lista tabu usualmente tiene un tamaño fijo, los movimientos tabu más viejos son eliminados para dar espacio a nuevos movimientos tabu. Puede darse el caso que un movimiento tabu alcance una buena solución, es por eso que es mantenida la mejor solución encontrada hasta el momento. Si un horario tabu alcanza la mejor solución registrada entonces este horario es eliminado de la lista.
 
 Búsqueda tabu ha sido aplicada satisfactoriamente por Boufflet y N\`egre para generar horarios de exámenes en la Universidad de Tecnología de Compi\`egne \cite{JP Boufflet and S Negre}. Su lista tabu contiene los siete últimos movimientos. Si de los vecinos del horario actual no existe uno mejor, entonces se selecciona un horario de la lista tabu.
 
 Formulando el problema de los horarios como un problema de asignación, Hertz desarrolló y aplicó el algoritmo tabu TATI \cite{A Hertz}, el cual más tarde adaptó para resolver horarios más complejos y restringidos de la vida real \cite{A Hertz 2}. La duración de una clase no es fijada y existen diez tipos diferentes de movimientos (mover una clase a otro día, cambiar la duración de una clase, etc). Sin embargo, luego de un número de iteraciones es tabu mover una clase hacia su día original.
 
 \subsubsection{programación lógica de restricciones}
+
+El problema de los horarios puede ser modelado como un Problema de Satisfacción de Restricciones (Constraint Satisfaction Problem, CSP). En un CSP a cada variable se le debe asignar un valor de su dominio y que la asignación cumpla con un conjunto de restricciones. Programación Lógica de Restricciones (Constraint Logic Programing, CLP) esta basada en la aplicación de lenguajes de programación de lógica declarativa como Prolog a CSPs. Un programa en Prolog consiste en un conjunto de clausulas que serian las restricciones y la satisfacibilidad de estas es chequeda en ejecución.
+
+En CLP, una estrategia de etiquetado dicta el orden en que el espacio de búsqueda debe ser explorado, lo cual es vital para una búsqueda efectiva. Existen dos ordenamientos, el orden en que la variables deben ser asignadas y el orden en que los valores deben ser procesados.
+
+Un sistema en Prolog para horarios de clases ha sido desarrollado por White en la Universidad de Ottawa \cite{L Kang and GM White, C Cheng and L Kang and N Leung and GM White}. Las restricciones son divididas en primarias y secundarias. Las restricciones primarias deben ser siempre cumplidas. Si no es posible asignar un aula o un espacio de tiempo a un encuentro sin violar alguna restricción primaria, entonces el programa retrocede, relajando restricciones secundarias una a una hasta que la asignación sea válida.
+
+Boizumault, Delon y P\'eridy han diseñado un programa para horarios de exámenes \cite{P Boizumault and Y Delon and L Peridy} en CHIP, un lenguaje de programación lógica de restricciones basado en Prolog, el cual provee varios tipos de restricción. Proponen un tipo de restricción ``acumulativa'' que limita la cantidad de recursos que pueden ser usados en un tiempo, Boizumault la utiliza para implementar la restricción referente a la capacidad de las aulas. En su estrategia de búsqueda asigna primero los exámenes en los que intervienen un mayor número de estudiantes. Boizumault, Gu\'eret y Jussien han tambi\'en implementado un sistema para horarios de clases llamado FELIAC \cite{P Boizumault and C Gueret and N Jussien, C Gueret and N Jussien and P Boizumault and C Prins}. Las clases de gran audiencia son planificadas primero en los dias donde existan un menor número de clases planificadas. Relajación de restricciones es esencial para CSP con muchas restricciones como son los horarios. Los problemas en que las restricciones son relajadas son llamados dinámicos. Por cada asignación fallida, FELIAC guarda una ``justificación" que identifica cual restricción es violada por la asignación. Estas justificaciones 
 
 \section{Problema de Satisfacción de Restricciones}
