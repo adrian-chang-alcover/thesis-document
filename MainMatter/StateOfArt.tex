@@ -75,7 +75,7 @@ las más comunes:
 		últimos dos dias libre.
 	\item[Capacidad de las aulas] La cantidad de estudiantes no debe exceder la capacidad del aula.
 	\item[Continuidad] Cualquier restricción cuyo propósito sea asegurar que el horario sea constante y predecible.
-		Por ejemplo, conferencias de la misma asignatura deben ser programadas en la misma aula o en el mismo tiempo.
+		Por ejemplo, las conferencias de una asignatura deben ser programadas en la misma aula o en el mismo tiempo.
 \end{description}
 
 Las restricciones son usualmente dividadas entre las categorias fuertes y débiles:
@@ -95,7 +95,7 @@ El problema de los horarios puede variar enormente entre distintas universidades
 y Programación Automatizada de la Universidad de Nottingham lanzó una encuesta \cite{survey of University of Nottingham} sobre la planificación de exámenes en las universidades británicas. La encuesta fue enviada a
 95 universidades, de ellas respondieron 56.
 
-La encuesta mostró cuan distinto puede ser el problema de los horarios entre las diferentes instituciones.
+La encuesta mostró cuán distinto puede ser el problema de los horarios entre las diferentes instituciones.
 Por ejemplo, el número de exámenes a planificar puede variar desde unos cientos hasta medio millar por sesión,
 y los estudiantes involucrados pueden ser desde unos quinientos hasta unos veinte mil. Como dijo un
 encargado de programar el horario, ``\emph{Existen muchas variaciones en cuanto a la generación de un horario,
@@ -189,16 +189,17 @@ es mantenida. Los mejores horarios son seleccionados para formar las bases de la
 la calidad de la población al mismo tiempo que se mantiene la diversidad.
 
 La representación genética más común para un horario es una larga cadena de bits codificando cuándo y dónde
-debe ocurrir un encuentro. Siendo así, los pares de los horarios seleccionados puden ser cruzados cortando
+debe ocurrir un encuentro. Siendo así, los pares de los horarios seleccionados pueden ser cruzados cortando
 la cadena y pasando a sus descendientes información de ambos padres. No obstante, Corne, Ross y Fang proponen
 una conveniente operación de mutación para ser más exitoso el cruzamiento \cite{D Corne and P Ross and HL Fang}.
 Su sistema, GATT, está siendo usado para generar el horario de la Universidad de Edinburgh y algunas otras
-instituciones.
+instituciones. La figura \ref{genetic algorithms} muestra las etapas de un algoritmo gen\'etico.
 
 \begin{figure}
 	\begin{center}
 		\includegraphics[scale=0.5]{Graphics/genetic_algorithms}
 		\caption{Etapas de un algoritmo genético.}
+		\label{genetic algorithms}
 	\end{center}	
 \end{figure}
 
@@ -247,7 +248,7 @@ En CLP, una estrategia de etiquetado dicta el orden en que el espacio de búsque
 
 Un sistema en Prolog para horarios de clases ha sido desarrollado por White en la Universidad de Ottawa \cite{L Kang and GM White, C Cheng and L Kang and N Leung and GM White}. Las restricciones son divididas en primarias y secundarias. Las restricciones primarias deben ser siempre cumplidas. Si no es posible asignar un aula o un espacio de tiempo a un encuentro sin violar alguna restricción primaria, entonces el programa retrocede, relajando restricciones secundarias una a una hasta que la asignación sea válida.
 
-Boizumault, Delon y P\'eridy han diseñado un programa para horarios de exámenes \cite{P Boizumault and Y Delon and L Peridy} en CHIP, un lenguaje de programación lógica de restricciones basado en Prolog, el cual provee varios tipos de restricción. Proponen un tipo de restricción ``acumulativa'' que limita la cantidad de recursos que pueden ser usados en un tiempo, Boizumault la utiliza para implementar la restricción referente a la capacidad de las aulas. En su estrategia de búsqueda asigna primero los exámenes en los que intervienen un mayor número de estudiantes. Boizumault, Gu\'eret y Jussien han tambi\'en implementado un sistema para horarios de clases llamado FELIAC \cite{P Boizumault and C Gueret and N Jussien, C Gueret and N Jussien and P Boizumault and C Prins}. Las clases de gran audiencia son planificadas primero en los dias donde existan un menor número de clases planificadas. Relajación de restricciones es esencial para CSP con muchas restricciones como son los horarios. Los problemas en que las restricciones son relajadas son llamados dinámicos. Por cada asignación fallida, FELIAC guarda una ``justificación'' que identifica cual restricción es violada por la asignación. Estas justificaciones son usadas para revertir los efectos de una restricción cuando es relajada.
+Boizumault, Delon y P\'eridy han diseñado un programa para horarios de exámenes \cite{P Boizumault and Y Delon and L Peridy} en CHIP, un lenguaje de programación lógica de restricciones basado en Prolog, el cual provee varios tipos de restricción. Proponen un tipo de restricción ``acumulativa'' que limita la cantidad de recursos que pueden ser usados en un tiempo, Boizumault la utiliza para implementar la restricción referente a la capacidad de las aulas. En su estrategia de búsqueda asigna primero los exámenes en los que intervienen un mayor número de estudiantes. Boizumault, Gu\'eret y Jussien han tambi\'en implementado un sistema para horarios de clases llamado FELIAC \cite{P Boizumault and C Gueret and N Jussien, C Gueret and N Jussien and P Boizumault and C Prins}. Las clases de gran audiencia son planificadas primero en los dias donde existan un menor número de clases planificadas. Relajación de restricciones es esencial para CSP con muchas restricciones como son los horarios. Los problemas en que las restricciones son relajadas son llamados dinámicos. Por cada asignación fallida, FELIAC guarda una ``justificación'' que identifica cuál restricción es violada por la asignación. Estas justificaciones son usadas para revertir los efectos de una restricción cuando es relajada.
 
 \subsection{Modelando datos del problema}
 
@@ -271,7 +272,7 @@ Cada tipo de recurso (ejemplo aulas) tiene en conjunto de atributos que permite 
 	\end{center}
 \end{table}
 
-El encargado de diseñar el horario puede adicionar, modificar o eliminar atributos de cualquier tipo con el objetivo de modificar la información que se tiene sobre los recursos. Existen dos formas de manipular los datos de los recursos.
+El encargado de diseñar el horario puede adicionar, modificar o eliminar atributos de cualquier tipo con el objetivo de modificar la información que se tiene sobre los recursos. Existen dos formas de manipular los datos de los recursos:
 
 \begin{description}
 	\item[Mediante recursos] Buscando o cambiando los valores de sus atributos. Ejemplo, el encargado pudiese querer saber a qu\'e edificio pertenece un local determinado, o a un edificio asignar un nuevo local.
