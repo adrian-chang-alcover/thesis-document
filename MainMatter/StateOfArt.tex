@@ -89,9 +89,6 @@ Las restricciones son usualmente dividadas entre las categorias fuertes y débil
 		específicado asociandoles una prioridad.
 \end{description}
 
-Descrita la complejidad del problema, una herramienta computacional tendria una gran utilidad en la realización
-de esta complicada tarea.
-
 \subsection{Encuesta realizada en universidades británicas}
 
 El problema de los horarios puede variar enormente entre distintas universidades. El Grupo de Planificación
@@ -236,7 +233,7 @@ En el TISSUE de Swansea se ha aplicado satisfactoriamente esta t\'ecnica en la g
 
 \subsubsection{búsqueda tabu}
 
-Al igual que recocido simulado, búsqueda tabu mantiene solo un horario factible. La diferencia radica en cómo se acepta el movimiento hacia un horario vecino. Búsqueda tabu mantiene una lista de movimientos tabu, representando horarios que, han sido visitados recientemente pero que son prohibidos en aras de evitar areas ya visitadas y así escapar de óptimos locales. La lista tabu usualmente tiene un tamaño fijo, los movimientos tabu más viejos son eliminados para dar espacio a nuevos movimientos tabu. Puede darse el caso que un movimiento tabu alcance una buena solución, es por eso que es mantenida la mejor solución encontrada hasta el momento. Si un horario tabu alcanza la mejor solución registrada entonces este horario es eliminado de la lista.
+Al igual que recocido simulado, búsqueda tabu mantiene solo un horario factible. La diferencia radica en cómo se acepta el movimiento hacia un horario vecino. Búsqueda tabu mantiene una lista de movimientos tabu, representando horarios que, han sido visitados recientemente pero que son prohibidos para evitar areas ya visitadas y así escapar de óptimos locales. La lista tabu usualmente tiene un tamaño fijo, los movimientos tabu más viejos son eliminados para dar espacio a nuevos movimientos tabu. Puede darse el caso que un movimiento tabu alcance una buena solución, es por eso que es mantenida la mejor solución encontrada hasta el momento. Si un horario tabu alcanza la mejor solución registrada entonces este horario es eliminado de la lista.
 
 Búsqueda tabu ha sido aplicada satisfactoriamente por Boufflet y N\`egre para generar horarios de exámenes en la Universidad de Tecnología de Compi\`egne \cite{JP Boufflet and S Negre}. Su lista tabu contiene los siete últimos movimientos. Si de los vecinos del horario actual no existe uno mejor, entonces se selecciona un horario de la lista tabu.
 
@@ -277,12 +274,18 @@ Cada tipo de recurso (ejemplo aulas) tiene en conjunto de atributos que permite 
 El encargado de diseñar el horario puede adicionar, modificar o eliminar atributos de cualquier tipo con el objetivo de modificar la información que se tiene sobre los recursos. Existen dos formas de manipular los datos de los recursos.
 
 \begin{description}
-	\item[mediante recursos] Buscando o cambiando los valores de sus atributos. Ejemplo, el encargado pudiese querer saber a qu\'e edificio pertenece un local determinado, o a un edificio asignar un nuevo local.
-	\item[mediante conjuntos] Teniendo que recursos pertenecen a un conjunto determinado y asi adicionar o eliminar recursos de dicho conjunto.
+	\item[Mediante recursos] Buscando o cambiando los valores de sus atributos. Ejemplo, el encargado pudiese querer saber a qu\'e edificio pertenece un local determinado, o a un edificio asignar un nuevo local.
+	\item[Mediante conjuntos] Teniendo que recursos pertenecen a un conjunto determinado y asi adicionar o eliminar recursos de dicho conjunto.
 \end{description}
 
 Este sistema de la Universidad de Nottingham provee una plataforma poderosa y flexible para la especificación de restricciones. Una restricción de asignación de recursos enlaza una lista de recurso a una lista de encuentros. Cada lista puede ser conformada por objetos individuales o conjuntos de objetos. Por ejemplo, una restricción de asignación de recursos pudiese especificar que todas las conferencias de una determinada asignatura tomen lugar en un local específico.
 
 \subsection{Conclusiones}
+
+La ardua tarea de crear un horario para una universidad puede ser facilitada considerablemente por la automatización. Sin embargo, dada la inmensa complejidad y variedad de este problema aún queda mucho camino por recorrer. Los algoritmos más exitosos hasta el momento han sido combinaciones de metaheurísticas generales con un alto grado de conocimiento heurístico específico para cada problema.
+
+En los últimos cuarenta años ha habido un constante flujo de artículos relacionados con la optimización de horarios, aunque recientemente se ha incrementado considerablemente el inter\'es por este tema. Un indicador de este incremento es el \'exito que han tenido las conferencias de Practice and Theory of Automated Timetabling (PATAT 2010) en Northern Ireland.
+
+Muchos investigadores de todo el mundo están desarrollando nuevas herramientas para automatizar este proceso, tambi\'en se ha publicado un gran volumen de resultados. Aún así, no existe un estándar que permita comparar los diferentes m\'etodos utilizados, aunque un grupo de universidades está trabajando en ello. Con las conferencias de PATAT establecidas como un evento regular parece que se desarrollará mucho trabajo en esta area.
 
 \section{Problema de Satisfacción de Restricciones}
