@@ -40,7 +40,7 @@ de cursos que ofrecen, el tiempo requerido para diseñar un horario de clases pu
 tarde de trabajo hasta un mes de arduo trabajo}''. \cite{Bloomfield and McSharry says}
 
 El proceso de diseño de un horario se vuelve más difícil por el hecho de que involucra a muchas personas.
-Romero indentificó tres grupos fundamentales cada uno con sus propios objetivos y necesidades. \cite{Romero}
+Romero indentificó tres grupos fundamentales cada uno con sus propios objetivos y necesidades \cite{Romero}.
 
 \begin{itemize}
 	\item La administración fija los estándares  mínimos que el horario debe cumplir. Por ejemplo, algunas
@@ -290,3 +290,9 @@ En los últimos cuarenta años ha habido un constante flujo de artículos relaci
 Muchos investigadores de todo el mundo están desarrollando nuevas herramientas para automatizar este proceso, tambi\'en se ha publicado un gran volumen de resultados. Aún así, no existe un estándar que permita comparar los diferentes m\'etodos utilizados, aunque un grupo de universidades está trabajando en ello. Con las conferencias de PATAT establecidas como un evento regular parece que se desarrollará mucho trabajo en esta area.
 
 \section{Problema de Satisfacción de Restricciones}
+
+Esta sección tratará sobre los Problemas de Satisfacción de Restricciones, cuyo estados y objetivo conforman una representación muy sencilla, estándar y estructurada. Algoritmos de búsqueda pueden ser definidos para que tomen ventaja de la estructura de los estados y ser usados con un propósito general más que como una heurística específica del problema en cuestión.
+
+\subsection{Definición}
+
+Formalmente hablando, un Problema de Satisfacción de Restricciones (Constraint Satisfaction Problem, CSP) es definido por un conjunto de variables, $X_{1},X_{2},...,X_{n}$, y un conjunto de restricciones, $C_{1},C_{2},...,C_{m}$. Cada variable $X_{i}$ tiene un dominio $D_{i}$ no vacio de posibles valores. Cada restricción $C_{i}$ involucra algún subconjunto de las variables y especifica la combinación de valores válidas para ese subconjunto. Un estado del problema está definido por una asignación de valores a algunas o a todas las variables, $\{X_{i}=v_{i}, X_{j}=v_{j}, ...\}$. Una asignación que no viole ninguna restricción es llamada una asignación consistente o válida. Una asignación se dice completa si contiene a todas las variables, y una solución para un CSP es una asignación completa válida, o sea, que cumpla con todas las restricciones. Algunos CSPs tambi\'en requieren de una solución que maximice una función objetivo.
