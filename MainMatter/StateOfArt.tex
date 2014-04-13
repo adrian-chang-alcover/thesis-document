@@ -297,7 +297,7 @@ Esta sección tratará sobre los Problemas de Satisfacción de Restricciones, cu
 
 Formalmente hablando, un Problema de Satisfacción de Restricciones (Constraint Satisfaction Problem, CSP) es definido por un conjunto de variables, $X_{1},X_{2},...,X_{n}$, y un conjunto de restricciones, $C_{1},C_{2},...,C_{m}$. Cada variable $X_{i}$ tiene un dominio $D_{i}$ no vacio de posibles valores. Cada restricción $C_{i}$ involucra algún subconjunto de las variables y especifica la combinación de valores válidas para ese subconjunto. Un estado del problema está definido por una asignación de valores a algunas o a todas las variables, $\{X_{i}=v_{i}, X_{j}=v_{j}, ...\}$. Una asignación que no viole ninguna restricción es llamada una asignación consistente o válida. Una asignación se dice completa si contiene a todas las variables, y una solución para un CSP es una asignación completa válida, o sea, que cumpla con todas las restricciones. Algunos CSPs tambi\'en requieren de una solución que maximice una función objetivo.
 
-En la figura \ref{Australia}
+En la figura \ref{Australia} se muestra un mapa de Australia con sus estados. Supongamos que tenemos la tarea de colorear cada estado con los colores rojo, verde o azul, de forma tal que estados vecinos no tengan el mismo color. Para formularlo como un CSP, definiremos que las variables sean los estados: WA, NT, Q, NSW, V , SA\ y\ T. El dominio de cada variable  es el conjunto \{rojo, verde, azul\}. La restricción dicta que regiones vecinas tengan colores distintos.
 
 \begin{figure}
 	\begin{center}
