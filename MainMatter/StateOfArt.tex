@@ -59,31 +59,31 @@ Las restricciones para un horario pueden ser muchas y variadas. A continuación 
 las más comunes:
 
 \begin{description}
-	\item[Asignación de recursos] Un recurso puede ser asignado a otro recurso de tipo diferente o a un encuentro.
+	\item[Asignación de recursos:] Un recurso puede ser asignado a otro recurso de tipo diferente o a un encuentro.
 		Por ejemplo, un profesor prefiere impartir sus clases en una determinada aula o un exámen debe ser realizado
 		en un determinado edificio.
-	\item[Asignación de tiempo] Un encuentro o un recurso debe ser asignado a un tiempo. Esta restricción puede
+	\item[Asignación de tiempo:] Un encuentro o un recurso debe ser asignado a un tiempo. Esta restricción puede
 		ser usada para específicar días en los que un profesor no está disponible, o para pre-asignar un
 		tiempo a un determinado encuentro.
-	\item[Restricción de tiempo entre encuentros] Ejemplos comunes de esta clase de restricción son que un encuentro
+	\item[Restricción de tiempo entre encuentros:] Ejemplos comunes de esta clase de restricción son que un encuentro
 		deba suceder antes de otro, o que un conjunto de exámenes deba realizarse simultaneamente.
-	\item[Esparcimiento de encuentros] Los encuentros deben estar esparcidos en el tiempo. Por ejemplo, un
+	\item[Esparcimiento de encuentros:] Los encuentros deben estar esparcidos en el tiempo. Por ejemplo, un
 		estudiante no debe tener más de un exámen el mismo día.
-	\item[Coherencia entre encuentros] Estas restricciones son diseñadas para producir un horario más organizado
+	\item[Coherencia entre encuentros:] Estas restricciones son diseñadas para producir un horario más organizado
 		y conveniente. A menudo entran en contradicción con el esparcimiento de encuentros. Ejemplos de ellas es,
 		que un profesor prefiera dar todos sus turnos en los primeros tres dias de la semana, dejándole los
 		últimos dos dias libre.
-	\item[Capacidad de las aulas] La cantidad de estudiantes no debe exceder la capacidad del aula.
-	\item[Continuidad] Cualquier restricción cuyo propósito sea asegurar que el horario sea constante y predecible.
+	\item[Capacidad de las aulas:] La cantidad de estudiantes no debe exceder la capacidad del aula.
+	\item[Continuidad:] Cualquier restricción cuyo propósito sea asegurar que el horario sea constante y predecible.
 		Por ejemplo, las conferencias de una asignatura deben ser programadas en la misma aula o en el mismo tiempo.
 \end{description}
 
 Las restricciones son usualmente dividadas entre las categorias fuertes y débiles:
 
 \begin{description}
-	\item[Restricciones fuertes] Un horario que no cumpla con alguna restricción fuerte no es una solución factible
+	\item[Restricciones fuertes:] Un horario que no cumpla con alguna restricción fuerte no es una solución factible
 		y debe ser modificado. Ejemplo, una persona no debe tener planificado más de un encuentro al mismo tiempo.
-	\item[Restricciones débiles] Estas restricciones son menos importantes que las fuertes y es casi imposible
+	\item[Restricciones débiles:] Estas restricciones son menos importantes que las fuertes y es casi imposible
 		cumplirlas todas. En algunas ocasiones se mide la calidad de un horario por el número de restricciones
 		débiles que logra cumplir. Algunas restricciones débiles son más importantes que otras, esto puede ser
 		específicado asociandoles una prioridad.
@@ -275,8 +275,8 @@ Cada tipo de recurso (ejemplo aulas) tiene en conjunto de atributos que permite 
 El encargado de diseñar el horario puede adicionar, modificar o eliminar atributos de cualquier tipo con el objetivo de modificar la información que se tiene sobre los recursos. Existen dos formas de manipular los datos de los recursos:
 
 \begin{description}
-	\item[Mediante recursos] Buscando o cambiando los valores de sus atributos. Ejemplo, el encargado pudiese querer saber a qu\'e edificio pertenece un local determinado, o a un edificio asignar un nuevo local.
-	\item[Mediante conjuntos] Teniendo que recursos pertenecen a un conjunto determinado y asi adicionar o eliminar recursos de dicho conjunto.
+	\item[Mediante recursos:] Buscando o cambiando los valores de sus atributos. Ejemplo, el encargado pudiese querer saber a qu\'e edificio pertenece un local determinado, o a un edificio asignar un nuevo local.
+	\item[Mediante conjuntos:] Teniendo que recursos pertenecen a un conjunto determinado y asi adicionar o eliminar recursos de dicho conjunto.
 \end{description}
 
 Este sistema de la Universidad de Nottingham provee una plataforma poderosa y flexible para la especificación de restricciones. Una restricción de asignación de recursos enlaza una lista de recurso a una lista de encuentros. Cada lista puede ser conformada por objetos individuales o conjuntos de objetos. Por ejemplo, una restricción de asignación de recursos pudiese especificar que todas las conferencias de una determinada asignatura tomen lugar en un local específico.
@@ -297,7 +297,7 @@ Esta sección tratará sobre los Problemas de Satisfacción de Restricciones, cu
 
 Formalmente hablando, un Problema de Satisfacción de Restricciones (Constraint Satisfaction Problem, CSP) es definido por un conjunto de variables, $X_{1},X_{2},...,X_{n}$, y un conjunto de restricciones, $C_{1},C_{2},...,C_{m}$. Cada variable $X_{i}$ tiene un dominio $D_{i}$ no vacio de posibles valores. Cada restricción $C_{i}$ involucra algún subconjunto de las variables y especifica la combinación de valores válidas para ese subconjunto. Un estado del problema está definido por una asignación de valores a algunas o a todas las variables, $\{X_{i}=v_{i}, X_{j}=v_{j}, ...\}$. Una asignación que no viole ninguna restricción es llamada una asignación consistente o válida. Una asignación se dice completa si contiene a todas las variables, y una solución para un CSP es una asignación completa válida, o sea, que cumpla con todas las restricciones. Algunos CSPs tambi\'en requieren de una solución que maximice una función objetivo.
 
-En la figura \ref{Australia}(a) se muestra un mapa de Australia con sus estados. Supongamos que tenemos la tarea de colorear cada estado con los colores rojo, verde o azul, de forma tal que estados vecinos no tengan el mismo color. Para formularlo como un CSP, definiremos que las variables sean los estados: WA, NT, Q, NSW, V , SA\ y\ T. El dominio de cada variable  es el conjunto \{rojo, verde, azul\}. La restricción dicta que regiones vecinas tengan colores distintos. Existen varias posibles soluciones , una de ellas: \{ WA = rojo, NT = verde, Q = rojo, NSW = verde, V = rojo, SA = azul, T = rojo \}. Es útil visualizar un CSP como un grafo de restricciones, como se muestra en la figura \ref{Australia}(b).
+En la figura \ref{Australia}(a) se muestra un mapa de Australia con sus estados. Supongamos que tenemos la tarea de colorear cada estado con los colores rojo, verde o azul, de forma tal que estados vecinos no tengan el mismo color. Para formularlo como un CSP, definiremos que las variables sean los estados: WA, NT, Q, NSW, V , SA\ y\ T. El dominio de cada variable  es el conjunto \{rojo, verde, azul\}. La restricción dicta que regiones vecinas tengan colores distintos. Existen varias posibles soluciones , una de ellas: \{ WA = rojo, NT = verde, Q = rojo, NSW = verde, V = rojo, SA = azul, T = rojo \}. Es útil visualizar un CSP como un grafo de restricciones, como se muestra en la figura \ref{Australia}(b). Los nodos del grafo corresponden a las variables del problema y los arcos a las restricciones.
 
 \begin{figure}
 	\begin{center}
@@ -307,4 +307,13 @@ En la figura \ref{Australia}(a) se muestra un mapa de Australia con sus estados.
 	\end{center}	
 \end{figure}
 
+Modelar un problema como un CSP confiere beneficios importantes, puesto que la representación de los estados en un CSP
+conforman un patrón estándar, la función sucesor y el objetivo final pueden ser escritos de una forma gen\'erica que se aplique a todos los CSPs. Adem\'as, podemos desarrollar heur\'isticas gen\'ericas efectivas que no requieran conocimiento espec\'ifico del problema. Finalmente, la estructura de un grafo de restricciones puede ser usada para simplificar el proceso de búsqueda de una solución, en algunos casos puede reducir la complejidad exponencialmente.
 
+Es f\'acil ver que para un CSP puede ser determinada una formulaci\'on incremental como un problema de búsqueda est\'andar de la siguiente forma:
+\begin{description}
+	\item[Estado inicial:] La asignaci\'on vacia \{\}, en la que todas las variables est\'an sin asignar.
+	\item[Funci\'on sucesor:] Un valor es asignado a una variable sin asignar, previendo que no entre en conflicto con las variables ya asignadas.
+	\item[Objetivo final:] La asignaci\'on actual es completa.
+	\item[Costo de la trayectoria:] Un costo constante (ejemplo, 1) por cada paso.
+\end{description}
