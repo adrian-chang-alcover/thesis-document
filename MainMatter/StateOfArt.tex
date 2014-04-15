@@ -311,9 +311,20 @@ Modelar un problema como un CSP confiere beneficios importantes, puesto que la r
 conforman un patrón estándar, la función sucesor y el objetivo final pueden ser escritos de una forma gen\'erica que se aplique a todos los CSPs. Adem\'as, podemos desarrollar heur\'isticas gen\'ericas efectivas que no requieran conocimiento espec\'ifico del problema. Finalmente, la estructura de un grafo de restricciones puede ser usada para simplificar el proceso de búsqueda de una solución, en algunos casos puede reducir la complejidad exponencialmente.
 
 Es f\'acil ver que para un CSP puede ser determinada una formulaci\'on incremental como un problema de búsqueda est\'andar de la siguiente forma:
+
 \begin{description}
 	\item[Estado inicial:] La asignaci\'on vacia \{\}, en la que todas las variables est\'an sin asignar.
 	\item[Funci\'on sucesor:] Un valor es asignado a una variable sin asignar, previendo que no entre en conflicto con las variables ya asignadas.
 	\item[Objetivo final:] La asignaci\'on actual es completa.
 	\item[Costo de la trayectoria:] Un costo constante (ejemplo, 1) por cada paso.
 \end{description}
+
+Toda soluci\'on debe ser una asignaci\'on completa y por lo tanto aparece en la profundidad $n$ si existen $n$ variables. Adem\'as el \'arbol de búsqueda solo se extiende hasta la profundidad $n$. Por estas razones, algoritmos de b\'usqueda primero en profundidad (DFS) son popularmente utilizados para CSPs.
+
+El tipo m\'as simple de CSP es cuando las variables tienen dominio discreto y finito. Problemas de coloraci\'on de mapas pertenecen a este tipo, al igual que el problema de las 8 reinas. Si el tamaño m\'aximo del dominio de cada variable es $d$, entonces el n\'umero posible de asignaciones completas es $O(d^{n})$, exponencial con respecto al n\'umero de variables. Dentro de este tipo de problemas est\'an los llamados CSP booleanos, cuyas variables pueden tomar solamente los valores \emph{true} o \emph{false}, ejemplo el problema 3SAT \cite{Carla P. Gomes}.
+
+Las variables discretas pueden tener dominios infinitos, por ejemplo, el conjunto de los enteros. Supongamos que se planifican trabajos de construcci\'on, las variables ser\'ian la fecha de inicio de cada trabajo y los posibles valores n\'umeros enteros que indican la cantidad de dias que la tarea puede demorar. Para dominios infinitos no es posible describir restricciones enumerando todas las posibles combinaciones de valores. Es necesario utilizar un lenguaje de restricci\'on. Por ejemplo si el trabajo $J_{1}$ debe concluir antes que comience $J_{3}$, entonces necesitariamos una desigualdad algebraica como $J_{1} + 5 < J_{3}$.
+
+Problemas de satisfacci\'on de restricciones con dominios continuos son muy comunes en el mundo real y son ampliamente estudiados en el campo de investigaci\'on de operaciones. La categoria m\'as conocida de CSP con dominios continuos son los problemas de programaci\'on lineal, donde las restricciones son desigualdades lineales que forman una regi\'on convexa. Los problemas de programaci\'on lineal pueden ser resueltos en tiempo polinomial con respecto al n\'umero de variables.
+
+Adem\'as de estudiar el tipo de variables, es u\'util ver el tipo de restricci\'on. 
