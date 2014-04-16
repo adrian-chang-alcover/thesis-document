@@ -182,7 +182,7 @@ recocido simulado, algoritmos evolutivos y búsqueda tabú. Las herísticas espe
 para disminuir el número de posibles soluciones a procesar o para optimizar localmente una solución. Programación
 Lógica de Restricciones (Constraint Logic Programming) es también otra técnica utilizada.
 
-\subsubsection{algoritmos genéticos}
+\subsubsection{Algoritmos Genéticos}
 
 Los algoritmos genéticos son análogos a la evolución propuesta por Darwin. Una población de horarios válidos
 es mantenida. Los mejores horarios son seleccionados para formar las bases de la próxima generación, mejorando
@@ -216,7 +216,7 @@ EK Burke and DG Elliman and RF Weare 2, EK Burke and DG Elliman and RF Weare 3}.
 trabaja a nivel de período, tomando encuentros planificados de ambos padres primero, y luego planificando
 otros de acuerdo a la heurística de ordenamiento hasta que no se puedan planificar más encuentros. Este tipo de operador de cruzamiento permite un uso eficiente de las aulas porque siempre trata de asignar un encuentro dondequiera que sea posible.
 
-\subsubsection{algoritmos mem\'eticos}
+\subsubsection{Algoritmos Mem\'eticos}
 
 Los algoritmos mem\'eticos son una extensión de los algoritmos gen\'eticos, basados en un modelo de cómo las ideas evolucionan. La unidad básica de las ideas son los memes, los que a diferencia de los genes, pueden ser mejorados durante su ciclo de vida. Es por eso que un simple algoritmo de búsqueda local (hill-climbing) es usado por intervalos
 para asegurarse que todos los horarios miembros de la población son óptimos locales.
@@ -225,14 +225,14 @@ La Universidad de Nottingham se encuentra desarrollando algoritmos mem\'eticos p
 
 La Universidad de Napier está trabajando con algoritmos mem\'eticos para diseñar sus horarios de clases \cite{B Paechter and A Cumming and MG Norman and H Luchian}. Su codificación de horario especifica una lista de intervalos de tiempo propuestos para cada evento. Estos intervalos de tiempo son analizados en orden y el intervalo más conveniente es movido hacia el tope de la lista. El operador de recombinación construye una nueva lista de intervalos propuestos tomándolos de los padres correspondientes.
 
-\subsubsection{recocido simulado}
+\subsubsection{Recocido Simulado}
 
 Recocido simulado es una estrategia de búsqueda que sigue la pista de una solución factible. En cada iteración un vecino es generado, otro horario factible, ligero y aleatoriamente alterado por el horario actual. Este nuevo horario es aceptado si es mejor que el anterior. Si el nuevo horarario no es mejor este aún puede ser aceptado con una probabilidad relacionada al parámetro llamado temperatura. La temperatura y por tanto la probabilidad de que un vecino de menor calidad sea aceptado decrece con cada iteración o tras un número de iteraciones (este número puede ser constante o puede crecer a medida que la temperatura disminuya). Este proceso es análogo al proceso de enfriamiento de un recocido real. Un incoveniente del recocido simulado es que el proceso de enfriamiento puede tomar gran tiempo en aras de obtener buenos resultados.
 
 En el TISSUE de Swansea se ha aplicado satisfactoriamente esta t\'ecnica en la generación de horarios para exámenes
 \cite{J Thompson and KA Dowsland, J Thompson and KA Dowsland 2}. Los autores, Thompson y Dowsland usaron un modelo de coloración de grafos. Para simplificar el problema ellos lo dividieron en dos fases, la primera encontrar una solución factible y luego optimizar las restricciones suaves. Sin embargo esta t\'ecnica produce un espacio de búsqueda muy disperso, por lo que usan las cadenas de Kempe para lograr un espacio de búsqueda más conectado. Más que una simple función geom\'etrica de enfriamiento, Dowsland usa una función no monótona que aumenta la temperatura si un horario vecino es rechazado. Además la razón entre los vecinos rechazados y los aceptados incrementa a medida que progresa la búsqueda.
 
-\subsubsection{búsqueda tabu}
+\subsubsection{Búsqueda Tab\'u}
 
 Al igual que recocido simulado, búsqueda tabu mantiene solo un horario factible. La diferencia radica en cómo se acepta el movimiento hacia un horario vecino. Búsqueda tabu mantiene una lista de movimientos tabu, representando horarios que, han sido visitados recientemente pero que son prohibidos para evitar areas ya visitadas y así escapar de óptimos locales. La lista tabu usualmente tiene un tamaño fijo, los movimientos tabu más viejos son eliminados para dar espacio a nuevos movimientos tabu. Puede darse el caso que un movimiento tabu alcance una buena solución, es por eso que es mantenida la mejor solución encontrada hasta el momento. Si un horario tabu alcanza la mejor solución registrada entonces este horario es eliminado de la lista.
 
@@ -240,7 +240,7 @@ Búsqueda tabu ha sido aplicada satisfactoriamente por Boufflet y N\`egre para g
 
 Formulando el problema de los horarios como un problema de asignación, Hertz desarrolló y aplicó el algoritmo tabu TATI \cite{A Hertz}, el cual más tarde adaptó para resolver horarios más complejos y restringidos de la vida real \cite{A Hertz 2}. La duración de una clase no es fijada y existen diez tipos diferentes de movimientos (mover una clase a otro día, cambiar la duración de una clase, etc). Sin embargo, luego de un número de iteraciones es tabu mover una clase hacia su día original.
 
-\subsubsection{programación lógica de restricciones}
+\subsubsection{Programación Lógica de Restricciones}
 
 El problema de los horarios puede ser modelado como un Problema de Satisfacción de Restricciones (Constraint Satisfaction Problem, CSP). En un CSP a cada variable se le debe asignar un valor de su dominio y que la asignación cumpla con un conjunto de restricciones. Programación Lógica de Restricciones (Constraint Logic Programing, CLP) esta basada en la aplicación de lenguajes de programación de lógica declarativa como Prolog a CSPs. Un programa en Prolog consiste en un conjunto de clausulas que serian las restricciones y la satisfacibilidad de estas es chequeda en ejecución.
 
@@ -355,3 +355,22 @@ En el momento de escoger una variable a asignar podr\'ia preguntarse:
 \end{itemize}
 
 A cada una de estas preguntas se le dar\'a respuesta en las siguientes secciones.
+
+\subsubsection{Ordenaci\'on de las Variables y sus Valores}
+
+El algoritmo presentado anteriormente contiene la línea:
+
+\begin{center}
+	\scriptsize var $\leftarrow$ SELECT-UNASSIGNED-VARIABLE ( VARIABLE [ csp ] , assignment, csp).
+\end{center}
+
+Por defecto SELECT-UNASSIGNED-VARIABLE simplemente selecciona la pr\'oxima variable a asignar en el orden en que se definieron las variables inicialmente. Este orden est\'atico de seleccionar las variables rara vez resulta ser el m\'as eficiente. Existe una heur\'istica llamada \emph{Minimum Remaining Values (MRV)} que selecciona la variable con menos valores v\'alidos en su dominio. Esta heur\'istica es tambi\'en llamada \emph{Most Constrained Variable} o \emph{Fail-First}, esta \'ultima porque se escoge la variable con m\'as probabilidad de fallar, logrando una temprana poda del \'arbol. Si existe una variable $X$ que no le queden valores v\'alidos en su dominio, esta variable es seleccionada por la heur\'istica y el fallo es detectado inmediatamente, evitando asignar otras variables innecesariamente si al final cuando se trate de asignar $X$ se detectaria un fallo.
+
+La heur\'istica MRV no nos ayuda a la hora de seleccionar la primera regi\'on a colorear del mapa de Australia, porque en un principio todos los dominios de valores tienen el mismo tamaño. En este caso, existe una heur\'istica llamada \emph{degree heuristic} que selecciona la variable que est\'a involucrada en la mayor cantidad de restricciones posibles con las dem\'as variables sin asignar. Siguiendo esta idea se seleccionaria la variable SA porque es la variable que aparece en m\'as restricciones.
+
+Una vez que la variable haya sido seleccionada, el algoritmo debe decidir en que orden procesar los valores del dominio. La heur\'istica \emph{least constraining value} puede ser efectiva en algunos casos. La idea es procesar primero los valores que menos restrinjan el dominio de las variables vecinas en el grafo de restricciones. En general esta heur\'istica trata de mantener lo m\'as flexible las futuras asignaciones de variables. Si queremos encontrar todas las soluciones del problema, y no solamente la primera, entonces el orden de los valores no es importante porque habr\'ia que analizarlos todos.
+
+\subsubsection{Propagaci\'on de Informaci\'on a trav\'es de las Restricciones}
+
+
+
