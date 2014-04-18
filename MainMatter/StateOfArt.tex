@@ -372,5 +372,13 @@ Una vez que la variable haya sido seleccionada, el algoritmo debe decidir en que
 
 \subsubsection{Propagaci\'on de Informaci\'on a trav\'es de las Restricciones}
 
+Actualmente nuestro algoritmo solo considera las restricciones sobre una variable en el momento en que es seleccionada por el m\'etodo \emph{SELECT-UNASSIGNED-VARIABLE}. Si tenemos en cuenta estas restricciones antes de asignar dicha variable podemos reducir dr\'asticamente el espacio de b\'usqueda.
+
+Una forma de hacer un mejor uso de las restricciones durante la b\'usqueda es mediante la t\'ecnica \emph{forward checking}. Cuando una variable $X$ es asignada, el proceso de forward checking examina cada variable $Y$ sin asignar que est\'e relacionada con $X$ en alguna restricci\'on, y elimina del dominio de $Y$ cualquier valor que sea inconsistente con el valor asignado a $X$.
+
+Aunque forward checking detecte muchas inconsistencias, a veces deja de detectar algunas por no mirar adelante lo suficiente. \emph{Constraint propagation} es el t\'ermino general usado para la propagaci\'on de las implicaciones que puede tener una asignaci\'on en sus variables vecinas no asignadas.
+
+La t\'ecnica \emph{consistencia de arco (arc consistency)} provee un m\'etodo r\'apido de propagaci\'on de restricci\'on que es sustancialmente mejor que forward checking. Con arcos, se refiere a los arcos dirigidos del grafo de restricciones. En el problema de colorear el mapa de Australia, el arco SA $\rightarrow$ NSW es consistente si por cada valor $x$ de SA, existe un valor $y$ de NSW que es consistente con $x$. Para ilustrar mejor, supongamos que los dominios de SA y NSW son $\{azul\}$ y $\{rojo, azul\}$ respectivamente. Para la asignaci\'on SA = azul exite una asignaci\'on consistente NSW = rojo, por lo que el arco SA $\rightarrow$ NSW es consistente. De la otra forma, el arco NSW $\rightarrow$ SA no es consistente, para la asignaci\'on NSW = azul no existe una asignaci\'on consistente para SA. Este arco puede hacerse consistente eliminando el valor azul del dominio de NSW.
+
 
 
