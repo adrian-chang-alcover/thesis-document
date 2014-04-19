@@ -323,7 +323,7 @@ Toda soluci\'on debe ser una asignaci\'on completa y por lo tanto aparece en la 
 
 El tipo m\'as simple de CSP es cuando las variables tienen dominio discreto y finito. Problemas de coloraci\'on de mapas pertenecen a este tipo, al igual que el problema de las 8 reinas. Si el tamaño m\'aximo del dominio de cada variable es $d$, entonces el n\'umero posible de asignaciones completas es $O(d^{n})$, exponencial con respecto al n\'umero de variables. Dentro de este tipo de problemas est\'an los llamados CSP booleanos, cuyas variables pueden tomar solamente los valores \emph{true} o \emph{false}, un ejemplo es el problema 3SAT \cite{Carla P. Gomes}.
 
-Las variables discretas pueden tener dominios infinitos, por ejemplo, el conjunto de los enteros. Supongamos que se planifican trabajos de construcci\'on, las variables ser\'ian la fecha de inicio de cada trabajo y los posibles valores n\'umeros enteros que indican la cantidad de dias que la tarea puede demorar. Para dominios infinitos no es posible describir restricciones enumerando todas las posibles combinaciones de valores. Es necesario utilizar un lenguaje de restricci\'on. Por ejemplo si el trabajo $J_{1}$ debe concluir antes que comience $J_{3}$, entonces necesitariamos una desigualdad algebraica como $J_{1} + 5 < J_{3}$.
+Las variables discretas pueden tener dominios infinitos, por ejemplo, el conjunto de los enteros. Supongamos que se planifican trabajos de construcci\'on, las variables ser\'ian la fecha de inicio de cada trabajo y los posibles valores n\'umeros enteros que indican la cantidad de dias que la tarea puede demorar. Para dominios infinitos no es posible describir restricciones enumerando todas las posibles combinaciones de valores. Es necesario utilizar un lenguaje de restricci\'on. Por ejemplo, si el trabajo $J_{1}$ que demora 5 dias debe concluir antes que comience $J_{3}$, entonces necesitariamos una desigualdad algebraica como $J_{1} + 5 < J_{3}$.
 
 Problemas de satisfacci\'on de restricciones con dominios continuos son muy comunes en el mundo real y son ampliamente estudiados en el campo de investigaci\'on de operaciones. La categoria m\'as conocida de CSP con dominios continuos son los problemas de programaci\'on lineal, donde las restricciones son desigualdades lineales que forman una regi\'on convexa. Los problemas de programaci\'on lineal pueden ser resueltos en tiempo polinomial con respecto al n\'umero de variables.
 
@@ -380,7 +380,7 @@ Aunque forward checking detecte muchas inconsistencias, a veces deja de detectar
 
 La t\'ecnica \emph{consistencia de arco (arc consistency)} provee un m\'etodo r\'apido de propagaci\'on de restricci\'on que es sustancialmente mejor que forward checking. Con arcos, se refiere a los arcos dirigidos del grafo de restricciones. En el problema de colorear el mapa de Australia, el arco SA $\rightarrow$ NSW es consistente si por cada valor $x$ de SA, existe un valor $y$ de NSW que es consistente con $x$. Para ilustrar mejor, supongamos que los dominios de SA y NSW son $\{azul\}$ y $\{rojo, azul\}$ respectivamente. Para la asignaci\'on SA = azul exite una asignaci\'on consistente NSW = rojo, por lo que el arco SA $\rightarrow$ NSW es consistente. De la otra forma, el arco NSW $\rightarrow$ SA no es consistente, para la asignaci\'on NSW = azul no existe una asignaci\'on consistente para SA. Este arco puede hacerse consistente eliminando el valor azul del dominio de NSW.
 
-El chequeo de consistencia de arco puede ser aplicado como un preprocesado antes de iniciar el proceso de b\'usqueda o como forward checking tras cada asignaci\'on durante el proceso de b\'usqueda. En cualquiera de los dos casos el proceso debe ser aplicado repetidamente hasta que no queden inconsistencias. Esto es, porque donde quiera que un valor es eliminado del dominio de alguna variable, pueden aparecer nuevas inconsistencias en los arcos que apuntan a esa variable. El algoritmo para consistencia de arco, \emph{AC-3} utiliza una cola para mantener almacenado todos arcos que necesitan ser chequeados en b\'usquedas de posibles inconsistencias. Ver figura \ref{AC3}. Cada arco $(X_{i},X_{j})$ es sacado de la cola, si alg\'un valor es eliminado del dominio de $X_{i}$, entonces todo arco $(X_{k},X_{i})$ apuntando a $X_{i}$ es insertado en la cola para ser chequeado. La complejidad de este algoritmo puede ser analizada de la siguiente manera, un CSP binario tiene m\'aximo $O(n^{2})$ arcos, cada arco $(X_{k},X_{i})$ puede ser insertado en la cola a lo sumo $d$ veces, porque $X_{i}$ tiene m\'aximo $d$ valores y chequear la consistencia de un arco puede hacerse en $O(d^{2})$, por lo tanto el costo total del algoritmo es $O(n^{2}d^{3})$. Aunque es m\'as costoso que forward checking, vale la pena el costo extra.
+El chequeo de consistencia de arco puede ser aplicado como un preprocesado antes de iniciar el proceso de b\'usqueda o como forward checking tras cada asignaci\'on durante el proceso de b\'usqueda. En cualquiera de los dos casos el proceso debe ser aplicado repetidamente hasta que no queden inconsistencias. Esto es, porque donde quiera que un valor es eliminado del dominio de alguna variable, pueden aparecer nuevas inconsistencias en los arcos que apuntan a esa variable. El algoritmo para consistencia de arco, \emph{AC-3} utiliza una cola para mantener almacenado todos los arcos que necesitan ser chequeados en b\'usquedas de posibles inconsistencias. Ver figura \ref{AC3}. Cada arco $(X_{i},X_{j})$ es sacado de la cola, si alg\'un valor es eliminado del dominio de $X_{i}$, entonces todo arco $(X_{k},X_{i})$ apuntando a $X_{i}$ es insertado en la cola para ser chequeado. La complejidad de este algoritmo puede ser analizada de la siguiente manera, un CSP binario tiene $O(n^{2})$ arcos, cada arco $(X_{k},X_{i})$ puede ser insertado en la cola a lo sumo $d$ veces, porque $X_{i}$ tiene m\'aximo $d$ valores y chequear la consistencia de un arco puede hacerse en $O(d^{2})$, por lo tanto el costo total del algoritmo es $O(n^{2}d^{3})$. Aunque es m\'as costoso que forward checking, vale la pena el costo extra.
 
 \begin{figure}
 	\begin{center}
@@ -393,3 +393,25 @@ El chequeo de consistencia de arco puede ser aplicado como un preprocesado antes
 Los problemas de satisfacci\'on de restricciones incluyen 3SAT como un caso especial, por lo tanto no podemos esperar encontrar un algoritmo que en tiempo polinomial nos diga si dado un CSP es consistente o no. Es por eso que el algoritmo presentado de consistencia de arco no detecta todas las inconsistencias que puedan existir. Existen otras formas de propagaci\'on de informaci\'on a trav\'es de restricciones m\'as fuertes que consistencia de arco, son llamadas k-consistencia.
 
 \subsection{B\'usqueda Local para Problemas de Satisfacci\'on de Restricciones}
+
+Algoritmos de b\'usqueda local suelen ser muy efectivos resolviendo CSPs. Usan asignaciones completas en todo momento, el estado inicial asigna un valor a cada variable, sin importar si se viola alguna restricci\'on, y la funci\'on sucesor usualmente trabaja cambiando el valor asignado a una variable en cada momento. Por ejemplo, en el problema de las 8 reinas, un estado inicial puede ser una reina en cada columna, y la funci\'on sucesor ser\'ia seleccionar una reina y moverla dentro de su columna.
+
+En el momento de asignar un nuevo valor a una variable, una heur\'istica razonable ser\'ia seleccionar el valor que resulte en menos conflictos con las dem\'as variables. En la figura \ref{MinConflicts} se muestra el algoritmo y en la figura \ref{8queens} se ilustra una instancia del problema de las 8 reinas al que se le aplica dicho algoritmo.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.65]{Graphics/MinConflicts}
+		\caption{Algoritmo MIN-CONFLICTS para resolver CSPs mediante b\'usqueda local.}
+		\label{MinConflicts}
+	\end{center}	
+\end{figure}
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.65]{Graphics/8queens}
+		\caption{Aplicaci\'on del algoritmo MIN-CONFLICTS para una instancia del problema de las 8 reinas.}
+		\label{8queens}
+	\end{center}	
+\end{figure}
+
+El algoritmo MIN-CONFLICTS es sorprendentemente efectivo para varios CSPs, particularmente cuando comienza por un ``conveniente'' estado inicial.
