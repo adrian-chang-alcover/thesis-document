@@ -414,4 +414,6 @@ En el momento de asignar un nuevo valor a una variable, una heur\'istica razonab
 	\end{center}	
 \end{figure}
 
-El algoritmo MIN-CONFLICTS es sorprendentemente efectivo para varios CSPs, particularmente cuando comienza por un ``conveniente'' estado inicial.
+El algoritmo MIN-CONFLICTS es sorprendentemente efectivo para varios CSPs, especialmente cuando comienza por un ``conveniente'' estado inicial. En un promedio de 50 pasos puede resolverse el problema de un mill\'on de reinas. Hablando a grandes rasgos, b\'usqueda local es buena para n-reinas porque las soluciones est\'an densamente distribuidas a trav\'es de todo el espacio.
+
+Otra importante ventaja de b\'usqueda local es que puede ser usada para problemas que cambian din\'amicamente. Esto es particularmente para problemas de planificaci\'on de actividades. La planificaci\'on semanal de una aerol\'inea puede involucrar miles de vuelos y a decenas de miles de personas, pero un mal tiempo puede hechar por tierra toda la planificaci\'on hecha a priori. Ser\'ia recomendable replanificar todos los vuelos con el menor n\'umero de cambios. Esto puede lograrse f\'acilmente con una b\'usqueda local partiendo de la actual planificaci\'on. Una b\'usqueda con backtracking con nuevas restricciones requerir\'a de mucho tiempo y seguramente la soluci\'on encontrada tendr\'ia muchos cambios con respecto a la inicial.
