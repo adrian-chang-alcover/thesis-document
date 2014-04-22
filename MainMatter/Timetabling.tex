@@ -1,0 +1,288 @@
+\chapter{Generaci\'on de Horarios}
+
+El diseño de un horario de clases o de exámenes para una universidad es una tarea bastante grande y compleja.
+Existen diferentes departamentos y facultades, cada uno con sus propias ideas acerca de cómo y cuándo deben
+comenzar sus cursos. Además, los estudiantes pueden tomar cursos de diferentes departamentos e incluso de
+diferentes facultades. Numerosos sistemas de horarios para universidades han sido diseñados y se trabaja
+en dirección a crear un estándar que permita comparar un sistema con otro. En esta sección se resumirán
+las principales técnicas y trabajos recientes en cuanto a horarios, sea de clases o de exámenes, y servirá
+como una introducción a este campo de investigación.
+
+\section{Definición del problema}
+
+Un horario (timetable en Inglés) es una asignación de un conjunto de encuentros en un tiempo determinado.
+Un encuentro es una combinación de recursos (aulas, personas o materiales de clase), algunos de ellos pueden
+ser especificados por el problema y otros deben ser asignados como parte de la solución. La generación de un
+horario se conoce que pertenece a la clase de problemas llamada NP-completo \cite{TB Cooper and JH Kingston},
+hasta ahora no se conoce un algoritmo polinomial que pueda darle solución.
+
+Existen algunas variaciones fundamentales para el problema de los horarios. La generación de un horario para
+la universidad puede ser dividida en dos principales categor\'ias, horario para clases y horario para exámenes.
+Se diferencian principalmente en:
+
+\begin{itemize}
+	\item Los exámenes deben ser planificados de forma tal que un estudiante no tenga más de un examen al
+		mismo tiempo, pero las clases usualmente son planificadas antes que los estudiantes las matriculen.
+	\item El espacio también es una restricción, diferentes exámenes pueden compartir la misma aula o un examen
+		puede necesitar más de un aula, pero en un aula solo puede ser impartida una clase a la vez.
+\end{itemize}
+
+Carter defiende con respecto al problema del horario de exámenes: ``\emph{el principal reto es programar los
+exámenes para un período de tiempo limitado evitando conflictos y satisfaciendo un número de restricciones
+colaterales}'' \cite{Carter's summary} Con conflictos se refiere a que el horario requiera de un recurso
+al mismo tiempo en lugares distintos. Las restricciones colaterales var\'ian entre instituciones, y entre
+horarios para clases y horarios para exámenes. Pueden existir una infinidad de restricciones colaterales.
+Reto es la palabra apropiada para usar en estos casos.
+Como Bloomfield y McSharry dicen: ``\emph{Dependiendo del tamaño de los departamentos y de la diversidad
+de cursos que ofrecen, el tiempo requerido para diseñar un horario de clases puede ir desde una simple
+tarde de trabajo hasta un mes de arduo trabajo}''. \cite{Bloomfield and McSharry says}
+
+El proceso de diseño de un horario se vuelve más difícil por el hecho de que involucra a muchas personas.
+Romero identificó tres grupos fundamentales cada uno con sus propios objetivos y necesidades \cite{Romero}.
+
+\begin{itemize}
+	\item La administración fija los estándares  mínimos que el horario debe cumplir. Por ejemplo, algunas
+		universidades especifican que los estudiantes no tengan dos exámenes en períodos consecutivos.
+	\item Los intereses de cada departamento son los más notables en el diseño de un horario. Cada departamento
+		quiere que el horario sea consecuente con las asignaturas que imparte, as\'i como la necesidad de un
+		aula o laboratorio en específico. En el contexto de exámenes, se quisiera que los exámenes más complicados
+		sean los primeros, para as\'i tener más tiempo para su calificación.
+	\item El tercer grupo involucrado son los estudiantes, a quienes solo les interesará la porción de horario
+		referente a ellos. Dada la cantidad de estudiantes y la diversidad de criterios que estos puedan tener,
+		se hace muy difícil determinar cu\'al es el mejor horario para ellos. Muchos estudiantes prefieren no
+		tener clases lo viernes y entre cada clases tener un descanso.		
+\end{itemize}
+
+Las restricciones para un horario pueden ser muchas y variadas. A continuación se presentan algunas de 
+las más comunes:
+
+\begin{description}
+	\item[Asignación de recursos:] Un recurso puede ser asignado a otro recurso de tipo diferente o a un encuentro.
+		Por ejemplo, un profesor prefiere impartir sus clases en una determinada aula o un examen debe ser realizado
+		en un determinado edificio.
+	\item[Asignación de tiempo:] Un encuentro o un recurso debe ser asignado a un tiempo. Esta restricción puede
+		ser usada para especificar días en los que un profesor no está disponible, o para pre asignar un
+		tiempo a un determinado encuentro.
+	\item[Restricción de tiempo entre encuentros:] Ejemplos comunes de esta clase de restricción son que un encuentro
+		deba suceder antes de otro, o que un conjunto de exámenes deba realizarse simult\'aneamente.
+	\item[Esparcimiento de encuentros:] Los encuentros deben estar esparcidos en el tiempo. Por ejemplo, un
+		estudiante no debe tener más de un examen el mismo día.
+	\item[Coherencia entre encuentros:] Estas restricciones son diseñadas para producir un horario más organizado
+		y conveniente. A menudo entran en contradicción con el esparcimiento de encuentros. Ejemplos de ellas es,
+		que un profesor prefiera dar todos sus turnos en los primeros tres d\'ias de la semana, dejándole los
+		últimos dos d\'ias libre.
+	\item[Capacidad de las aulas:] La cantidad de estudiantes no debe exceder la capacidad del aula.
+	\item[Continuidad:] Cualquier restricción cuyo propósito sea asegurar que el horario sea constante y predecible.
+		Por ejemplo, las conferencias de una asignatura deben ser programadas en la misma aula o en el mismo tiempo.
+\end{description}
+
+Las restricciones son usualmente divididas entre las categor\'ias fuertes y débiles:
+
+\begin{description}
+	\item[Restricciones fuertes:] Un horario que no cumpla con alguna restricción fuerte no es una solución factible
+		y debe ser modificado. Ejemplo, una persona no debe tener planificado más de un encuentro al mismo tiempo.
+	\item[Restricciones débiles:] Estas restricciones son menos importantes que las fuertes y es casi imposible
+		cumplirlas todas. En algunas ocasiones se mide la calidad de un horario por el número de restricciones
+		débiles que logra cumplir. Algunas restricciones débiles son más importantes que otras, esto puede ser
+		especificado asoci\'andoles una prioridad.
+\end{description}
+
+\section{Encuesta realizada en universidades británicas}
+
+El problema de los horarios puede variar enormemente entre distintas universidades. El Grupo de Planificación
+y Programación Automatizada de la Universidad de Nottingham lanzó una encuesta \cite{survey of University of Nottingham} sobre la planificación de exámenes en las universidades británicas. La encuesta fue enviada a
+95 universidades, de ellas respondieron 56.
+
+La encuesta mostró cuán distinto puede ser el problema de los horarios entre las diferentes instituciones.
+Por ejemplo, el número de exámenes a planificar puede variar desde unos cientos hasta medio millar por sesión,
+y los estudiantes involucrados pueden ser desde unos quinientos hasta unos veinte mil. Como dijo un
+encargado de programar el horario, ``\emph{Existen muchas variaciones en cuanto a la generación de un horario,
+podr\'iamos escribir un libro}''.
+
+Uno de los mayores problemas para las universidades es encontrar locales en los que realizar los exámenes.
+Varias universidades resuelven el problema de la insuficiencia de aulas alquilando locales externos a la
+universidad. Esto puede resolver el problema en parte, pero si estos locales son utilizados en otras funciones
+su disponibilidad se vuelve impredecible. También hay que considerar que estos locales no siempre están cerca de
+la universidad, causando que los estudiantes necesiten más tiempo para trasladarse de un local a otro.
+
+De las universidades que respondieron la encuesta, sorprende que el 42\% no se apoyan en ninguna herramienta
+computacional para realizar este proceso. Una posible razón para esto es que en varias universidades el
+horario de un curso no cambia significativamente con respecto al anterior. Aquellas universidades que no
+se apoyan en el horario del curso anterior ni en alguna herramienta computacional demoran al menos cuatro
+semanas en diseñar su horario.
+
+Otra razón para la falta de automatización en este proceso es producto de que los encargados de diseñar el horario
+algunas veces desconf\'ian de los beneficios que esto podr\'ia traer. El departamento de exámenes de una universidad
+dijo que ellos pod\'ian ``\emph{ver las desventajas de un sistema completamente automatizado. Preferimos trabajar
+desde la etapa inicial del diseño con una tabla y un l\'apiz. Esto permite una vista general del progreso de la
+generación mejor que un sistema computacional basado en preguntas.}''
+
+\begin{figure}
+	\begin{center}
+		\includegraphics{Graphics/computer_usage}
+		\caption{Automatización del proceso de diseño de horarios en universidades británicas.}
+	\end{center}	
+\end{figure}
+
+De las universidades que respondieron la encuesta el 21\% genera su horario de forma automática por
+computadoras, aunque confiesan que a veces es necesario la intervención manual con el objetivo de satisfacer
+algunas particularidades que escapan del alcance de las computadoras. Algunas universidades desarrollan
+sus propias herramientas y otras universidades adaptan las herramientas comerciales a sus necesidades.
+
+Existen dos metodologías fundamentales que utilizan aquellas universidades que no automatizan el proceso de
+generación de horarios:
+
+\begin{itemize}
+	\item Permitir a cada facultad o departamento diseñar su propuesta de horario y luego la administración
+		central los mezcla y elabora el horario final. Esto asume que las facultades y los departamentos
+		son independientes entre ellos. Sin embargo, muchas universidades británicas están adoptando una
+		organización modular, lo que implica que esta metodología no es siempre válida.
+	\item Construir el horario de exámenes modificando el horario de clases. Una institución que casualmente
+		estaba desarrollando un nuevo sistema, dijo: ``\emph{Esto, por supuesto no está del todo bien, porque
+		pueden haber varias conferencias en diferentes intervalos de tiempo o el número de estudiantes involucrados
+		es mayor a la capacidad de las aulas de exámenes}''. Esta metodología depende de la naturaleza del curso
+		asociado al horario.
+\end{itemize}
+
+La encuesta demostró la gran necesidad de automatizar este proceso. Habiendo dicho esto, cualquier sistema
+para que sea útil debe satisfacer la gran cantidad de criterios disimiles que existen en torno a este problema.
+El principal problema es que el sistema debe ser capaz de generar horarios de gran calidad a pesar de las enormes
+variaciones de este proceso encontradas en las diferentes universidades encuestadas. El sistema debe ser compatible
+con trabajos hechos con anterioridad, debe ser fácil de usar y satisfacer todas las necesidades de los departamentos y facultades.
+
+\section{¿Cómo comparar la calidad de las soluciones?}
+
+Varios métodos han sido desarrollados y utilizados con éxito para solucionar el problema de los horarios.
+\cite{VA Bardadym, MW Carter, MW Carter and G Laporte, JH Kingston}. Sin embargo, muchos de estos métodos 
+solo son usados en un departamento o facultad en específico, rara vez son comparados entre sí. Una 
+comparación precisa es vital para determinar cuál de los métodos computacionales es el mejor para
+distintas instancias del problema. Cuando la técnica usada es relativamente simple, se ajusta con facilidad
+a condiciones distintas. Con el paso del tiempo las técnicas se vuelven más sofisticadas, con el objetivo
+de satisfacer nuevas necesidades.
+
+No es fácil expresar claro y precisamente los requerimientos para un horario real. Los requerimientos básicos
+como ``cada clase debe tener un profesor'' o ``nadie debe estar en dos lugares distintos al mismo tiempo'' son
+fáciles de expresar, pero las ``restricciones colaterales'' como el aula ideal para impartir una asignatura o
+el orden cronológico entre clases son muy difíciles de representar y por consiguiente de leer y entender. Esa
+es la razón por qué es tan difícil adaptar un sistema hecho para otra institución a nuestras necesidades.
+
+Un proyecto en desarrollo por la Universidad de Nottingham conjunto con la Universidad de Napier, la Universidad
+de Reading, la Universidad de Sydney y la Universidad de Toronto intenta encontrar una forma de escribir cualquier
+requerimiento, usando fórmulas lógicas. Esto permitirá utilizar herramientas desarrolladas por otras entidades tan
+solo redefiniendo nuestros propios requerimientos.
+
+\section{Técnicas para automatizar el diseño de un horario}
+
+Para determinadas instancias del problema heurísticas específicas pueden dar buenos resultados, pero con el devenir del tiempo los horarios de universidades se han vuelto más complejos. Actualmente hay una tendencia que fue confirmada
+con las presentaciones de la primera conferencia internacional de ``Practice And Theory of Automated Timetabling''
+\cite{D Abramson and J Abela}, de resolver el problema con algoritmos más generales, o meta heurísticas, como
+recocido simulado, algoritmos evolutivos y búsqueda tabú. Las heurísticas específicas pueden ser utilizadas
+para disminuir el número de posibles soluciones a procesar o para optimizar localmente una solución. Programación
+Lógica de Restricciones (Constraint Logic Programming) es también otra técnica utilizada.
+
+\subsection{Algoritmos Genéticos}
+
+Los algoritmos genéticos son análogos a la evolución propuesta por Darwin. Una población de horarios válidos
+es mantenida. Los mejores horarios son seleccionados para formar las bases de la próxima generación, mejorando
+la calidad de la población al mismo tiempo que se mantiene la diversidad.
+
+La representación genética más común para un horario es una larga cadena de bits codificando cuándo y dónde
+debe ocurrir un encuentro. Siendo así, los pares de los horarios seleccionados pueden ser cruzados cortando
+la cadena y pasando a sus descendientes información de ambos padres. No obstante, Corne, Ross y Fang proponen
+una conveniente operación de mutación para ser más exitoso el cruzamiento \cite{D Corne and P Ross and HL Fang}.
+Su sistema, GATT, está siendo usado para generar el horario de la Universidad de Edinburgh y algunas otras
+instituciones. La figura \ref{genetic algorithms steps} muestra las etapas de un algoritmo gen\'etico.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.5]{Graphics/genetic_algorithms}
+		\caption{Etapas de un algoritmo genético.}	
+		\label{genetic algorithms steps}	
+	\end{center}	
+\end{figure}
+
+Paechter y Cumming desarrollaron ``Neeps and Tatties'' un sistema que se ha estado usando en el departamento
+de Ciencia de la Computación de la Universidad de Napier. Su algoritmo genético codifica un horario como una ordenación
+de eventos, que debe ser introducido a un programa especial que utiliza ese orden para producir un horario
+\cite{B Paechter* and A Cumming* and H Luchian}. Este algoritmo necesita un operador de permutación 
+que cambie el orden de los eventos heredados por el padre.
+
+El Grupo de Planificación y Programación Automatizada de la Universidad de Nottingham ha estado desarrollando
+algoritmos genéticos para horarios de exámenes utilizando un alto grado de conocimiento heurístico para generar
+una población inicial y para los operadores genéticos \cite{EK Burke and DG Elliman and RF Weare 1, 
+EK Burke and DG Elliman and RF Weare 2, EK Burke and DG Elliman and RF Weare 3}. El operador de cruzamiento
+trabaja a nivel de período, tomando encuentros planificados de ambos padres primero, y luego planificando
+otros de acuerdo a la heurística de ordenamiento hasta que no se puedan planificar más encuentros. Este tipo de operador de cruzamiento permite un uso eficiente de las aulas porque siempre trata de asignar un encuentro dondequiera que sea posible.
+
+\subsection{Algoritmos Mem\'eticos}
+
+Los algoritmos mem\'eticos son una extensión de los algoritmos gen\'eticos, basados en un modelo de cómo las ideas evolucionan. La unidad básica de las ideas son los memes, los que a diferencia de los genes, pueden ser mejorados durante su ciclo de vida. Es por eso que un simple algoritmo de búsqueda local (hill-climbing) es usado por intervalos
+para asegurarse que todos los horarios miembros de la población son óptimos locales.
+
+La Universidad de Nottingham se encuentra desarrollando algoritmos mem\'eticos para horarios de exámenes \cite{EK Burke and JP Newall and RF Weare}. Un operador de mutación es aplicado a los miembros seleccionados de la población. Despu\'es de mutar cada miembro seleccionado este es optimizado por un algoritmo de optimización local. Esta combinación genera soluciones con buena calidad.
+
+La Universidad de Napier está trabajando con algoritmos mem\'eticos para diseñar sus horarios de clases \cite{B Paechter and A Cumming and MG Norman and H Luchian}. Su codificación de horario especifica una lista de intervalos de tiempo propuestos para cada evento. Estos intervalos de tiempo son analizados en orden y el intervalo más conveniente es movido hacia el tope de la lista. El operador de recombinación construye una nueva lista de intervalos propuestos tomándolos de los padres correspondientes.
+
+\subsection{Recocido Simulado}
+
+Recocido simulado es una estrategia de búsqueda que sigue la pista de una solución factible. En cada iteración un vecino es generado, otro horario factible, ligero y aleatoriamente alterado por el horario actual. Este nuevo horario es aceptado si es mejor que el anterior. Si el nuevo horario no es mejor este aún puede ser aceptado con una probabilidad relacionada al parámetro llamado temperatura. La temperatura y por tanto la probabilidad de que un vecino de menor calidad sea aceptado decrece con cada iteración o tras un número de iteraciones (este número puede ser constante o puede crecer a medida que la temperatura disminuya). Este proceso es análogo al proceso de enfriamiento de un recocido real. Un inconveniente del recocido simulado es que el proceso de enfriamiento puede tomar gran tiempo en aras de obtener buenos resultados.
+
+En el TISSUE de Swansea se ha aplicado satisfactoriamente esta t\'ecnica en la generación de horarios para exámenes
+\cite{J Thompson and KA Dowsland, J Thompson and KA Dowsland 2}. Los autores, Thompson y Dowsland usaron un modelo de coloración de grafos. Para simplificar el problema ellos lo dividieron en dos fases, la primera encontrar una solución factible y luego optimizar las restricciones suaves. Sin embargo esta t\'ecnica produce un espacio de búsqueda muy disperso, por lo que usan las cadenas de Kempe para lograr un espacio de búsqueda más conectado. Más que una simple función geom\'etrica de enfriamiento, Dowsland usa una función no monótona que aumenta la temperatura si un horario vecino es rechazado. Además la razón entre los vecinos rechazados y los aceptados incrementa a medida que progresa la búsqueda.
+
+\subsection{Búsqueda Tab\'u}
+
+Al igual que recocido simulado, búsqueda tab\'u mantiene solo un horario factible. La diferencia radica en cómo se acepta el movimiento hacia un horario vecino. Búsqueda tab\'u mantiene una lista de movimientos tab\'u, representando horarios que, han sido visitados recientemente pero que son prohibidos para evitar \'areas ya visitadas y así escapar de óptimos locales. La lista tab\'u usualmente tiene un tamaño fijo, los movimientos tab\'u más viejos son eliminados para dar espacio a nuevos movimientos tab\'u. Puede darse el caso que un movimiento tab\'u alcance una buena solución, es por eso que es mantenida la mejor solución encontrada hasta el momento. Si un horario tab\'u alcanza la mejor solución registrada entonces este horario es eliminado de la lista.
+
+Búsqueda tab\'u ha sido aplicada satisfactoriamente por Boufflet y N\`egre para generar horarios de exámenes en la Universidad de Tecnología de Compi\`egne \cite{JP Boufflet and S Negre}. Su lista tab\'u contiene los siete últimos movimientos. Si de los vecinos del horario actual no existe uno mejor, entonces se selecciona un horario de la lista tab\'u.
+
+Formulando el problema de los horarios como un problema de asignación, Hertz desarrolló y aplicó el algoritmo tab\'u TATI \cite{A Hertz}, el cual más tarde adaptó para resolver horarios más complejos y restringidos de la vida real \cite{A Hertz 2}. La duración de una clase no es fijada y existen diez tipos diferentes de movimientos (mover una clase a otro día, cambiar la duración de una clase, etc.). Sin embargo, luego de un número de iteraciones es tab\'u mover una clase hacia su día original.
+
+\subsection{Programación Lógica de Restricciones}
+
+El problema de los horarios puede ser modelado como un Problema de Satisfacción de Restricciones (Constraint Satisfaction Problem, CSP). En un CSP a cada variable se le debe asignar un valor de su dominio y que la asignación cumpla con un conjunto de restricciones. Programación Lógica de Restricciones (Constraint Logic Programing, CLP) est\'a basada en la aplicación de lenguajes de programación de lógica declarativa como Prolog a CSPs. Un programa en Prolog consiste en un conjunto de cl\'ausulas que serian las restricciones y la satisfacibilidad de estas es chequeada en ejecución.
+
+En CLP, una estrategia de etiquetado dicta el orden en que el espacio de búsqueda debe ser explorado, lo cual es vital para una búsqueda efectiva. Existen dos ordenamientos, el orden en que las variables deben ser asignadas y el orden en que los valores deben ser procesados.
+
+Un sistema en Prolog para horarios de clases ha sido desarrollado por White en la Universidad de Ottawa \cite{L Kang and GM White, C Cheng and L Kang and N Leung and GM White}. Las restricciones son divididas en primarias y secundarias. Las restricciones primarias deben ser siempre cumplidas. Si no es posible asignar un aula o un espacio de tiempo a un encuentro sin violar alguna restricción primaria, entonces el programa retrocede, relajando restricciones secundarias una a una hasta que la asignación sea válida.
+
+Boizumault, Delon y P\'eridy han diseñado un programa para horarios de exámenes \cite{P Boizumault and Y Delon and L Peridy} en CHIP, un lenguaje de programación lógica de restricciones basado en Prolog, el cual provee varios tipos de restricción. Proponen un tipo de restricción ``acumulativa'' que limita la cantidad de recursos que pueden ser usados en un tiempo, Boizumault la utiliza para implementar la restricción referente a la capacidad de las aulas. En su estrategia de búsqueda asigna primero los exámenes en los que intervienen un mayor número de estudiantes. Boizumault, Gu\'eret y Jussien han tambi\'en implementado un sistema para horarios de clases llamado FELIAC \cite{P Boizumault and C Gueret and N Jussien, C Gueret and N Jussien and P Boizumault and C Prins}. Las clases de gran audiencia son planificadas primero en los d\'ias donde existan un menor número de clases planificadas. Relajación de restricciones es esencial para CSP con muchas restricciones como son los horarios. Los problemas en que las restricciones son relajadas son llamados dinámicos. Por cada asignación fallida, FELIAC guarda una ``justificación'' que identifica cuál restricción es violada por la asignación. Estas justificaciones son usadas para revertir los efectos de una restricción cuando es relajada.
+
+\section{Modelando datos del problema}
+
+El problema de los horarios puede variar considerablemente entre universidades, por lo tanto en aras de que pueda ser aplicable a diferentes instituciones, un sistema debe ser flexible en la manera en que sus restricciones y recursos son especificados.
+
+Un módulo para horarios de universidad está siendo desarrollado por el Grupo de Planificación y Programación Automatizada de la Universidad de Nottingham, el cual incorpora un sistema altamente flexible en el que los objetos (dígase encuentros y recursos) pueden ser definidos y agrupados. Por simplicidad, la siguiente descripción trata sobre recursos, pero los encuentros pueden ser definidos y agrupados de la misma manera.
+
+Cada tipo de recurso (ejemplo aulas) tiene en conjunto de atributos que permite definir recursos individuales. En la tabla \ref{table:atributes} se muestran cuatro atributos que las aulas pueden tener.
+
+\begin{table}
+	\caption{Conjunto de atributos para las aulas}
+	\begin{center}
+		\label{table:atributes}
+		\begin{tabular}{lp{7.5cm}r}
+			Nombre del atributo & Valores del atributo \\ \hline
+			Proyector &\ Verdadero si el aula contiene un proyector, falso en otro caso \\
+			Propósito &\ Usos que se le puede dar al aula, salón de conferencia, laboratorio \\
+			Edificio &\ Edificio al que pertenece el aula \\
+			Capacidad &\ Cantidad de estudiantes que el aula puede tener
+		\end{tabular}
+	\end{center}
+\end{table}
+
+El encargado de diseñar el horario puede adicionar, modificar o eliminar atributos de cualquier tipo con el objetivo de modificar la información que se tiene sobre los recursos. Existen dos formas de manipular los datos de los recursos:
+
+\begin{description}
+	\item[Mediante recursos:] Buscando o cambiando los valores de sus atributos. Ejemplo, el encargado pudiese querer saber a qu\'e edificio pertenece un local determinado, o a un edificio asignar un nuevo local.
+	\item[Mediante conjuntos:] Teniendo que recursos pertenecen a un conjunto determinado y as\'i adicionar o eliminar recursos de dicho conjunto.
+\end{description}
+
+Este sistema de la Universidad de Nottingham provee una plataforma poderosa y flexible para la especificación de restricciones. Una restricción de asignación de recursos enlaza una lista de recurso a una lista de encuentros. Cada lista puede ser conformada por objetos individuales o conjuntos de objetos. Por ejemplo, una restricción de asignación de recursos pudiese especificar que todas las conferencias de una determinada asignatura tomen lugar en un local específico.
+
+\section{Conclusiones}
+
+La ardua tarea de crear un horario para una universidad puede ser facilitada considerablemente por la automatización. Sin embargo, dada la inmensa complejidad y variedad de este problema aún queda mucho camino por recorrer. Los algoritmos más exitosos hasta el momento han sido combinaciones de meta heurísticas generales con un alto grado de conocimiento heurístico específico para cada problema.
+
+En los últimos cuarenta años ha habido un constante flujo de artículos relacionados con la optimización de horarios, aunque recientemente se ha incrementado considerablemente el inter\'es por este tema. Un indicador de este incremento es el \'exito que han tenido las conferencias de Practice and Theory of Automated Timetabling (PATAT 2010) en Northern Ireland.
+
+Muchos investigadores de todo el mundo están desarrollando nuevas herramientas para automatizar este proceso, tambi\'en se ha publicado un gran volumen de resultados. Aún así, no existe un estándar que permita comparar los diferentes m\'etodos utilizados, aunque un grupo de universidades está trabajando en ello. Con las conferencias de PATAT establecidas como un evento regular parece que se desarrollará mucho trabajo en esta area.

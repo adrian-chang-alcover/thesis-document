@@ -1,0 +1,144 @@
+\chapter{Problemas de Satisfacción de Restricciones}
+
+Esta sección tratará sobre los Problemas de Satisfacción de Restricciones, cuyo estados y objetivo conforman una representación muy sencilla, estándar y estructurada. Algoritmos de búsqueda pueden ser definidos para que tomen ventaja de la estructura de los estados y ser usados con un propósito general más que como una heurística específica del problema en cuestión.
+
+\section{Definición}
+
+Formalmente hablando, un Problema de Satisfacción de Restricciones (Constraint Satisfaction Problem, CSP) es definido por un conjunto de variables, $X_{1},X_{2},...,X_{n}$, y un conjunto de restricciones, $C_{1},C_{2},...,C_{m}$. Cada variable $X_{i}$ tiene un dominio $D_{i}$ no vac\'io de posibles valores. Cada restricción $C_{i}$ involucra algún subconjunto de las variables y especifica la combinación de valores válidas para ese subconjunto. Un estado del problema está definido por una asignación de valores a algunas o a todas las variables, $\{X_{i}=v_{i}, X_{j}=v_{j}, ...\}$. Una asignación que no viole ninguna restricción es llamada una asignación consistente o válida. Una asignación se dice completa si contiene a todas las variables, y una solución para un CSP es una asignación completa válida, o sea, que cumpla con todas las restricciones. Algunos CSPs tambi\'en requieren de una solución que maximice una función objetivo.
+
+En la figura \ref{Australia}(a) se muestra un mapa de Australia con sus estados. Supongamos que tenemos la tarea de colorear cada estado con los colores rojo, verde o azul, de forma tal que estados vecinos no tengan el mismo color. Para formularlo como un CSP, definiremos que las variables sean los estados: WA, NT, Q, NSW, V , SA\ y\ T. El dominio de cada variable  es el conjunto \{rojo, verde, azul\}. La restricción dicta que regiones vecinas tengan colores distintos. Existen varias posibles soluciones, una de ellas: \{ WA = rojo, NT = verde, Q = rojo, NSW = verde, V = rojo, SA = azul, T = rojo \}. Es útil visualizar un CSP como un grafo de restricciones, como se muestra en la figura \ref{Australia}(b). Los nodos del grafo corresponden a las variables del problema y los arcos a las restricciones.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.5]{Graphics/Australia}
+		\caption{(a) Principales estados y territorios de Australia. (b) El problema de coloración de mapas representado como un grafo de restricciones.}
+		\label{Australia}
+	\end{center}	
+\end{figure}
+
+Modelar un problema como un CSP confiere beneficios importantes, puesto que la representación de los estados en un CSP
+conforman un patrón estándar, la función sucesor y el objetivo final pueden ser escritos de una forma gen\'erica que se aplique a todos los CSPs. Adem\'as, podemos desarrollar heur\'isticas gen\'ericas efectivas que no requieran conocimiento espec\'ifico del problema. Finalmente, la estructura de un grafo de restricciones puede ser usada para simplificar el proceso de búsqueda de una solución, en algunos casos puede reducir la complejidad exponencialmente.
+
+Es f\'acil ver que para un CSP puede ser determinada una formulaci\'on incremental como un problema de búsqueda est\'andar de la siguiente forma:
+
+\begin{description}
+	\item[Estado inicial:] La asignaci\'on vac\'ia \{\}, en la que todas las variables est\'an sin asignar.
+	\item[Funci\'on sucesor:] Un valor es asignado a una variable sin asignar, previendo que no entre en conflicto con las variables ya asignadas.
+	\item[Objetivo final:] La asignaci\'on actual es completa.
+	\item[Costo de la trayectoria:] Un costo constante (ejemplo, 1) por cada paso.
+\end{description}
+
+Toda soluci\'on debe ser una asignaci\'on completa y por lo tanto aparece en la profundidad $n$ si existen $n$ variables. Adem\'as el \'arbol de búsqueda solo se extiende hasta la profundidad $n$. Por estas razones, algoritmos de b\'usqueda primero en profundidad (DFS) son popularmente utilizados para CSPs.
+
+El tipo m\'as simple de CSP es cuando las variables tienen dominio discreto y finito. Problemas de coloraci\'on de mapas pertenecen a este tipo, al igual que el problema de las 8 reinas. Si el tamaño m\'aximo del dominio de cada variable es $d$, entonces el n\'umero posible de asignaciones completas es $O(d^{n})$, exponencial con respecto al n\'umero de variables. Dentro de este tipo de problemas est\'an los llamados CSP booleanos, cuyas variables pueden tomar solamente los valores \emph{true} o \emph{false}, un ejemplo es el problema 3SAT \cite{Carla P. Gomes}.
+
+Las variables discretas pueden tener dominios infinitos, por ejemplo, el conjunto de los enteros. Supongamos que se planifican trabajos de construcci\'on, las variables ser\'ian la fecha de inicio de cada trabajo y los posibles valores n\'umeros enteros que indican la cantidad de d\'ias que la tarea puede demorar. Para dominios infinitos no es posible describir restricciones enumerando todas las posibles combinaciones de valores. Es necesario utilizar un lenguaje de restricci\'on. Por ejemplo, si el trabajo $J_{1}$ que demora 5 d\'ias debe concluir antes que comience $J_{3}$, entonces necesitaríamos una desigualdad algebraica como $J_{1} + 5 < J_{3}$.
+
+Problemas de satisfacci\'on de restricciones con dominios continuos son muy comunes en el mundo real y son ampliamente estudiados en el campo de investigaci\'on de operaciones. La categor\'ia m\'as conocida de CSP con dominios continuos son los problemas de programaci\'on lineal, donde las restricciones son desigualdades lineales que forman una regi\'on convexa. Los problemas de programaci\'on lineal pueden ser resueltos en tiempo polinomial con respecto al n\'umero de variables.
+
+Adem\'as de estudiar el tipo de variables, es \'util ver el tipo de restricci\'on. El tipo m\'as simple son las restricciones unarias, las cuales restringen el dominio de una solo variable. Toda restricci\'on unaria puede ser eliminada simplemente pre procesando el dominio de dicha variable eliminando cada valor que no cumpla con la restricci\'on. Una restricci\'on binaria relaciona dos variables. Por ejemplo, $SA \neq NSW$ es una restricci\'on binaria. Un CSP binario contiene solo restricciones binarias y puede ser representado como un grafo de restricciones, figura \ref{Australia}(b).
+
+Todas las restricciones que hemos visto hasta el momento son llamadas restricciones fuertes, el no cumplimiento de alguna de ellas invalida por completo una posible soluci\'on. Muchos CSPs de la vida real incluyen restricciones d\'ebiles, indicando cuales soluciones son preferidas. Por ejemplo, para un horario universitario un profesor $X$ podr\'ia preferir dar clases en la mañana, sin embargo un horario que no cumpla esto sigue siendo v\'alido, lo que no ser\'ia \'optimo. Se le puede asociar una prioridad a cada restricci\'on d\'ebil. Con esta formulaci\'on, los CSPs con restricciones d\'ebiles pueden ser resueltos con m\'etodos de optimizaci\'on. 
+
+\section{B\'usqueda con Backtracking}
+
+En la secci\'on anterior se dio una formulaci\'on de CSPs como problemas de b\'usqueda. Supongamos que se aplica un BFS a un CSP gen\'erico. Notar\'a enseguida algo terrible, el factor de ramificaci\'on en el nivel superior es $nd$, porque cualquiera de los $d$ valores puede ser asignado en cada $n$ variables. En el pr\'oximo nivel el factor ser\'ia de $(n-1)d$, y as\'i por los $n$ niveles. Al final tendr\'iamos un \'arbol con $n! \cdot d^{n}$ hojas, aunque solo existen $d^{n}$ posibles asignaciones completas.
+
+Nuestra aparentemente razonable pero ingenua formulaci\'on del problema ignora una propiedad crucial com\'un a todos los CSPs: conmutatividad. Un problema es conmutativo si el orden de aplicar un conjunto de acciones no influye en el resultado. Cuando se tiene una asignaci\'on parcial no importa c\'omo se lleg\'o a ella, es decir, el orden en que se asignaron las variables no es determinante. Todos los algoritmos de b\'usqueda para CSPs generan sucesores considerando posibles asignaciones para solo una variable en cada nodo del \'arbol de b\'usqueda. Por ejemplo, en el nodo ra\'iz del \'arbol de b\'usqueda para la coloraci\'on del mapa de Australia, se debe escoger entre las posibles asignaciones $SA = rojo$, $SA = verde$ y $SA = azul$, pero nunca entre $SA = rojo$ y $WA = azul$. Con esta restricci\'on, el n\'umero de hojas es $d^{n}$, como se esperar\'ia.
+
+El t\'ermino de b\'usqueda con backtracking es usado para una b\'usqueda primero en profundidad que escoge valores para una variable a la vez y retrocede (backtrack) cuando dicha variable no le quedan valores v\'alidos a asignar. El algoritmo se muestra en la figura \ref{DFS}. Producto de que la representaci\'on de un CSP est\'a estandarizada no es necesario proveer un estado inicial espec\'ifico del problema, como tampoco una funci\'on sucesor ni un objetivo final.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.65]{Graphics/DFS}
+		\caption{Algoritmo de b\'usqueda con backtracking para CSPs.}
+		\label{DFS}
+	\end{center}	
+\end{figure}
+
+En el momento de escoger una variable a asignar podr\'ia preguntarse:
+
+\begin{itemize}
+	\item ¿Qu\'e variable se debe escoger para asignar y en qu\'e orden se deben procesar los valores de su dominio?
+	\item ¿Cu\'ales ser\'an las consecuencias de la actual asignaci\'on en las variables sin asignar?
+\end{itemize}
+
+A cada una de estas preguntas se le dar\'a respuesta en las siguientes secciones.
+
+\subsection{Ordenaci\'on de las Variables y sus Valores}
+
+El algoritmo presentado anteriormente contiene la línea:
+
+\begin{center}
+	\scriptsize var $\leftarrow$ SELECT-UNASSIGNED-VARIABLE ( VARIABLE [ csp ] , assignment, csp).
+\end{center}
+
+Por defecto SELECT-UNASSIGNED-VARIABLE simplemente selecciona la pr\'oxima variable a asignar en el orden en que se definieron las variables inicialmente. Este orden est\'atico de seleccionar las variables rara vez resulta ser el m\'as eficiente. Existe una heur\'istica llamada \emph{Minimum Remaining Values (MRV)} que selecciona la variable con menos valores v\'alidos en su dominio. Esta heur\'istica es tambi\'en llamada \emph{Most Constrained Variable} o \emph{Fail-First}, esta \'ultima porque escoge la variable con m\'as probabilidad de fallar, logrando una temprana poda del \'arbol. Si existe una variable $X$ que no le queden valores v\'alidos en su dominio, esta variable es seleccionada por la heur\'istica y el fallo es detectado inmediatamente, evitando asignar otras variables innecesariamente si al final cuando se trate de asignar $X$ se detectar\'ia un fallo.
+
+La heur\'istica MRV no nos ayuda a la hora de seleccionar la primera regi\'on a colorear del mapa de Australia, porque en un principio todos los dominios de valores tienen el mismo tamaño. En este caso, existe una heur\'istica llamada \emph{degree heuristic} que selecciona la variable que est\'a involucrada en la mayor cantidad de restricciones posibles con las dem\'as variables sin asignar. Siguiendo esta idea se seleccionar\'ia la variable SA porque es la variable que aparece en m\'as restricciones.
+
+Una vez que la variable haya sido seleccionada, el algoritmo debe decidir en que orden procesar los valores del dominio. La heur\'istica \emph{least constraining value} puede ser efectiva en algunos casos. La idea es procesar primero los valores que menos restrinjan el dominio de las variables vecinas en el grafo de restricciones. En general esta heur\'istica trata de mantener lo m\'as flexible las futuras asignaciones de variables. Si queremos encontrar todas las soluciones del problema, y no solamente la primera, entonces el orden de los valores no es importante porque habr\'ia que analizarlos todos.
+
+\subsection{Propagaci\'on de Informaci\'on a trav\'es de las Restricciones}
+
+Actualmente nuestro algoritmo solo considera las restricciones sobre una variable en el momento en que es seleccionada por el m\'etodo \emph{SELECT-UNASSIGNED-VARIABLE}. Si tenemos en cuenta estas restricciones antes de asignar dicha variable podemos reducir dr\'asticamente el espacio de b\'usqueda.
+
+Una forma de hacer un mejor uso de las restricciones durante la b\'usqueda es mediante la t\'ecnica \emph{forward checking}. Cuando una variable $X$ es asignada, el proceso de forward checking examina cada variable $Y$ sin asignar que est\'e relacionada con $X$ en alguna restricci\'on, y elimina del dominio de $Y$ cualquier valor que sea inconsistente con el valor asignado a $X$.
+
+Aunque forward checking detecte muchas inconsistencias, a veces deja de detectar algunas por no mirar adelante lo suficiente. \emph{Constraint propagation} es el t\'ermino general usado para la propagaci\'on de las implicaciones que puede tener una asignaci\'on en sus variables vecinas no asignadas.
+
+La t\'ecnica \emph{consistencia de arco (arc consistency)} provee un m\'etodo r\'apido de propagaci\'on de restricci\'on que es sustancialmente mejor que forward checking. Con arcos, se refiere a los arcos dirigidos del grafo de restricciones. En el problema de colorear el mapa de Australia, el arco SA $\rightarrow$ NSW es consistente si por cada valor $x$ de SA, existe un valor $y$ de NSW que es consistente con $x$. Para ilustrar mejor, supongamos que los dominios de SA y NSW son $\{azul\}$ y $\{rojo, azul\}$ respectivamente. Para la asignaci\'on SA = azul exite una asignaci\'on consistente NSW = rojo, por lo que el arco SA $\rightarrow$ NSW es consistente. De la otra forma, el arco NSW $\rightarrow$ SA no es consistente, para la asignaci\'on NSW = azul no existe una asignaci\'on consistente para SA. Este arco puede hacerse consistente eliminando el valor azul del dominio de NSW.
+
+El chequeo de consistencia de arco puede ser aplicado como un pre procesado antes de iniciar el proceso de b\'usqueda o como forward checking tras cada asignaci\'on durante el proceso de b\'usqueda. En cualquiera de los dos casos el proceso debe ser aplicado repetidamente hasta que no queden inconsistencias. Esto es, porque donde quiera que un valor es eliminado del dominio de alguna variable, pueden aparecer nuevas inconsistencias en los arcos que apuntan a esa variable. El algoritmo para consistencia de arco, \emph{AC-3} utiliza una cola para mantener almacenado todos los arcos que necesitan ser chequeados en b\'usquedas de posibles inconsistencias. Ver figura \ref{AC3}. Cada arco $(X_{i},X_{j})$ es sacado de la cola, si alg\'un valor es eliminado del dominio de $X_{i}$, entonces todo arco $(X_{k},X_{i})$ apuntando a $X_{i}$ es insertado en la cola para ser chequeado. La complejidad de este algoritmo puede ser analizada de la siguiente manera, un CSP binario tiene $O(n^{2})$ arcos, cada arco $(X_{k},X_{i})$ puede ser insertado en la cola a lo sumo $d$ veces, porque $X_{i}$ tiene m\'aximo $d$ valores y chequear la consistencia de un arco puede hacerse en $O(d^{2})$, por lo tanto el costo total del algoritmo es $O(n^{2}d^{3})$. Aunque es m\'as costoso que forward checking, vale la pena el costo extra.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.65]{Graphics/AC3}
+		\caption{Algoritmo de consistencia de arco AC-3.}
+		\label{AC3}
+	\end{center}	
+\end{figure}
+
+Los problemas de satisfacci\'on de restricciones incluyen 3SAT como un caso especial, por lo tanto no podemos esperar encontrar un algoritmo que en tiempo polinomial nos diga si dado un CSP es consistente o no. Es por eso que el algoritmo presentado de consistencia de arco no detecta todas las inconsistencias que puedan existir. Existen otras formas de propagaci\'on de informaci\'on a trav\'es de restricciones m\'as fuertes que consistencia de arco, son llamadas k-consistencia.
+
+\section{B\'usqueda Local para Problemas de Satisfacci\'on de Restricciones}
+
+Algoritmos de b\'usqueda local suelen ser muy efectivos resolviendo CSPs. Usan asignaciones completas en todo momento, el estado inicial asigna un valor a cada variable, sin importar si se viola alguna restricci\'on, y la funci\'on sucesor usualmente trabaja cambiando el valor asignado a una variable en cada momento. Por ejemplo, en el problema de las 8 reinas, un estado inicial puede ser una reina en cada columna, y la funci\'on sucesor ser\'ia seleccionar una reina y moverla dentro de su columna.
+
+En el momento de asignar un nuevo valor a una variable, una heur\'istica razonable ser\'ia seleccionar el valor que resulte en menos conflictos con las dem\'as variables. En la figura \ref{MinConflicts} se muestra el algoritmo y en la figura \ref{8queens} se ilustra una instancia del problema de las 8 reinas al que se le aplica dicho algoritmo.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.65]{Graphics/MinConflicts}
+		\caption{Algoritmo MIN-CONFLICTS para resolver CSPs mediante b\'usqueda local.}
+		\label{MinConflicts}
+	\end{center}	
+\end{figure}
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[scale=0.65]{Graphics/8queens}
+		\caption{Aplicaci\'on del algoritmo MIN-CONFLICTS para una instancia del problema de las 8 reinas.}
+		\label{8queens}
+	\end{center}	
+\end{figure}
+
+El algoritmo MIN-CONFLICTS es sorprendentemente efectivo para varios CSPs, especialmente cuando comienza por un ``conveniente'' estado inicial. En un promedio de 50 pasos puede resolverse el problema de un mill\'on de reinas. Hablando a grandes rasgos, b\'usqueda local es buena para n-reinas porque las soluciones est\'an densamente distribuidas a trav\'es de todo el espacio.
+
+Otra importante ventaja de b\'usqueda local es que puede ser usada para problemas que cambian din\'amicamente. Esto es particularmente para problemas de planificaci\'on de actividades. La planificaci\'on semanal de una aerol\'inea puede involucrar miles de vuelos y a decenas de miles de personas, pero un mal tiempo puede echar por tierra toda la planificaci\'on hecha a priori. Ser\'ia recomendable re planificar todos los vuelos con el menor n\'umero de cambios. Esto puede lograrse f\'acilmente con una b\'usqueda local partiendo de la actual planificaci\'on. Una b\'usqueda con backtracking con nuevas restricciones requerir\'a de mucho tiempo y seguramente la soluci\'on encontrada tendr\'ia muchos cambios con respecto a la inicial.
+
+\section{Trabajos Realizados}
+
+Los \'ultimos trabajos realizados sobre satisfacci\'on de restricciones comprenden ampliamente restricciones num\'ericas. Restricciones de ecuaciones con dominio en los n\'umeros enteros fueron estudiados por el matem\'atico indio Brahmagupta en el siglo VII, dichas restricciones son llamadas ecuaciones diofánticas, en honor al matem\'atico griego Diophantus (c. 200–284), quien consideraba el dominio de los racionales positivos. M\'etodos para resolver ecuaciones lineales  mediante eliminaci\'on de variables fueron estudiados por Gauss (1829), la soluci\'on de restricciones de inecuaciones lineales se le atribuye a Fourier (1827).
+
+Problemas de satisfacci\'on de restricciones con dominios finitos tienen tambi\'en una larga historia. Por ejemplo, coloraci\'on de grafos (del cual coloraci\'on de mapas en un caso especial) es un problema bien abordado en las matem\'aticas. Seg\'un Biggs (1986), la conjetura de los cuatro colores (que todo grafo planar puede ser coloreado por cuatro o menos colores), fue propuesta por primera vez por Francis Guthrie, un estudiante de De Morgan, en 1852. Su conjetura, a pesar de las varias publicaciones que hubo en su contra, fue probada con ayuda de las computadores por Appel y Haken en 1977.
+
+Clases espec\'ificas de problemas de satisfacci\'on de restricciones han aparecido a lo largo de la historia de la ciencia de la computaci\'on. Uno de los ejemplos m\'as influyentes fue el sistema SKETCHPAD (Sutherland, 1963), el cual resolv\'ia restricciones geom\'etricas en diagramas y fue el precursor de los modernos programas de dibujos y herramientas de CAD. La reducci\'on de CSPs de grado superior a CSPs binarios con la ayuda de variables auxiliares fue gracias al l\'ogico del siglo XIX Charles Sanders Peirce. CSPs con preferencias entre sus soluciones son ampliamente estudiados en el campo de la optimizaci\'on, ver Bistarelli (1997) para una plataforma gen\'erica que permite preferencias entre las restricciones. El algoritmo bucket-elimination (Dechter, 1999) ha sido aplicado a problemas de optimizaci\'on.
+
+B\'usqueda con backtracking para CSPs es debido a Bitner y Reingold (1975), aunque las bases de este algoritmo ya estaban dadas desde el siglo XIX. Bitner y Reingold tambi\'en introdujeron la heur\'istica MRV, ellos la llamaron \emph{most-constrained-variable}. Brelaz (1979) us\'o \emph{degree heuristic} para podar el \'arbol de b\'usqueda luego de aplicar la heur\'istica MRV. El algoritmo resultante, a pesar de su simplicidad, sigue siendo el mejor m\'etodo para k-colorear grafos. Haralick y Elliot (1980) propusieron la heur\'istica \emph{least-constraining-value}.
+
+Los m\'etodos de propagaci\'on de restricciones fueron popularizados por el \'exito de Waltz (1975) en los problemas de etiquetados lineales de poliedros para visi\'on por computadoras. Waltz mostr\'o que en muchos problemas, la propagaci\'on puede eliminar completamente la necesidad de backtracking. Montanari (1974) introdujo la noci\'on de redes de restricciones y propagaci\'on por consistencia de camino. Alan Mackworth (1977) propuso el algoritmo AC-3 para hacer cumplir la consistencia de arco. AC-4, un algoritmo de consistencia de arco m\'as eficiente, fue desarrollado por Mohr y Henderson (1986). Inmediatamente luego que el art\'iculo de Mackworth apareciera, investigadores comenzaban a experimentar entre el costo de lograr una consistencia y los beneficios que pudiera traer en t\'erminos de reducci\'on de la b\'usqueda. Haralick y Elliot (1980) favorecieron el algoritmo de forward checking de McGregor (1979), mientras que Gaschnig (1979) sugiri\'o un chequeo completo de consistencia de arco tras cada asignaci\'on. Los \'ultimos art\'iculos muestran una cierta inclinaci\'on hacia aplicar un chequeo completo de consistencia de arco para CSPs duros. Freuder (1978, 1982) investig\'o la noci\'on de k-consistencia y su relaci\'on con la complejidad de resolver CSPs. Apt (1999) describe una plataforma gen\'erica de algoritmos en los cuales puede ser analizada la propagaci\'on de restricciones.
+
+B\'usqueda local para problemas de satisfacci\'on de restricciones fue popularizado gracias al trabajo de Kirkpatrick (1983) en recocido simulado, el cual es ampliamente usado para problemas de planificaci\'on de actividades. La heur\'istica min-conflicts fue propuesta por Gu (1989) y fue desarrollada independientemente por Minton (1992). Sosic y Gu (1994) mostraron c\'omo puede ser aplicada para resolver el problema de 3,000,000 reinas en menos de un minuto. El asombroso \'exito de b\'usqueda local usando min-conflicts para resolver el problema de n-reinas hizo que se reexaminara la naturaleza y prevalencia de los problemas f\'aciles y duros. Peter Cheeseman (1991) explor\'o la dificultad de CSPs generados aleatoriamente y descubri\'o que muchos de ellos o se le encontraba soluci\'on f\'acil o no ten\'ian soluci\'on.
+
+Varias aplicaciones interesantes son descritas en la colecci\'on editada por Freuder y Mackworth (1994). Art\'iculos sobre satisfacci\'on de restricciones son publicados regularmente en \emph{Artificial Intelligence} y en la revista especializada \emph{Constraints}. El lugar principal para el debate de resultados es en la International Conference on Principles and Practice of Constraint Programming, tambi\'en llamada \emph{CP}.
