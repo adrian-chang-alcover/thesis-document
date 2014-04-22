@@ -15,24 +15,24 @@ como una introducción a este campo de investigación.
 Un horario (timetable en Inglés) es una asignación de un conjunto de encuentros en un tiempo determinado.
 Un encuentro es una combinación de recursos (aulas, personas o materiales de clase), algunos de ellos pueden
 ser especificados por el problema y otros deben ser asignados como parte de la solución. La generación de un
-horiario se conoce que pertenece a la clase de problemas llamada NP-completo \cite{TB Cooper and JH Kingston},
+horario se conoce que pertenece a la clase de problemas llamada NP-completo \cite{TB Cooper and JH Kingston},
 hasta ahora no se conoce un algoritmo polinomial que pueda darle solución.
 
 Existen algunas variaciones fundamentales para el problema de los horarios. La generación de un horario para
-la universidad puede ser dividido en dos principales categorias, horario para clases y horario para exámenes.
+la universidad puede ser dividida en dos principales categor\'ias, horario para clases y horario para exámenes.
 Se diferencian principalmente en:
 
 \begin{itemize}
-	\item Los exámenes deben ser planificados de forma tal que un estudiante no tenga más de un exámen al
+	\item Los exámenes deben ser planificados de forma tal que un estudiante no tenga más de un examen al
 		mismo tiempo, pero las clases usualmente son planificadas antes que los estudiantes las matriculen.
-	\item El espacio también es una restricción, diferentes exámenes pueden compartir la misma aula o un exámen
+	\item El espacio también es una restricción, diferentes exámenes pueden compartir la misma aula o un examen
 		puede necesitar más de un aula, pero en un aula solo puede ser impartida una clase a la vez.
 \end{itemize}
 
 Carter defiende con respecto al problema del horario de exámenes: ``\emph{el principal reto es programar los
 exámenes para un período de tiempo limitado evitando conflictos y satisfaciendo un número de restricciones
 colaterales}'' \cite{Carter's summary} Con conflictos se refiere a que el horario requiera de un recurso
-al mismo tiempo en lugares distintos. Las restricciones colaterales varian entre instituciones, y entre
+al mismo tiempo en lugares distintos. Las restricciones colaterales var\'ian entre instituciones, y entre
 horarios para clases y horarios para exámenes. Pueden existir una infinidad de restricciones colaterales.
 Reto es la palabra apropiada para usar en estos casos.
 Como Bloomfield y McSharry dicen: ``\emph{Dependiendo del tamaño de los departamentos y de la diversidad
@@ -40,18 +40,18 @@ de cursos que ofrecen, el tiempo requerido para diseñar un horario de clases pu
 tarde de trabajo hasta un mes de arduo trabajo}''. \cite{Bloomfield and McSharry says}
 
 El proceso de diseño de un horario se vuelve más difícil por el hecho de que involucra a muchas personas.
-Romero indentificó tres grupos fundamentales cada uno con sus propios objetivos y necesidades \cite{Romero}.
+Romero identificó tres grupos fundamentales cada uno con sus propios objetivos y necesidades \cite{Romero}.
 
 \begin{itemize}
 	\item La administración fija los estándares  mínimos que el horario debe cumplir. Por ejemplo, algunas
 		universidades especifican que los estudiantes no tengan dos exámenes en períodos consecutivos.
 	\item Los intereses de cada departamento son los más notables en el diseño de un horario. Cada departamento
-		quiere que el horario sea consecuente con las asignaturas que imparte, asi como la necesidad de un
+		quiere que el horario sea consecuente con las asignaturas que imparte, as\'i como la necesidad de un
 		aula o laboratorio en específico. En el contexto de exámenes, se quisiera que los exámenes más complicados
-		sean los primeros, para asi tener más tiempo para su calificación.
-	\item El tercer grupo involucrado son los estudiantes, a quienes solo le interesará la porción de horario
+		sean los primeros, para as\'i tener más tiempo para su calificación.
+	\item El tercer grupo involucrado son los estudiantes, a quienes solo les interesará la porción de horario
 		referente a ellos. Dada la cantidad de estudiantes y la diversidad de criterios que estos puedan tener,
-		se hace muy difícil determinar cual es el mejor horario para ellos. Muchos estudiantes prefieren no
+		se hace muy difícil determinar cu\'al es el mejor horario para ellos. Muchos estudiantes prefieren no
 		tener clases lo viernes y entre cada clases tener un descanso.		
 \end{itemize}
 
@@ -60,25 +60,25 @@ las más comunes:
 
 \begin{description}
 	\item[Asignación de recursos:] Un recurso puede ser asignado a otro recurso de tipo diferente o a un encuentro.
-		Por ejemplo, un profesor prefiere impartir sus clases en una determinada aula o un exámen debe ser realizado
+		Por ejemplo, un profesor prefiere impartir sus clases en una determinada aula o un examen debe ser realizado
 		en un determinado edificio.
 	\item[Asignación de tiempo:] Un encuentro o un recurso debe ser asignado a un tiempo. Esta restricción puede
-		ser usada para específicar días en los que un profesor no está disponible, o para pre-asignar un
+		ser usada para especificar días en los que un profesor no está disponible, o para pre-asignar un
 		tiempo a un determinado encuentro.
 	\item[Restricción de tiempo entre encuentros:] Ejemplos comunes de esta clase de restricción son que un encuentro
-		deba suceder antes de otro, o que un conjunto de exámenes deba realizarse simultaneamente.
+		deba suceder antes de otro, o que un conjunto de exámenes deba realizarse simult\'aneamente.
 	\item[Esparcimiento de encuentros:] Los encuentros deben estar esparcidos en el tiempo. Por ejemplo, un
-		estudiante no debe tener más de un exámen el mismo día.
+		estudiante no debe tener más de un examen el mismo día.
 	\item[Coherencia entre encuentros:] Estas restricciones son diseñadas para producir un horario más organizado
 		y conveniente. A menudo entran en contradicción con el esparcimiento de encuentros. Ejemplos de ellas es,
-		que un profesor prefiera dar todos sus turnos en los primeros tres dias de la semana, dejándole los
-		últimos dos dias libre.
+		que un profesor prefiera dar todos sus turnos en los primeros tres d\'ias de la semana, dejándole los
+		últimos dos d\'ias libre.
 	\item[Capacidad de las aulas:] La cantidad de estudiantes no debe exceder la capacidad del aula.
 	\item[Continuidad:] Cualquier restricción cuyo propósito sea asegurar que el horario sea constante y predecible.
 		Por ejemplo, las conferencias de una asignatura deben ser programadas en la misma aula o en el mismo tiempo.
 \end{description}
 
-Las restricciones son usualmente dividadas entre las categorias fuertes y débiles:
+Las restricciones son usualmente divididas entre las categor\'ias fuertes y débiles:
 
 \begin{description}
 	\item[Restricciones fuertes:] Un horario que no cumpla con alguna restricción fuerte no es una solución factible
@@ -86,12 +86,12 @@ Las restricciones son usualmente dividadas entre las categorias fuertes y débil
 	\item[Restricciones débiles:] Estas restricciones son menos importantes que las fuertes y es casi imposible
 		cumplirlas todas. En algunas ocasiones se mide la calidad de un horario por el número de restricciones
 		débiles que logra cumplir. Algunas restricciones débiles son más importantes que otras, esto puede ser
-		específicado asociandoles una prioridad.
+		especificado asoci\'andoles una prioridad.
 \end{description}
 
 \subsection{Encuesta realizada en universidades británicas}
 
-El problema de los horarios puede variar enormente entre distintas universidades. El Grupo de Planificación
+El problema de los horarios puede variar enormemente entre distintas universidades. El Grupo de Planificación
 y Programación Automatizada de la Universidad de Nottingham lanzó una encuesta \cite{survey of University of Nottingham} sobre la planificación de exámenes en las universidades británicas. La encuesta fue enviada a
 95 universidades, de ellas respondieron 56.
 
@@ -99,7 +99,7 @@ La encuesta mostró cuán distinto puede ser el problema de los horarios entre l
 Por ejemplo, el número de exámenes a planificar puede variar desde unos cientos hasta medio millar por sesión,
 y los estudiantes involucrados pueden ser desde unos quinientos hasta unos veinte mil. Como dijo un
 encargado de programar el horario, ``\emph{Existen muchas variaciones en cuanto a la generación de un horario,
-podriamos escribir un libro}''.
+podr\'iamos escribir un libro}''.
 
 Uno de los mayores problemas para las universidades es encontrar locales en los que realizar los exámenes.
 Varias universidades resuelven el problema de la insuficiencia de aulas alquilando locales externos a la
@@ -114,9 +114,9 @@ se apoyan en el horario del curso anterior ni en alguna herramienta computaciona
 semanas en diseñar su horario.
 
 Otra razón para la falta de automatización en este proceso es producto de que los encargados de diseñar el horario
-algunas veces desconfian de los beneficios que esto podria traer. El departamento de exámenes de una universidad
-dijo que ellos podian ``\emph{ver las desventajas de un sistema completamente automatizado. Preferimos trabajar
-desde la etapa inicial del diseño con una tabla y un lapiz. Esto permite una vista general del progreso de la
+algunas veces desconf\'ian de los beneficios que esto podr\'ia traer. El departamento de exámenes de una universidad
+dijo que ellos pod\'ian ``\emph{ver las desventajas de un sistema completamente automatizado. Preferimos trabajar
+desde la etapa inicial del diseño con una tabla y un l\'apiz. Esto permite una vista general del progreso de la
 generación mejor que un sistema computacional basado en preguntas.}''
 
 \begin{figure}
@@ -131,7 +131,7 @@ computadoras, aunque confiesan que a veces es necesario la intervención manual 
 algunas particularidades que escapan del alcance de las computadoras. Algunas universidades desarrollan
 sus propias herramientas y otras universidades adaptan las herramientas comerciales a sus necesidades.
 
-Exiten dos metodologías fundamentales que utilizan aquellas universidades que no automatizan el proceso de
+Existen dos metodologías fundamentales que utilizan aquellas universidades que no automatizan el proceso de
 generación de horarios:
 
 \begin{itemize}
@@ -147,7 +147,7 @@ generación de horarios:
 \end{itemize}
 
 La encuesta demostró la gran necesidad de automatizar este proceso. Habiendo dicho esto, cualquier sistema
-para que sea útil debe satisfacer la gran cantidad de criterios disimiles que existen entorno a este problema.
+para que sea útil debe satisfacer la gran cantidad de criterios disimiles que existen en torno a este problema.
 El principal problema es que el sistema debe ser capaz de generar horarios de gran calidad a pesar de las enormes
 variaciones de este proceso encontradas en las diferentes universidades encuestadas. El sistema debe ser compatible
 con trabajos hechos con anterioridad, debe ser fácil de usar y satisfacer todas las necesidades de los departamentos y facultades.
@@ -177,8 +177,8 @@ solo redefiniendo nuestros propios requerimientos.
 
 Para determinadas instancias del problema heurísticas específicas pueden dar buenos resultados, pero con el devenir del tiempo los horarios de universidades se han vuelto más complejos. Actualmente hay una tendencia que fue confirmada
 con las presentaciones de la primera conferencia internacional de ``Practice And Theory of Automated Timetabling''
-\cite{D Abramson and J Abela}, de resolver el problema con algoritmos más generales, o metaheurísticas, como
-recocido simulado, algoritmos evolutivos y búsqueda tabú. Las herísticas específicas pueden ser utilizadas
+\cite{D Abramson and J Abela}, de resolver el problema con algoritmos más generales, o meta heurísticas, como
+recocido simulado, algoritmos evolutivos y búsqueda tabú. Las heurísticas específicas pueden ser utilizadas
 para disminuir el número de posibles soluciones a procesar o para optimizar localmente una solución. Programación
 Lógica de Restricciones (Constraint Logic Programming) es también otra técnica utilizada.
 
@@ -221,34 +221,34 @@ otros de acuerdo a la heurística de ordenamiento hasta que no se puedan planifi
 Los algoritmos mem\'eticos son una extensión de los algoritmos gen\'eticos, basados en un modelo de cómo las ideas evolucionan. La unidad básica de las ideas son los memes, los que a diferencia de los genes, pueden ser mejorados durante su ciclo de vida. Es por eso que un simple algoritmo de búsqueda local (hill-climbing) es usado por intervalos
 para asegurarse que todos los horarios miembros de la población son óptimos locales.
 
-La Universidad de Nottingham se encuentra desarrollando algoritmos mem\'eticos para horarios de exámenes \cite{EK Burke and JP Newall and RF Weare}. Un operador de mutación es aplicado a los miembros seleccionados de la población. Despues de mutar cada miembro seleccionado este es optimizado por un algoritmo de optimización local. Esta combinación genera soluciones con buena calidad.
+La Universidad de Nottingham se encuentra desarrollando algoritmos mem\'eticos para horarios de exámenes \cite{EK Burke and JP Newall and RF Weare}. Un operador de mutación es aplicado a los miembros seleccionados de la población. Despu\'es de mutar cada miembro seleccionado este es optimizado por un algoritmo de optimización local. Esta combinación genera soluciones con buena calidad.
 
 La Universidad de Napier está trabajando con algoritmos mem\'eticos para diseñar sus horarios de clases \cite{B Paechter and A Cumming and MG Norman and H Luchian}. Su codificación de horario especifica una lista de intervalos de tiempo propuestos para cada evento. Estos intervalos de tiempo son analizados en orden y el intervalo más conveniente es movido hacia el tope de la lista. El operador de recombinación construye una nueva lista de intervalos propuestos tomándolos de los padres correspondientes.
 
 \subsubsection{Recocido Simulado}
 
-Recocido simulado es una estrategia de búsqueda que sigue la pista de una solución factible. En cada iteración un vecino es generado, otro horario factible, ligero y aleatoriamente alterado por el horario actual. Este nuevo horario es aceptado si es mejor que el anterior. Si el nuevo horarario no es mejor este aún puede ser aceptado con una probabilidad relacionada al parámetro llamado temperatura. La temperatura y por tanto la probabilidad de que un vecino de menor calidad sea aceptado decrece con cada iteración o tras un número de iteraciones (este número puede ser constante o puede crecer a medida que la temperatura disminuya). Este proceso es análogo al proceso de enfriamiento de un recocido real. Un incoveniente del recocido simulado es que el proceso de enfriamiento puede tomar gran tiempo en aras de obtener buenos resultados.
+Recocido simulado es una estrategia de búsqueda que sigue la pista de una solución factible. En cada iteración un vecino es generado, otro horario factible, ligero y aleatoriamente alterado por el horario actual. Este nuevo horario es aceptado si es mejor que el anterior. Si el nuevo horario no es mejor este aún puede ser aceptado con una probabilidad relacionada al parámetro llamado temperatura. La temperatura y por tanto la probabilidad de que un vecino de menor calidad sea aceptado decrece con cada iteración o tras un número de iteraciones (este número puede ser constante o puede crecer a medida que la temperatura disminuya). Este proceso es análogo al proceso de enfriamiento de un recocido real. Un inconveniente del recocido simulado es que el proceso de enfriamiento puede tomar gran tiempo en aras de obtener buenos resultados.
 
 En el TISSUE de Swansea se ha aplicado satisfactoriamente esta t\'ecnica en la generación de horarios para exámenes
 \cite{J Thompson and KA Dowsland, J Thompson and KA Dowsland 2}. Los autores, Thompson y Dowsland usaron un modelo de coloración de grafos. Para simplificar el problema ellos lo dividieron en dos fases, la primera encontrar una solución factible y luego optimizar las restricciones suaves. Sin embargo esta t\'ecnica produce un espacio de búsqueda muy disperso, por lo que usan las cadenas de Kempe para lograr un espacio de búsqueda más conectado. Más que una simple función geom\'etrica de enfriamiento, Dowsland usa una función no monótona que aumenta la temperatura si un horario vecino es rechazado. Además la razón entre los vecinos rechazados y los aceptados incrementa a medida que progresa la búsqueda.
 
 \subsubsection{Búsqueda Tab\'u}
 
-Al igual que recocido simulado, búsqueda tabu mantiene solo un horario factible. La diferencia radica en cómo se acepta el movimiento hacia un horario vecino. Búsqueda tabu mantiene una lista de movimientos tabu, representando horarios que, han sido visitados recientemente pero que son prohibidos para evitar areas ya visitadas y así escapar de óptimos locales. La lista tabu usualmente tiene un tamaño fijo, los movimientos tabu más viejos son eliminados para dar espacio a nuevos movimientos tabu. Puede darse el caso que un movimiento tabu alcance una buena solución, es por eso que es mantenida la mejor solución encontrada hasta el momento. Si un horario tabu alcanza la mejor solución registrada entonces este horario es eliminado de la lista.
+Al igual que recocido simulado, búsqueda tab\'u mantiene solo un horario factible. La diferencia radica en cómo se acepta el movimiento hacia un horario vecino. Búsqueda tab\'u mantiene una lista de movimientos tab\'u, representando horarios que, han sido visitados recientemente pero que son prohibidos para evitar \'areas ya visitadas y así escapar de óptimos locales. La lista tab\'u usualmente tiene un tamaño fijo, los movimientos tab\'u más viejos son eliminados para dar espacio a nuevos movimientos tab\'u. Puede darse el caso que un movimiento tab\'u alcance una buena solución, es por eso que es mantenida la mejor solución encontrada hasta el momento. Si un horario tab\'u alcanza la mejor solución registrada entonces este horario es eliminado de la lista.
 
-Búsqueda tabu ha sido aplicada satisfactoriamente por Boufflet y N\`egre para generar horarios de exámenes en la Universidad de Tecnología de Compi\`egne \cite{JP Boufflet and S Negre}. Su lista tabu contiene los siete últimos movimientos. Si de los vecinos del horario actual no existe uno mejor, entonces se selecciona un horario de la lista tabu.
+Búsqueda tab\'u ha sido aplicada satisfactoriamente por Boufflet y N\`egre para generar horarios de exámenes en la Universidad de Tecnología de Compi\`egne \cite{JP Boufflet and S Negre}. Su lista tab\'u contiene los siete últimos movimientos. Si de los vecinos del horario actual no existe uno mejor, entonces se selecciona un horario de la lista tab\'u.
 
-Formulando el problema de los horarios como un problema de asignación, Hertz desarrolló y aplicó el algoritmo tabu TATI \cite{A Hertz}, el cual más tarde adaptó para resolver horarios más complejos y restringidos de la vida real \cite{A Hertz 2}. La duración de una clase no es fijada y existen diez tipos diferentes de movimientos (mover una clase a otro día, cambiar la duración de una clase, etc). Sin embargo, luego de un número de iteraciones es tabu mover una clase hacia su día original.
+Formulando el problema de los horarios como un problema de asignación, Hertz desarrolló y aplicó el algoritmo tab\'u TATI \cite{A Hertz}, el cual más tarde adaptó para resolver horarios más complejos y restringidos de la vida real \cite{A Hertz 2}. La duración de una clase no es fijada y existen diez tipos diferentes de movimientos (mover una clase a otro día, cambiar la duración de una clase, etc.). Sin embargo, luego de un número de iteraciones es tab\'u mover una clase hacia su día original.
 
 \subsubsection{Programación Lógica de Restricciones}
 
-El problema de los horarios puede ser modelado como un Problema de Satisfacción de Restricciones (Constraint Satisfaction Problem, CSP). En un CSP a cada variable se le debe asignar un valor de su dominio y que la asignación cumpla con un conjunto de restricciones. Programación Lógica de Restricciones (Constraint Logic Programing, CLP) esta basada en la aplicación de lenguajes de programación de lógica declarativa como Prolog a CSPs. Un programa en Prolog consiste en un conjunto de clausulas que serian las restricciones y la satisfacibilidad de estas es chequeda en ejecución.
+El problema de los horarios puede ser modelado como un Problema de Satisfacción de Restricciones (Constraint Satisfaction Problem, CSP). En un CSP a cada variable se le debe asignar un valor de su dominio y que la asignación cumpla con un conjunto de restricciones. Programación Lógica de Restricciones (Constraint Logic Programing, CLP) est\'a basada en la aplicación de lenguajes de programación de lógica declarativa como Prolog a CSPs. Un programa en Prolog consiste en un conjunto de cl\'ausulas que serian las restricciones y la satisfacibilidad de estas es chequeada en ejecución.
 
-En CLP, una estrategia de etiquetado dicta el orden en que el espacio de búsqueda debe ser explorado, lo cual es vital para una búsqueda efectiva. Existen dos ordenamientos, el orden en que la variables deben ser asignadas y el orden en que los valores deben ser procesados.
+En CLP, una estrategia de etiquetado dicta el orden en que el espacio de búsqueda debe ser explorado, lo cual es vital para una búsqueda efectiva. Existen dos ordenamientos, el orden en que las variables deben ser asignadas y el orden en que los valores deben ser procesados.
 
 Un sistema en Prolog para horarios de clases ha sido desarrollado por White en la Universidad de Ottawa \cite{L Kang and GM White, C Cheng and L Kang and N Leung and GM White}. Las restricciones son divididas en primarias y secundarias. Las restricciones primarias deben ser siempre cumplidas. Si no es posible asignar un aula o un espacio de tiempo a un encuentro sin violar alguna restricción primaria, entonces el programa retrocede, relajando restricciones secundarias una a una hasta que la asignación sea válida.
 
-Boizumault, Delon y P\'eridy han diseñado un programa para horarios de exámenes \cite{P Boizumault and Y Delon and L Peridy} en CHIP, un lenguaje de programación lógica de restricciones basado en Prolog, el cual provee varios tipos de restricción. Proponen un tipo de restricción ``acumulativa'' que limita la cantidad de recursos que pueden ser usados en un tiempo, Boizumault la utiliza para implementar la restricción referente a la capacidad de las aulas. En su estrategia de búsqueda asigna primero los exámenes en los que intervienen un mayor número de estudiantes. Boizumault, Gu\'eret y Jussien han tambi\'en implementado un sistema para horarios de clases llamado FELIAC \cite{P Boizumault and C Gueret and N Jussien, C Gueret and N Jussien and P Boizumault and C Prins}. Las clases de gran audiencia son planificadas primero en los dias donde existan un menor número de clases planificadas. Relajación de restricciones es esencial para CSP con muchas restricciones como son los horarios. Los problemas en que las restricciones son relajadas son llamados dinámicos. Por cada asignación fallida, FELIAC guarda una ``justificación'' que identifica cuál restricción es violada por la asignación. Estas justificaciones son usadas para revertir los efectos de una restricción cuando es relajada.
+Boizumault, Delon y P\'eridy han diseñado un programa para horarios de exámenes \cite{P Boizumault and Y Delon and L Peridy} en CHIP, un lenguaje de programación lógica de restricciones basado en Prolog, el cual provee varios tipos de restricción. Proponen un tipo de restricción ``acumulativa'' que limita la cantidad de recursos que pueden ser usados en un tiempo, Boizumault la utiliza para implementar la restricción referente a la capacidad de las aulas. En su estrategia de búsqueda asigna primero los exámenes en los que intervienen un mayor número de estudiantes. Boizumault, Gu\'eret y Jussien han tambi\'en implementado un sistema para horarios de clases llamado FELIAC \cite{P Boizumault and C Gueret and N Jussien, C Gueret and N Jussien and P Boizumault and C Prins}. Las clases de gran audiencia son planificadas primero en los d\'ias donde existan un menor número de clases planificadas. Relajación de restricciones es esencial para CSP con muchas restricciones como son los horarios. Los problemas en que las restricciones son relajadas son llamados dinámicos. Por cada asignación fallida, FELIAC guarda una ``justificación'' que identifica cuál restricción es violada por la asignación. Estas justificaciones son usadas para revertir los efectos de una restricción cuando es relajada.
 
 \subsection{Modelando datos del problema}
 
@@ -276,14 +276,14 @@ El encargado de diseñar el horario puede adicionar, modificar o eliminar atribu
 
 \begin{description}
 	\item[Mediante recursos:] Buscando o cambiando los valores de sus atributos. Ejemplo, el encargado pudiese querer saber a qu\'e edificio pertenece un local determinado, o a un edificio asignar un nuevo local.
-	\item[Mediante conjuntos:] Teniendo que recursos pertenecen a un conjunto determinado y asi adicionar o eliminar recursos de dicho conjunto.
+	\item[Mediante conjuntos:] Teniendo que recursos pertenecen a un conjunto determinado y as\'i adicionar o eliminar recursos de dicho conjunto.
 \end{description}
 
 Este sistema de la Universidad de Nottingham provee una plataforma poderosa y flexible para la especificación de restricciones. Una restricción de asignación de recursos enlaza una lista de recurso a una lista de encuentros. Cada lista puede ser conformada por objetos individuales o conjuntos de objetos. Por ejemplo, una restricción de asignación de recursos pudiese especificar que todas las conferencias de una determinada asignatura tomen lugar en un local específico.
 
 \subsection{Conclusiones}
 
-La ardua tarea de crear un horario para una universidad puede ser facilitada considerablemente por la automatización. Sin embargo, dada la inmensa complejidad y variedad de este problema aún queda mucho camino por recorrer. Los algoritmos más exitosos hasta el momento han sido combinaciones de metaheurísticas generales con un alto grado de conocimiento heurístico específico para cada problema.
+La ardua tarea de crear un horario para una universidad puede ser facilitada considerablemente por la automatización. Sin embargo, dada la inmensa complejidad y variedad de este problema aún queda mucho camino por recorrer. Los algoritmos más exitosos hasta el momento han sido combinaciones de meta heurísticas generales con un alto grado de conocimiento heurístico específico para cada problema.
 
 En los últimos cuarenta años ha habido un constante flujo de artículos relacionados con la optimización de horarios, aunque recientemente se ha incrementado considerablemente el inter\'es por este tema. Un indicador de este incremento es el \'exito que han tenido las conferencias de Practice and Theory of Automated Timetabling (PATAT 2010) en Northern Ireland.
 
@@ -295,9 +295,9 @@ Esta sección tratará sobre los Problemas de Satisfacción de Restricciones, cu
 
 \subsection{Definición}
 
-Formalmente hablando, un Problema de Satisfacción de Restricciones (Constraint Satisfaction Problem, CSP) es definido por un conjunto de variables, $X_{1},X_{2},...,X_{n}$, y un conjunto de restricciones, $C_{1},C_{2},...,C_{m}$. Cada variable $X_{i}$ tiene un dominio $D_{i}$ no vacio de posibles valores. Cada restricción $C_{i}$ involucra algún subconjunto de las variables y especifica la combinación de valores válidas para ese subconjunto. Un estado del problema está definido por una asignación de valores a algunas o a todas las variables, $\{X_{i}=v_{i}, X_{j}=v_{j}, ...\}$. Una asignación que no viole ninguna restricción es llamada una asignación consistente o válida. Una asignación se dice completa si contiene a todas las variables, y una solución para un CSP es una asignación completa válida, o sea, que cumpla con todas las restricciones. Algunos CSPs tambi\'en requieren de una solución que maximice una función objetivo.
+Formalmente hablando, un Problema de Satisfacción de Restricciones (Constraint Satisfaction Problem, CSP) es definido por un conjunto de variables, $X_{1},X_{2},...,X_{n}$, y un conjunto de restricciones, $C_{1},C_{2},...,C_{m}$. Cada variable $X_{i}$ tiene un dominio $D_{i}$ no vac\'io de posibles valores. Cada restricción $C_{i}$ involucra algún subconjunto de las variables y especifica la combinación de valores válidas para ese subconjunto. Un estado del problema está definido por una asignación de valores a algunas o a todas las variables, $\{X_{i}=v_{i}, X_{j}=v_{j}, ...\}$. Una asignación que no viole ninguna restricción es llamada una asignación consistente o válida. Una asignación se dice completa si contiene a todas las variables, y una solución para un CSP es una asignación completa válida, o sea, que cumpla con todas las restricciones. Algunos CSPs tambi\'en requieren de una solución que maximice una función objetivo.
 
-En la figura \ref{Australia}(a) se muestra un mapa de Australia con sus estados. Supongamos que tenemos la tarea de colorear cada estado con los colores rojo, verde o azul, de forma tal que estados vecinos no tengan el mismo color. Para formularlo como un CSP, definiremos que las variables sean los estados: WA, NT, Q, NSW, V , SA\ y\ T. El dominio de cada variable  es el conjunto \{rojo, verde, azul\}. La restricción dicta que regiones vecinas tengan colores distintos. Existen varias posibles soluciones , una de ellas: \{ WA = rojo, NT = verde, Q = rojo, NSW = verde, V = rojo, SA = azul, T = rojo \}. Es útil visualizar un CSP como un grafo de restricciones, como se muestra en la figura \ref{Australia}(b). Los nodos del grafo corresponden a las variables del problema y los arcos a las restricciones.
+En la figura \ref{Australia}(a) se muestra un mapa de Australia con sus estados. Supongamos que tenemos la tarea de colorear cada estado con los colores rojo, verde o azul, de forma tal que estados vecinos no tengan el mismo color. Para formularlo como un CSP, definiremos que las variables sean los estados: WA, NT, Q, NSW, V , SA\ y\ T. El dominio de cada variable  es el conjunto \{rojo, verde, azul\}. La restricción dicta que regiones vecinas tengan colores distintos. Existen varias posibles soluciones, una de ellas: \{ WA = rojo, NT = verde, Q = rojo, NSW = verde, V = rojo, SA = azul, T = rojo \}. Es útil visualizar un CSP como un grafo de restricciones, como se muestra en la figura \ref{Australia}(b). Los nodos del grafo corresponden a las variables del problema y los arcos a las restricciones.
 
 \begin{figure}
 	\begin{center}
@@ -313,7 +313,7 @@ conforman un patrón estándar, la función sucesor y el objetivo final pueden s
 Es f\'acil ver que para un CSP puede ser determinada una formulaci\'on incremental como un problema de búsqueda est\'andar de la siguiente forma:
 
 \begin{description}
-	\item[Estado inicial:] La asignaci\'on vacia \{\}, en la que todas las variables est\'an sin asignar.
+	\item[Estado inicial:] La asignaci\'on vac\'ia \{\}, en la que todas las variables est\'an sin asignar.
 	\item[Funci\'on sucesor:] Un valor es asignado a una variable sin asignar, previendo que no entre en conflicto con las variables ya asignadas.
 	\item[Objetivo final:] La asignaci\'on actual es completa.
 	\item[Costo de la trayectoria:] Un costo constante (ejemplo, 1) por cada paso.
@@ -323,17 +323,17 @@ Toda soluci\'on debe ser una asignaci\'on completa y por lo tanto aparece en la 
 
 El tipo m\'as simple de CSP es cuando las variables tienen dominio discreto y finito. Problemas de coloraci\'on de mapas pertenecen a este tipo, al igual que el problema de las 8 reinas. Si el tamaño m\'aximo del dominio de cada variable es $d$, entonces el n\'umero posible de asignaciones completas es $O(d^{n})$, exponencial con respecto al n\'umero de variables. Dentro de este tipo de problemas est\'an los llamados CSP booleanos, cuyas variables pueden tomar solamente los valores \emph{true} o \emph{false}, un ejemplo es el problema 3SAT \cite{Carla P. Gomes}.
 
-Las variables discretas pueden tener dominios infinitos, por ejemplo, el conjunto de los enteros. Supongamos que se planifican trabajos de construcci\'on, las variables ser\'ian la fecha de inicio de cada trabajo y los posibles valores n\'umeros enteros que indican la cantidad de dias que la tarea puede demorar. Para dominios infinitos no es posible describir restricciones enumerando todas las posibles combinaciones de valores. Es necesario utilizar un lenguaje de restricci\'on. Por ejemplo, si el trabajo $J_{1}$ que demora 5 dias debe concluir antes que comience $J_{3}$, entonces necesitariamos una desigualdad algebraica como $J_{1} + 5 < J_{3}$.
+Las variables discretas pueden tener dominios infinitos, por ejemplo, el conjunto de los enteros. Supongamos que se planifican trabajos de construcci\'on, las variables ser\'ian la fecha de inicio de cada trabajo y los posibles valores n\'umeros enteros que indican la cantidad de d\'ias que la tarea puede demorar. Para dominios infinitos no es posible describir restricciones enumerando todas las posibles combinaciones de valores. Es necesario utilizar un lenguaje de restricci\'on. Por ejemplo, si el trabajo $J_{1}$ que demora 5 d\'ias debe concluir antes que comience $J_{3}$, entonces necesitaríamos una desigualdad algebraica como $J_{1} + 5 < J_{3}$.
 
-Problemas de satisfacci\'on de restricciones con dominios continuos son muy comunes en el mundo real y son ampliamente estudiados en el campo de investigaci\'on de operaciones. La categoria m\'as conocida de CSP con dominios continuos son los problemas de programaci\'on lineal, donde las restricciones son desigualdades lineales que forman una regi\'on convexa. Los problemas de programaci\'on lineal pueden ser resueltos en tiempo polinomial con respecto al n\'umero de variables.
+Problemas de satisfacci\'on de restricciones con dominios continuos son muy comunes en el mundo real y son ampliamente estudiados en el campo de investigaci\'on de operaciones. La categor\'ia m\'as conocida de CSP con dominios continuos son los problemas de programaci\'on lineal, donde las restricciones son desigualdades lineales que forman una regi\'on convexa. Los problemas de programaci\'on lineal pueden ser resueltos en tiempo polinomial con respecto al n\'umero de variables.
 
-Adem\'as de estudiar el tipo de variables, es \'util ver el tipo de restricci\'on. El tipo m\'as simple son las restricciones unarias, las cuales restringen el dominio de una solo variable. Toda restricci\'on unaria puede ser eliminada simplemente preprocesando el dominio de dicha variable eliminando cada valor que no cumpla con la restricci\'on. Una restricci\'on binaria relaciona dos variables. Por ejemplo, $SA \neq NSW$ es una restricci\'on binaria. Un CSP binario contiene solo restricciones binarias y puede ser representado como un grafo de restricciones, figura \ref{Australia}(b).
+Adem\'as de estudiar el tipo de variables, es \'util ver el tipo de restricci\'on. El tipo m\'as simple son las restricciones unarias, las cuales restringen el dominio de una solo variable. Toda restricci\'on unaria puede ser eliminada simplemente pre procesando el dominio de dicha variable eliminando cada valor que no cumpla con la restricci\'on. Una restricci\'on binaria relaciona dos variables. Por ejemplo, $SA \neq NSW$ es una restricci\'on binaria. Un CSP binario contiene solo restricciones binarias y puede ser representado como un grafo de restricciones, figura \ref{Australia}(b).
 
 Todas las restricciones que hemos visto hasta el momento son llamadas restricciones fuertes, el no cumplimiento de alguna de ellas invalida por completo una posible soluci\'on. Muchos CSPs de la vida real incluyen restricciones d\'ebiles, indicando cuales soluciones son preferidas. Por ejemplo, para un horario universitario un profesor $X$ podr\'ia preferir dar clases en la mañana, sin embargo un horario que no cumpla esto sigue siendo v\'alido, lo que no ser\'ia \'optimo. Se le puede asociar una prioridad a cada restricci\'on d\'ebil. Con esta formulaci\'on, los CSPs con restricciones d\'ebiles pueden ser resueltos con m\'etodos de optimizaci\'on. 
 
 \subsection{B\'usqueda con Backtracking}
 
-En la secci\'on anterior se di\'o una formulaci\'on de CSPs como problemas de b\'usqueda. Supongamos que se aplica un BFS a un CSP gen\'erico. Notar\'a enseguida algo terrible, el factor de ramificaci\'on en el nivel superior es $nd$, porque cualquiera de los $d$ valores puede ser asignado en cada $n$ variables. En el pr\'oximo nivel el factor ser\'ia de $(n-1)d$, y as\'i por los $n$ niveles. Al final tendriamos un \'arbol con $n! \cdot d^{n}$ hojas, aunque solo existen $d^{n}$ posibles asignaciones completas.
+En la secci\'on anterior se dio una formulaci\'on de CSPs como problemas de b\'usqueda. Supongamos que se aplica un BFS a un CSP gen\'erico. Notar\'a enseguida algo terrible, el factor de ramificaci\'on en el nivel superior es $nd$, porque cualquiera de los $d$ valores puede ser asignado en cada $n$ variables. En el pr\'oximo nivel el factor ser\'ia de $(n-1)d$, y as\'i por los $n$ niveles. Al final tendr\'iamos un \'arbol con $n! \cdot d^{n}$ hojas, aunque solo existen $d^{n}$ posibles asignaciones completas.
 
 Nuestra aparentemente razonable pero ingenua formulaci\'on del problema ignora una propiedad crucial com\'un a todos los CSPs: conmutatividad. Un problema es conmutativo si el orden de aplicar un conjunto de acciones no influye en el resultado. Cuando se tiene una asignaci\'on parcial no importa c\'omo se lleg\'o a ella, es decir, el orden en que se asignaron las variables no es determinante. Todos los algoritmos de b\'usqueda para CSPs generan sucesores considerando posibles asignaciones para solo una variable en cada nodo del \'arbol de b\'usqueda. Por ejemplo, en el nodo ra\'iz del \'arbol de b\'usqueda para la coloraci\'on del mapa de Australia, se debe escoger entre las posibles asignaciones $SA = rojo$, $SA = verde$ y $SA = azul$, pero nunca entre $SA = rojo$ y $WA = azul$. Con esta restricci\'on, el n\'umero de hojas es $d^{n}$, como se esperar\'ia.
 
@@ -364,9 +364,9 @@ El algoritmo presentado anteriormente contiene la línea:
 	\scriptsize var $\leftarrow$ SELECT-UNASSIGNED-VARIABLE ( VARIABLE [ csp ] , assignment, csp).
 \end{center}
 
-Por defecto SELECT-UNASSIGNED-VARIABLE simplemente selecciona la pr\'oxima variable a asignar en el orden en que se definieron las variables inicialmente. Este orden est\'atico de seleccionar las variables rara vez resulta ser el m\'as eficiente. Existe una heur\'istica llamada \emph{Minimum Remaining Values (MRV)} que selecciona la variable con menos valores v\'alidos en su dominio. Esta heur\'istica es tambi\'en llamada \emph{Most Constrained Variable} o \emph{Fail-First}, esta \'ultima porque se escoge la variable con m\'as probabilidad de fallar, logrando una temprana poda del \'arbol. Si existe una variable $X$ que no le queden valores v\'alidos en su dominio, esta variable es seleccionada por la heur\'istica y el fallo es detectado inmediatamente, evitando asignar otras variables innecesariamente si al final cuando se trate de asignar $X$ se detectaria un fallo.
+Por defecto SELECT-UNASSIGNED-VARIABLE simplemente selecciona la pr\'oxima variable a asignar en el orden en que se definieron las variables inicialmente. Este orden est\'atico de seleccionar las variables rara vez resulta ser el m\'as eficiente. Existe una heur\'istica llamada \emph{Minimum Remaining Values (MRV)} que selecciona la variable con menos valores v\'alidos en su dominio. Esta heur\'istica es tambi\'en llamada \emph{Most Constrained Variable} o \emph{Fail-First}, esta \'ultima porque se escoge la variable con m\'as probabilidad de fallar, logrando una temprana poda del \'arbol. Si existe una variable $X$ que no le queden valores v\'alidos en su dominio, esta variable es seleccionada por la heur\'istica y el fallo es detectado inmediatamente, evitando asignar otras variables innecesariamente si al final cuando se trate de asignar $X$ se detectar\'ia un fallo.
 
-La heur\'istica MRV no nos ayuda a la hora de seleccionar la primera regi\'on a colorear del mapa de Australia, porque en un principio todos los dominios de valores tienen el mismo tamaño. En este caso, existe una heur\'istica llamada \emph{degree heuristic} que selecciona la variable que est\'a involucrada en la mayor cantidad de restricciones posibles con las dem\'as variables sin asignar. Siguiendo esta idea se seleccionaria la variable SA porque es la variable que aparece en m\'as restricciones.
+La heur\'istica MRV no nos ayuda a la hora de seleccionar la primera regi\'on a colorear del mapa de Australia, porque en un principio todos los dominios de valores tienen el mismo tamaño. En este caso, existe una heur\'istica llamada \emph{degree heuristic} que selecciona la variable que est\'a involucrada en la mayor cantidad de restricciones posibles con las dem\'as variables sin asignar. Siguiendo esta idea se seleccionar\'ia la variable SA porque es la variable que aparece en m\'as restricciones.
 
 Una vez que la variable haya sido seleccionada, el algoritmo debe decidir en que orden procesar los valores del dominio. La heur\'istica \emph{least constraining value} puede ser efectiva en algunos casos. La idea es procesar primero los valores que menos restrinjan el dominio de las variables vecinas en el grafo de restricciones. En general esta heur\'istica trata de mantener lo m\'as flexible las futuras asignaciones de variables. Si queremos encontrar todas las soluciones del problema, y no solamente la primera, entonces el orden de los valores no es importante porque habr\'ia que analizarlos todos.
 
@@ -380,7 +380,7 @@ Aunque forward checking detecte muchas inconsistencias, a veces deja de detectar
 
 La t\'ecnica \emph{consistencia de arco (arc consistency)} provee un m\'etodo r\'apido de propagaci\'on de restricci\'on que es sustancialmente mejor que forward checking. Con arcos, se refiere a los arcos dirigidos del grafo de restricciones. En el problema de colorear el mapa de Australia, el arco SA $\rightarrow$ NSW es consistente si por cada valor $x$ de SA, existe un valor $y$ de NSW que es consistente con $x$. Para ilustrar mejor, supongamos que los dominios de SA y NSW son $\{azul\}$ y $\{rojo, azul\}$ respectivamente. Para la asignaci\'on SA = azul exite una asignaci\'on consistente NSW = rojo, por lo que el arco SA $\rightarrow$ NSW es consistente. De la otra forma, el arco NSW $\rightarrow$ SA no es consistente, para la asignaci\'on NSW = azul no existe una asignaci\'on consistente para SA. Este arco puede hacerse consistente eliminando el valor azul del dominio de NSW.
 
-El chequeo de consistencia de arco puede ser aplicado como un preprocesado antes de iniciar el proceso de b\'usqueda o como forward checking tras cada asignaci\'on durante el proceso de b\'usqueda. En cualquiera de los dos casos el proceso debe ser aplicado repetidamente hasta que no queden inconsistencias. Esto es, porque donde quiera que un valor es eliminado del dominio de alguna variable, pueden aparecer nuevas inconsistencias en los arcos que apuntan a esa variable. El algoritmo para consistencia de arco, \emph{AC-3} utiliza una cola para mantener almacenado todos los arcos que necesitan ser chequeados en b\'usquedas de posibles inconsistencias. Ver figura \ref{AC3}. Cada arco $(X_{i},X_{j})$ es sacado de la cola, si alg\'un valor es eliminado del dominio de $X_{i}$, entonces todo arco $(X_{k},X_{i})$ apuntando a $X_{i}$ es insertado en la cola para ser chequeado. La complejidad de este algoritmo puede ser analizada de la siguiente manera, un CSP binario tiene $O(n^{2})$ arcos, cada arco $(X_{k},X_{i})$ puede ser insertado en la cola a lo sumo $d$ veces, porque $X_{i}$ tiene m\'aximo $d$ valores y chequear la consistencia de un arco puede hacerse en $O(d^{2})$, por lo tanto el costo total del algoritmo es $O(n^{2}d^{3})$. Aunque es m\'as costoso que forward checking, vale la pena el costo extra.
+El chequeo de consistencia de arco puede ser aplicado como un pre procesado antes de iniciar el proceso de b\'usqueda o como forward checking tras cada asignaci\'on durante el proceso de b\'usqueda. En cualquiera de los dos casos el proceso debe ser aplicado repetidamente hasta que no queden inconsistencias. Esto es, porque donde quiera que un valor es eliminado del dominio de alguna variable, pueden aparecer nuevas inconsistencias en los arcos que apuntan a esa variable. El algoritmo para consistencia de arco, \emph{AC-3} utiliza una cola para mantener almacenado todos los arcos que necesitan ser chequeados en b\'usquedas de posibles inconsistencias. Ver figura \ref{AC3}. Cada arco $(X_{i},X_{j})$ es sacado de la cola, si alg\'un valor es eliminado del dominio de $X_{i}$, entonces todo arco $(X_{k},X_{i})$ apuntando a $X_{i}$ es insertado en la cola para ser chequeado. La complejidad de este algoritmo puede ser analizada de la siguiente manera, un CSP binario tiene $O(n^{2})$ arcos, cada arco $(X_{k},X_{i})$ puede ser insertado en la cola a lo sumo $d$ veces, porque $X_{i}$ tiene m\'aximo $d$ valores y chequear la consistencia de un arco puede hacerse en $O(d^{2})$, por lo tanto el costo total del algoritmo es $O(n^{2}d^{3})$. Aunque es m\'as costoso que forward checking, vale la pena el costo extra.
 
 \begin{figure}
 	\begin{center}
@@ -416,11 +416,11 @@ En el momento de asignar un nuevo valor a una variable, una heur\'istica razonab
 
 El algoritmo MIN-CONFLICTS es sorprendentemente efectivo para varios CSPs, especialmente cuando comienza por un ``conveniente'' estado inicial. En un promedio de 50 pasos puede resolverse el problema de un mill\'on de reinas. Hablando a grandes rasgos, b\'usqueda local es buena para n-reinas porque las soluciones est\'an densamente distribuidas a trav\'es de todo el espacio.
 
-Otra importante ventaja de b\'usqueda local es que puede ser usada para problemas que cambian din\'amicamente. Esto es particularmente para problemas de planificaci\'on de actividades. La planificaci\'on semanal de una aerol\'inea puede involucrar miles de vuelos y a decenas de miles de personas, pero un mal tiempo puede hechar por tierra toda la planificaci\'on hecha a priori. Ser\'ia recomendable replanificar todos los vuelos con el menor n\'umero de cambios. Esto puede lograrse f\'acilmente con una b\'usqueda local partiendo de la actual planificaci\'on. Una b\'usqueda con backtracking con nuevas restricciones requerir\'a de mucho tiempo y seguramente la soluci\'on encontrada tendr\'ia muchos cambios con respecto a la inicial.
+Otra importante ventaja de b\'usqueda local es que puede ser usada para problemas que cambian din\'amicamente. Esto es particularmente para problemas de planificaci\'on de actividades. La planificaci\'on semanal de una aerol\'inea puede involucrar miles de vuelos y a decenas de miles de personas, pero un mal tiempo puede echar por tierra toda la planificaci\'on hecha a priori. Ser\'ia recomendable re planificar todos los vuelos con el menor n\'umero de cambios. Esto puede lograrse f\'acilmente con una b\'usqueda local partiendo de la actual planificaci\'on. Una b\'usqueda con backtracking con nuevas restricciones requerir\'a de mucho tiempo y seguramente la soluci\'on encontrada tendr\'ia muchos cambios con respecto a la inicial.
 
 \subsection{Trabajos Realizados}
 
-Los \'ultimos trabajos realizados sobre satisfacci\'on de restricciones comprenden ampliamente restricciones num\'ericas. Restricciones de ecuaciones con dominio en los n\'umeros enteros fueron estudiados por el matem\'atico indio Brahmagupta en el siglo VII, dichas restricciones son llamadas ecuaciones diofánticas, en honor al matem\'atico griego Diophantus (c. 200–284), quien consideraba el dominio de los racionales positivos. M\'etdos para resolver ecuaciones lineales  mediante eliminaci\'on de variables fueron estudiados por Gauss (1829), la soluci\'on de restricciones de inecuaciones lineales se le atribuye a Fourier (1827).
+Los \'ultimos trabajos realizados sobre satisfacci\'on de restricciones comprenden ampliamente restricciones num\'ericas. Restricciones de ecuaciones con dominio en los n\'umeros enteros fueron estudiados por el matem\'atico indio Brahmagupta en el siglo VII, dichas restricciones son llamadas ecuaciones diofánticas, en honor al matem\'atico griego Diophantus (c. 200–284), quien consideraba el dominio de los racionales positivos. M\'etodos para resolver ecuaciones lineales  mediante eliminaci\'on de variables fueron estudiados por Gauss (1829), la soluci\'on de restricciones de inecuaciones lineales se le atribuye a Fourier (1827).
 
 Problemas de satisfacci\'on de restricciones con dominios finitos tienen tambi\'en una larga historia. Por ejemplo, coloraci\'on de grafos (del cual coloraci\'on de mapas en un caso especial) es un problema bien abordado en las matem\'aticas. Seg\'un Biggs (1986), la conjetura de los cuatro colores (que todo grafo planar puede ser coloreado por cuatro o menos colores), fue propuesta por primera vez por Francis Guthrie, un estudiante de De Morgan, en 1852. Su conjetura, a pesar de las varias publicaciones que hubo en su contra, fue probada con ayuda de las computadores por Appel y Haken en 1977.
 
@@ -428,7 +428,7 @@ Clases espec\'ificas de problemas de satisfacci\'on de restricciones han apareci
 
 B\'usqueda con backtracking para CSPs es debido a Bitner y Reingold (1975), aunque las bases de este algoritmo ya estaban dadas desde el siglo XIX. Bitner y Reingold tambi\'en introdujeron la heur\'istica MRV, ellos la llamaron \emph{most-constrained-variable}. Brelaz (1979) us\'o \emph{degree heuristic} para podar el \'arbol de b\'usqueda luego de aplicar la heur\'istica MRV. El algoritmo resultante, a pesar de su simplicidad, sigue siendo el mejor m\'etodo para k-colorear grafos. Haralick y Elliot (1980) propusieron la heur\'istica \emph{least-constraining-value}.
 
-Los m\'etodos de propagaci\'on de restricciones fueron popularizados por el \'exito de Waltz (1975) en los problemas de etiquetados lineales de poliedros para visi\'on por computadoras. Waltz mostr\'o que en muchos problemas, la propagaci\'on puede eliminar completamente la necesidad de backtracking. Montanari (1974) introdujo la noci\'on de redes de restricciones y propagaci\'on por consistencia de camino. Alan Mackworth (1977) propuso el algoritmo AC-3 para hacer cumplir la consistencia de arco. AC-4, un algortimo de consistencia de arco m\'as eficiente, fue desarrollado por Mohr y Henderson (1986). Inmediatamente luego que el art\'iculo de Mackworth apareciera, investigadores comenzaban a experimentar entre el costo de lograr una consistencia y los beneficios que pudiera traer en t\'erminos de reducci\'on de la b\'usqueda. Haralick y Elliot (1980) favorecieron el algoritmo de forward checking de McGregor (1979), mientras que Gaschnig (1979) sugiri\'o un chequeo completo de consistencia de arco tras cada asignaci\'on. Los \'ultimos art\'iculos muestran una cierta inclinaci\'on hacia aplicar un chequeo completo de consistencia de arco para CSPs duros. Freuder (1978, 1982) investig\'o la noci\'on de k-consistencia y su relaci\'on con la complejidad de resolver CSPs. Apt (1999) describe una plataforma gen\'erica de algoritmos en los cuales puede ser analizada la propagaci\'on de restricciones.
+Los m\'etodos de propagaci\'on de restricciones fueron popularizados por el \'exito de Waltz (1975) en los problemas de etiquetados lineales de poliedros para visi\'on por computadoras. Waltz mostr\'o que en muchos problemas, la propagaci\'on puede eliminar completamente la necesidad de backtracking. Montanari (1974) introdujo la noci\'on de redes de restricciones y propagaci\'on por consistencia de camino. Alan Mackworth (1977) propuso el algoritmo AC-3 para hacer cumplir la consistencia de arco. AC-4, un algoritmo de consistencia de arco m\'as eficiente, fue desarrollado por Mohr y Henderson (1986). Inmediatamente luego que el art\'iculo de Mackworth apareciera, investigadores comenzaban a experimentar entre el costo de lograr una consistencia y los beneficios que pudiera traer en t\'erminos de reducci\'on de la b\'usqueda. Haralick y Elliot (1980) favorecieron el algoritmo de forward checking de McGregor (1979), mientras que Gaschnig (1979) sugiri\'o un chequeo completo de consistencia de arco tras cada asignaci\'on. Los \'ultimos art\'iculos muestran una cierta inclinaci\'on hacia aplicar un chequeo completo de consistencia de arco para CSPs duros. Freuder (1978, 1982) investig\'o la noci\'on de k-consistencia y su relaci\'on con la complejidad de resolver CSPs. Apt (1999) describe una plataforma gen\'erica de algoritmos en los cuales puede ser analizada la propagaci\'on de restricciones.
 
 B\'usqueda local para problemas de satisfacci\'on de restricciones fue popularizado gracias al trabajo de Kirkpatrick (1983) en recocido simulado, el cual es ampliamente usado para problemas de planificaci\'on de actividades. La heur\'istica min-conflicts fue propuesta por Gu (1989) y fue desarrollada independientemente por Minton (1992). Sosic y Gu (1994) mostraron c\'omo puede ser aplicada para resolver el problema de 3,000,000 reinas en menos de un minuto. El asombroso \'exito de b\'usqueda local usando min-conflicts para resolver el problema de n-reinas hizo que se reexaminara la naturaleza y prevalencia de los problemas f\'aciles y duros. Peter Cheeseman (1991) explor\'o la dificultad de CSPs generados aleatoriamente y descubri\'o que muchos de ellos o se le encontraba soluci\'on f\'acil o no ten\'ian soluci\'on.
 
