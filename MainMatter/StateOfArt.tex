@@ -63,7 +63,7 @@ las más comunes:
 		Por ejemplo, un profesor prefiere impartir sus clases en una determinada aula o un examen debe ser realizado
 		en un determinado edificio.
 	\item[Asignación de tiempo:] Un encuentro o un recurso debe ser asignado a un tiempo. Esta restricción puede
-		ser usada para especificar días en los que un profesor no está disponible, o para pre-asignar un
+		ser usada para especificar días en los que un profesor no está disponible, o para pre asignar un
 		tiempo a un determinado encuentro.
 	\item[Restricción de tiempo entre encuentros:] Ejemplos comunes de esta clase de restricción son que un encuentro
 		deba suceder antes de otro, o que un conjunto de exámenes deba realizarse simult\'aneamente.
@@ -193,13 +193,13 @@ debe ocurrir un encuentro. Siendo así, los pares de los horarios seleccionados 
 la cadena y pasando a sus descendientes información de ambos padres. No obstante, Corne, Ross y Fang proponen
 una conveniente operación de mutación para ser más exitoso el cruzamiento \cite{D Corne and P Ross and HL Fang}.
 Su sistema, GATT, está siendo usado para generar el horario de la Universidad de Edinburgh y algunas otras
-instituciones. La figura \ref{genetic algorithms} muestra las etapas de un algoritmo gen\'etico.
+instituciones. La figura \ref{genetic algorithms steps} muestra las etapas de un algoritmo gen\'etico.
 
 \begin{figure}
 	\begin{center}
-		\label{genetic algorithms}
 		\includegraphics[scale=0.5]{Graphics/genetic_algorithms}
-		\caption{Etapas de un algoritmo genético.}		
+		\caption{Etapas de un algoritmo genético.}	
+		\label{genetic algorithms steps}	
 	\end{center}	
 \end{figure}
 
@@ -289,7 +289,7 @@ En los últimos cuarenta años ha habido un constante flujo de artículos relaci
 
 Muchos investigadores de todo el mundo están desarrollando nuevas herramientas para automatizar este proceso, tambi\'en se ha publicado un gran volumen de resultados. Aún así, no existe un estándar que permita comparar los diferentes m\'etodos utilizados, aunque un grupo de universidades está trabajando en ello. Con las conferencias de PATAT establecidas como un evento regular parece que se desarrollará mucho trabajo en esta area.
 
-\section{Problema de Satisfacción de Restricciones}
+\section{Problemas de Satisfacción de Restricciones}
 
 Esta sección tratará sobre los Problemas de Satisfacción de Restricciones, cuyo estados y objetivo conforman una representación muy sencilla, estándar y estructurada. Algoritmos de búsqueda pueden ser definidos para que tomen ventaja de la estructura de los estados y ser usados con un propósito general más que como una heurística específica del problema en cuestión.
 
@@ -364,7 +364,7 @@ El algoritmo presentado anteriormente contiene la línea:
 	\scriptsize var $\leftarrow$ SELECT-UNASSIGNED-VARIABLE ( VARIABLE [ csp ] , assignment, csp).
 \end{center}
 
-Por defecto SELECT-UNASSIGNED-VARIABLE simplemente selecciona la pr\'oxima variable a asignar en el orden en que se definieron las variables inicialmente. Este orden est\'atico de seleccionar las variables rara vez resulta ser el m\'as eficiente. Existe una heur\'istica llamada \emph{Minimum Remaining Values (MRV)} que selecciona la variable con menos valores v\'alidos en su dominio. Esta heur\'istica es tambi\'en llamada \emph{Most Constrained Variable} o \emph{Fail-First}, esta \'ultima porque se escoge la variable con m\'as probabilidad de fallar, logrando una temprana poda del \'arbol. Si existe una variable $X$ que no le queden valores v\'alidos en su dominio, esta variable es seleccionada por la heur\'istica y el fallo es detectado inmediatamente, evitando asignar otras variables innecesariamente si al final cuando se trate de asignar $X$ se detectar\'ia un fallo.
+Por defecto SELECT-UNASSIGNED-VARIABLE simplemente selecciona la pr\'oxima variable a asignar en el orden en que se definieron las variables inicialmente. Este orden est\'atico de seleccionar las variables rara vez resulta ser el m\'as eficiente. Existe una heur\'istica llamada \emph{Minimum Remaining Values (MRV)} que selecciona la variable con menos valores v\'alidos en su dominio. Esta heur\'istica es tambi\'en llamada \emph{Most Constrained Variable} o \emph{Fail-First}, esta \'ultima porque escoge la variable con m\'as probabilidad de fallar, logrando una temprana poda del \'arbol. Si existe una variable $X$ que no le queden valores v\'alidos en su dominio, esta variable es seleccionada por la heur\'istica y el fallo es detectado inmediatamente, evitando asignar otras variables innecesariamente si al final cuando se trate de asignar $X$ se detectar\'ia un fallo.
 
 La heur\'istica MRV no nos ayuda a la hora de seleccionar la primera regi\'on a colorear del mapa de Australia, porque en un principio todos los dominios de valores tienen el mismo tamaño. En este caso, existe una heur\'istica llamada \emph{degree heuristic} que selecciona la variable que est\'a involucrada en la mayor cantidad de restricciones posibles con las dem\'as variables sin asignar. Siguiendo esta idea se seleccionar\'ia la variable SA porque es la variable que aparece en m\'as restricciones.
 
