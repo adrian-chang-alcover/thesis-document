@@ -232,9 +232,9 @@ En CLP, una estrategia de etiquetado dicta el orden en que el espacio de búsque
 
 Un sistema en Prolog para horarios de clases ha sido desarrollado por (White, 1994) en la Universidad de Ottawa \cite{L Kang and GM White, C Cheng and L Kang and N Leung and GM White}. Las restricciones son divididas en primarias y secundarias. Las restricciones primarias deben ser siempre cumplidas. Si no es posible asignar un aula o un espacio de tiempo a un encuentro sin violar alguna restricción primaria, entonces el programa retrocede, relajando restricciones secundarias una a una hasta que la asignación sea válida.
 
-En (Boizumault, Delon y P\'eridy, 1995) se ha diseñado un programa para horarios de exámenes en CHIP, un lenguaje de programación lógica de restricciones basado en Prolog, el cual provee varios tipos de restricción \cite{P Boizumault and Y Delon and L Peridy}. Proponen un tipo de restricción ``acumulativa'' que limita la cantidad de recursos que pueden ser usados en un tiempo, Boizumault la utiliza para implementar la restricción referente a la capacidad de las aulas. En su estrategia de búsqueda asigna primero los exámenes en los que intervienen un mayor número de estudiantes. Boizumault, Gu\'eret y Jussien han tambi\'en implementado un sistema para horarios de clases llamado FELIAC \cite{P Boizumault and C Gueret and N Jussien, C Gueret and N Jussien and P Boizumault and C Prins}. Las clases de gran audiencia son planificadas primero en los d\'ias donde existan un menor número de clases planificadas. Relajación de restricciones es esencial para CSP con muchas restricciones como son los horarios. Los problemas en que las restricciones son relajadas son llamados dinámicos. Por cada asignación fallida, FELIAC guarda una ``justificación'' que identifica cuál restricción es violada por la asignación. Estas justificaciones son usadas para revertir los efectos de una restricción cuando es relajada.
+En (Boizumault, Delon y P\'eridy, 1995) se ha diseñado un programa para horarios de exámenes en CHIP, un lenguaje de programación lógica de restricciones basado en Prolog, el cual provee varios tipos de restricción \cite{P Boizumault and Y Delon and L Peridy}. Proponen un tipo de restricción ``acumulativa'' que limita la cantidad de recursos que pueden ser usados en un tiempo, Boizumault la utiliza para implementar la restricción referente a la capacidad de las aulas. En su estrategia de búsqueda asigna primero los exámenes en los que intervienen un mayor número de estudiantes. En (Boizumault, Gu\'eret y Jussien, 1994) se ha implementado un sistema para horarios de clases llamado FELIAC \cite{P Boizumault and C Gueret and N Jussien, C Gueret and N Jussien and P Boizumault and C Prins}. Las clases de gran audiencia son planificadas primero en los d\'ias donde existan un menor número de clases planificadas. Relajación de restricciones es esencial para CSP con muchas restricciones como son los horarios. Los problemas en que las restricciones son relajadas son llamados dinámicos. Por cada asignación fallida, FELIAC guarda una ``justificación'' que identifica cuál restricción es violada por la asignación. Estas justificaciones son usadas para revertir los efectos de una restricción cuando es relajada.
 
-\section{Modelando datos del problema}
+\section{Modelaci\'on de los datos del problema}
 
 El problema de los horarios puede variar considerablemente entre universidades, por lo tanto en aras de que pueda ser aplicable a diferentes instituciones, un sistema debe ser flexible en la manera en que sus restricciones y recursos son especificados.
 
@@ -242,7 +242,7 @@ Un módulo para horarios de universidad está siendo desarrollado por el Grupo d
 
 Cada tipo de recurso (ejemplo aulas) tiene en conjunto de atributos que permite definir recursos individuales. En la tabla \ref{table:atributes} se muestran cuatro atributos que las aulas pueden tener.
 
-\begin{table}
+\begin{table}[h]
 	\caption{Conjunto de atributos para las aulas}
 	\begin{center}
 		\label{table:atributes}
