@@ -22,7 +22,7 @@ Se diferencian principalmente en:
 
 \begin{itemize}
 	\item Los exámenes deben ser planificados de forma tal que un estudiante no tenga más de un examen al
-		mismo tiempo, pero las clases usualmente son planificadas antes que los estudiantes las matriculen.
+		mismo tiempo, pero las clases usualmente son planificadas antes que los estudiantes las matriculen, por lo tanto no siempre se puede garantizar lo anterior.
 	\item El espacio también es una restricción, diferentes exámenes pueden compartir la misma aula o un examen
 		puede necesitar más de un aula, pero en un aula solo puede ser impartida una clase a la vez.
 \end{itemize}
@@ -143,7 +143,7 @@ generación de horarios:
 \end{itemize}
 
 La encuesta demostró la gran necesidad de automatizar este proceso. Habiendo dicho esto, cualquier sistema
-para que sea útil debe satisfacer la gran cantidad de criterios disimiles que existen en torno a este problema.
+para que sea útil debe satisfacer la gran cantidad de criterios dis\'imiles que existen en torno a este problema.
 El principal problema es que el sistema debe ser capaz de generar horarios de gran calidad a pesar de las enormes
 variaciones de este proceso encontradas en las diferentes universidades encuestadas. El sistema debe ser compatible
 con trabajos hechos con anterioridad, debe ser fácil de usar y satisfacer la mayor parte de las necesidades de los departamentos y facultades.
@@ -226,13 +226,13 @@ Formulando el problema de los horarios como un problema de asignación, Hertz de
 
 \subsection{Programación Lógica de Restricciones}
 
-El problema de los horarios puede ser modelado como un Problema de Satisfacción de Restricciones (Constraint Satisfaction Problem, CSP). En un CSP a cada variable se le debe asignar un valor de su dominio y que la asignación cumpla con un conjunto de restricciones. Programación Lógica de Restricciones (Constraint Logic Programing, CLP) est\'a basada en la aplicación de lenguajes de programación de lógica declarativa como Prolog a CSPs. Un programa en Prolog consiste en un conjunto de cl\'ausulas que ser\'ian las restricciones y la satisfacibilidad de estas es chequeada en ejecución.
+El problema de los horarios puede ser modelado como un Problema de Satisfacción de Restricciones (\emph{Constraint Satisfaction Problem}, CSP). En un CSP a cada variable se le debe asignar un valor de su dominio y que la asignación cumpla con un conjunto de restricciones. La Programación Lógica de Restricciones (\emph{Constraint Logic Programing}, CLP) est\'a basada en la aplicación de lenguajes de programación de lógica declarativa como Prolog a CSPs. Un programa en Prolog consiste en un conjunto de cl\'ausulas que ser\'ian las restricciones y la satisfacibilidad de estas es chequeada en ejecución.
 
 En CLP, una estrategia de etiquetado dicta el orden en que el espacio de búsqueda debe ser explorado, lo cual es vital para una búsqueda efectiva. Existen dos ordenamientos, el orden en que las variables deben ser asignadas y el orden en que los valores deben ser procesados.
 
 Un sistema en Prolog para horarios de clases ha sido desarrollado por (White, 1994) en la Universidad de Ottawa \cite{L Kang and GM White, C Cheng and L Kang and N Leung and GM White}. Las restricciones son divididas en primarias y secundarias. Las restricciones primarias deben ser siempre cumplidas. Si no es posible asignar un aula o un espacio de tiempo a un encuentro sin violar alguna restricción primaria, entonces el programa retrocede, relajando restricciones secundarias una a una hasta que la asignación sea válida.
 
-En (Boizumault, Delon y P\'eridy, 1995) se ha diseñado un programa para horarios de exámenes en CHIP, un lenguaje de programación lógica de restricciones basado en Prolog, el cual provee varios tipos de restricción \cite{P Boizumault and Y Delon and L Peridy}. Proponen un tipo de restricción ``acumulativa'' que limita la cantidad de recursos que pueden ser usados en un tiempo, Boizumault la utiliza para implementar la restricción referente a la capacidad de las aulas. En su estrategia de búsqueda asigna primero los exámenes en los que intervienen un mayor número de estudiantes. En (Boizumault, Gu\'eret y Jussien, 1994) se ha implementado un sistema para horarios de clases llamado FELIAC \cite{P Boizumault and C Gueret and N Jussien, C Gueret and N Jussien and P Boizumault and C Prins}. Las clases de gran audiencia son planificadas primero en los d\'ias donde existan un menor número de clases planificadas. Relajación de restricciones es esencial para CSP con muchas restricciones como son los horarios. Los problemas en que las restricciones son relajadas son llamados dinámicos. Por cada asignación fallida, FELIAC guarda una ``justificación'' que identifica cuál restricción es violada por la asignación. Estas justificaciones son usadas para revertir los efectos de una restricción cuando es relajada.
+En (Boizumault, Delon y P\'eridy, 1995) se ha diseñado un programa para horarios de exámenes en CHIP, un lenguaje de programación lógica de restricciones basado en Prolog, el cual provee varios tipos de restricción \cite{P Boizumault and Y Delon and L Peridy}. Proponen un tipo de restricción ``acumulativa'' que limita la cantidad de recursos que pueden ser usados en un tiempo, Boizumault la utiliza para implementar la restricción referente a la capacidad de las aulas. En su estrategia de búsqueda asigna primero los exámenes en los que intervienen un mayor número de estudiantes. En (Boizumault, Gu\'eret y Jussien, 1994) se ha implementado un sistema para horarios de clases llamado FELIAC \cite{P Boizumault and C Gueret and N Jussien, C Gueret and N Jussien and P Boizumault and C Prins}. Las clases de gran audiencia son planificadas primero en los d\'ias donde existan un menor número de clases planificadas. La relajación de restricciones es esencial para CSP con muchas restricciones como son los horarios. Los problemas en que las restricciones son relajadas son llamados dinámicos. Por cada asignación fallida, FELIAC guarda una ``justificación'' que identifica cuál restricción es violada por la asignación. Estas justificaciones son usadas para revertir los efectos de una restricción cuando es relajada.
 
 \section{Modelaci\'on de los datos del problema}
 
