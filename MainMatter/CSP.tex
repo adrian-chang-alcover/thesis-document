@@ -81,7 +81,7 @@ La t\'ecnica \emph{consistencia de arco (arc consistency)} provee un m\'etodo r\
 
 El chequeo de consistencia de arco puede ser aplicado como un pre procesado antes de iniciar el proceso de b\'usqueda o como forward checking tras cada asignaci\'on durante el proceso de b\'usqueda. En cualquiera de los dos casos el proceso debe ser aplicado repetidamente hasta que no queden inconsistencias. Esto es, porque donde quiera que un valor es eliminado del dominio de alguna variable, pueden aparecer nuevas inconsistencias en los arcos que apuntan a esa variable. El algoritmo para consistencia de arco, \emph{AC-3} utiliza una cola para mantener almacenado todos los arcos que necesitan ser chequeados en b\'usquedas de posibles inconsistencias. Ver figura \ref{AC3}. Cada arco $(X_{i},X_{j})$ es sacado de la cola, si alg\'un valor es eliminado del dominio de $X_{i}$, entonces todo arco $(X_{k},X_{i})$ apuntando a $X_{i}$ es insertado en la cola para ser chequeado. La complejidad de este algoritmo puede ser analizada de la siguiente manera, un CSP binario tiene $O(n^{2})$ arcos, cada arco $(X_{k},X_{i})$ puede ser insertado en la cola a lo sumo $d$ veces, porque $X_{i}$ tiene m\'aximo $d$ valores y chequear la consistencia de un arco puede hacerse en $O(d^{2})$, por lo tanto el costo total del algoritmo es $O(n^{2}d^{3})$. Aunque es m\'as costoso que forward checking, vale la pena el costo extra.
 
-\begin{figure}
+\begin{figure}[h]
 	\begin{center}
 		\includegraphics[scale=0.65]{Graphics/AC3}
 		\caption{Algoritmo de consistencia de arco AC-3.}
@@ -95,21 +95,13 @@ Los problemas de satisfacci\'on de restricciones incluyen 3SAT como un caso espe
 
 Algoritmos de b\'usqueda local suelen ser muy efectivos resolviendo CSPs. Usan asignaciones completas en todo momento, el estado inicial asigna un valor a cada variable, sin importar si se viola alguna restricci\'on, y la funci\'on sucesor usualmente trabaja cambiando el valor asignado a una variable en cada momento. Por ejemplo, en el problema de las 8 reinas, un estado inicial puede ser una reina en cada columna, y la funci\'on sucesor ser\'ia seleccionar una reina y moverla dentro de su columna.
 
-En el momento de asignar un nuevo valor a una variable, una heur\'istica razonable ser\'ia seleccionar el valor que resulte en menos conflictos con las dem\'as variables. En la figura \ref{MinConflicts} se muestra el algoritmo y en la figura \ref{8queens} se ilustra una instancia del problema de las 8 reinas al que se le aplica dicho algoritmo.
+En el momento de asignar un nuevo valor a una variable, una heur\'istica razonable ser\'ia seleccionar el valor que resulte en menos conflictos con las dem\'as variables. En la figura \ref{MinConflicts} se muestra el algoritmo.
 
-\begin{figure}
+\begin{figure}[h]
 	\begin{center}
 		\includegraphics[scale=0.65]{Graphics/MinConflicts}
 		\caption{Algoritmo MIN-CONFLICTS para resolver CSPs mediante b\'usqueda local.}
 		\label{MinConflicts}
-	\end{center}	
-\end{figure}
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[scale=0.65]{Graphics/8queens}
-		\caption{Aplicaci\'on del algoritmo MIN-CONFLICTS para una instancia del problema de las 8 reinas.}
-		\label{8queens}
 	\end{center}	
 \end{figure}
 
