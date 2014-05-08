@@ -55,7 +55,7 @@ En el momento de escoger una variable a asignar podr\'ia preguntarse:
 
 A cada una de estas preguntas se le dar\'a respuesta en las siguientes secciones.
 
-\subsection{Ordenaci\'on de las Variables y sus Valores}
+\subsection{Ordenaci\'on de las variables y sus valores}
 
 El algoritmo presentado anteriormente contiene la línea:
 
@@ -69,7 +69,7 @@ La heur\'istica MRV no nos ayuda a la hora de seleccionar una variable a asignar
 
 Una vez que la variable haya sido seleccionada, el algoritmo debe decidir en que orden procesar los valores del dominio. La heur\'istica \emph{least constraining value} puede ser efectiva en algunos casos. La idea es procesar primero los valores que menos restrinjan el dominio de las variables vecinas en el grafo de restricciones. En general esta heur\'istica trata de mantener lo m\'as flexible las futuras asignaciones de variables. Si queremos encontrar todas las soluciones del problema, y no solamente la primera, entonces el orden de los valores no es importante porque habr\'ia que analizarlos todos.
 
-\subsection{Propagaci\'on de Informaci\'on a trav\'es de las Restricciones}
+\subsection{Propagaci\'on de informaci\'on a trav\'es de las restricciones}
 
 Actualmente nuestro algoritmo solo considera las restricciones sobre una variable en el momento en que es seleccionada por el m\'etodo \emph{SELECT-UNASSIGNED-VARIABLE}. Si tenemos en cuenta estas restricciones antes de asignar dicha variable podemos reducir dr\'asticamente el espacio de b\'usqueda.
 
