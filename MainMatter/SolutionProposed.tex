@@ -30,6 +30,23 @@ La tabla \emph{partitions} se utiliza para conocer dado una semana la cantidad y
 
 \subsection{Funci\'on de felicidad del sistema}
 
+El Sistema de Gesti\'on de Horarios tiene un m\'odulo dedicado a la especificaci\'on de restricciones. En \'el cada profesor puede especificar sus condiciones o preferencias. Una gran variedad de restricciones pueden ser modeladas, por ejemplo, que un profesor prefiera que todos sus turnos de clases sean en un aula determinada o en un d\'ia espec\'ifico de la semana, que los turnos de conferencia sean en los primeros dias de la semana o que dos turnos de conferencia de una asignatura sean en turnos continuos.
+
+Cada profesor puede definir varias restricciones y a cada una de ellas le puede asociar una prioridad. Pueden existir restricciones a las que el profesor le gustar\'ia que se tomaran en cuenta y pueden exitir otras restricciones que tengan una importacia de primer orden para \'el, por ejemplo la imposibilidad de impartir clases un determinado d\'ia de la semana, a estas \'ultimas restricciones el profesor debe darles una prioridad alta.
+
+El sistema define la felicidad de un profesor como el grado de cumplimiento de sus restricciones en el horario actual. Dicha medida es calculada por la siguiente funci\'on:
+
+\[ f_{p} = \frac{\sum\limits_{i=1}^n w_{ip} c_{ip}}{\sum\limits_{i=1}^n w_{ip}} \]
+
+\begin{description}
+
+\item[$w_{ip} \in \{1 \ldots 100\}$]: prioridad de la restricci\'on \emph{i} del profesor \emph{p}
+\item[$c_{ip} \in \lbrack 0,1 \rbrack$]: grado de cumplimiento de la restricci\'on \emph{i} del profesor \emph{p}
+\item[$n$]: cantidad de restricciones definidas por el profesor \emph{p}
+\item[$f_{p} \in \lbrack 0,1 \rbrack$]: felicidad del profesor \emph{p}
+
+\end{description}
+
 \subsection{API de interacci\'on con el Sistema de Gesti\'on de Horarios}
 
 \section{Modelaci\'on como un CSP}
