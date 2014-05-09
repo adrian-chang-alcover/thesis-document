@@ -30,7 +30,7 @@ La tabla \emph{partitions} se utiliza para conocer dado una semana la cantidad y
 
 \subsection{Funci\'on de felicidad del sistema}
 
-El Sistema de Gesti\'on de Horarios tiene un m\'odulo dedicado a la especificaci\'on de restricciones. En \'el cada profesor puede especificar sus condiciones o preferencias. Una gran variedad de restricciones pueden ser modeladas, por ejemplo, que un profesor prefiera que todos sus turnos de clases sean en un aula determinada o en un d\'ia espec\'ifico de la semana, que los turnos de conferencia sean en los primeros dias de la semana o que dos turnos de conferencia de una asignatura sean en turnos continuos.
+El Sistema de Gesti\'on de Horarios tiene un m\'odulo dedicado a la especificaci\'on de restricciones. En \'el cada profesor puede especificar sus condiciones o preferencias. Una gran variedad de restricciones pueden ser modeladas, por ejemplo, que un profesor prefiera que todos sus turnos de clases sean en un aula determinada o en un d\'ia espec\'ifico de la semana, que los turnos de conferencia sean en los primeros dias de la semana o que dos turnos de conferencia de una asignatura sean en turnos consecutivos.
 
 Cada profesor puede definir varias restricciones y a cada una de ellas le puede asociar una prioridad. Pueden existir restricciones a las que el profesor le gustar\'ia que se tomaran en cuenta y pueden exitir otras restricciones que tengan una importacia de primer orden para \'el, por ejemplo la imposibilidad de impartir clases un determinado d\'ia de la semana, a estas \'ultimas restricciones el profesor debe darles una prioridad alta.
 
@@ -47,7 +47,7 @@ El sistema define la felicidad de un profesor como el grado de cumplimiento de s
 
 \end{description}
 
-Tambi\'en se define la felicidad del sistema o el grado de cumplimiento de todas las restricciones impuestas por los profesores. Cada profesor tiene asociada una prioridad en dependencia de la categor\'ia cient\'ifica o docente, adem\'as se tiene en cuenta el cargo que ocupa dentro de la facultad. La felicidad del sistema se calcula de la siguiente forma:
+Tambi\'en se define la felicidad del sistema o el grado de cumplimiento de todas las restricciones impuestas por los profesores. Cada profesor tiene asociada una prioridad en dependencia de su categor\'ia cient\'ifica o docente, adem\'as se tiene en cuenta el cargo que ocupa dentro de la facultad. La felicidad del sistema se calcula de la siguiente forma:
 
 \[ F = \frac{\sum\limits_{i=1}^m f_{i} p_{i}}{\sum\limits_{i=1}^m p_{i}} \]
 
@@ -60,7 +60,11 @@ Tambi\'en se define la felicidad del sistema o el grado de cumplimiento de todas
 
 \end{description}
 
+Debe aclararse que no es el sistema quien decide la forma en la que se toman las decisiones al respecto de los horarios, ni si éstos son confeccionados democrática o dictatorialmente. Esto se decide cuando se asignan las prioridades de los profesores, proceso que se sale de los objetivos de este trabajo. Si se quiere un mecanismo extremadamente democrático, basta con dar a todos la misma prioridad. Un sistema extremadamente dictatorial se lograría dando la misma prioridad a todos los usuarios salvo a uno de ellos, al que se le asignaría una prioridad superior al resto.
+
 \subsection{API de interacci\'on con el Sistema de Gesti\'on de Horarios}
+
+esperando por Gabriel...
 
 \section{Modelaci\'on como un CSP}
 
