@@ -6,7 +6,7 @@ En este cap\'itulo se presenta una posible soluci\'on al problema de generar un 
 
 Como ya se hab\'ia mencionado este trabajo formar\'a parte de un Sistema de Gesti\'on de Horarios desarrollado por el profesor Lic. Pedro Quintero Rojas perteneciente a la facultad de Matem\'atica y Computaci\'on de la Universidad de La Habana. Dicho sistema consiste en un sitio web implementado en Ruby on Rails. La versi\'on del int\'erprete de Ruby utilizado fue 1.9 y la versi\'on de Rails fue 3.2.13, para la base de datos se utiliz\'o SQLite3.
 
-El sistema contiene toda la informaci\'on necesaria para generar un horario de clases. Muestra una vista actualizada del horario vigente, adem\'as las personas autorizadas pueden modificar turnos planificados y reservar aulas de manera transparente. En un futuro se desea implementar una herramienta para tel\'efonos celulares donde se pueda interactuar con el sistema y de alguna forma avisar a las personas involucradas cuando se cambie un turno de clase. 
+El sistema contiene toda la informaci\'on necesaria para generar un horario de clases. Tambi\'en muestra una vista actualizada del horario vigente y las personas autorizadas pueden modificar turnos planificados y reservar aulas de manera transparente. En un futuro se desea implementar una herramienta para tel\'efonos celulares donde se pueda interactuar con el sistema y de alguna forma avisar a las personas involucradas cuando se cambie un turno de clase. 
 
 \subsection{Modelaci\'on de las entidades involucradas}
 
@@ -23,6 +23,10 @@ Para generar un horario de clases de un semestre para una facultad es necesario 
 \item Capacidad y tipo de locales disponibles de la facultad.
 
 \end{itemize}
+
+Para cada entidad antes mencionada existe una tabla en la base de datos del sistema. Algunas de las tablas son: \emph{faculties, careers, years, groups, subjects, semesters, professors, locals}. Por ejemplo toda carrera pertenece a una facultad, cada grupo pertenece a un año que a su vez pertenece a una carrera y cada asignatura pertenece a un semestre y a un año.
+
+La tabla \emph{partitions} se utiliza para conocer dado una semana la cantidad y el tipo de turnos que se deben impartir de una asignatura. Generalmente en cada semana se debe impartir una conferencia y una clase pr\'actica de cada asignatura perteneciente al semestre, pero esto no siempre sucede as\'i, existen asignaturas que cambian su planificaci\'on en dependencia si la semana es par o impar. Por otro lado, la tabla \emph{distributions} dado un grupo y una asignatura especifica el profesor que le debe impartir dicha asignatura al grupo dado.
 
 \subsection{Funci\'on de felicidad del sistema}
 
