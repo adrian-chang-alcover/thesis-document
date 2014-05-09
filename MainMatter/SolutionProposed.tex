@@ -47,6 +47,19 @@ El sistema define la felicidad de un profesor como el grado de cumplimiento de s
 
 \end{description}
 
+Tambi\'en se define la felicidad del sistema o el grado de cumplimiento de todas las restricciones impuestas por los profesores. Cada profesor tiene asociada una prioridad en dependencia de la categor\'ia cient\'ifica o docente, adem\'as se tiene en cuenta el cargo que ocupa dentro de la facultad. La felicidad del sistema se calcula de la siguiente forma:
+
+\[ F = \frac{\sum\limits_{i=1}^m f_{i} p_{i}}{\sum\limits_{i=1}^m p_{i}} \]
+
+\begin{description}
+
+\item[$f_{i} \in \lbrack 0,1 \rbrack$]: felicidad del profesor \emph{i}
+\item[$p_{i} \in \{1 \ldots 100\}$]: prioridad del profesor \emph{i}
+\item[$m$]: cantidad de profesores
+\item[$F \in \lbrack 0,1 \rbrack$]: felicidad general del sistema
+
+\end{description}
+
 \subsection{API de interacci\'on con el Sistema de Gesti\'on de Horarios}
 
 \section{Modelaci\'on como un CSP}
