@@ -92,6 +92,12 @@ Las variables son todas las combinaciones v\'alidas de grupo, asignatura y tipo 
 
 \subsection{Restricciones}
 
+Anteriormente se hab\'ia comentado que el sistema nos ofrece una funci\'on de evaluaci\'on de la calidad del horario entre 0 y 1. Sin embargo, los CSPs no necesitan un grado de cumplimiento de las restricciones, solo necesitan saber si las restricciones se cumplen en su totalidad o no. Una posible soluci\'on ser\'ia discretizar el intervalo, o sea, fijar un valor $k$ entre 0 y 1, donde horarios con calidad inferior a $k$ no son aceptados.
+
+Originalmente dicha funci\'on de evaluaci\'on se encontraba dentro del propio sistema, acceder a ella era mediante peticiones HTTP y el proceso de evaluaci\'on hac\'ia un uso excesivo de la base de datos. Todos estos factores hac\'ian el proceso muy lento. En situaciones donde se requiere sucesivas evaluaciones esta propuesta no era factible. Actualmente se est\'a trabajando en exportar la implementaci\'on de la funci\'on hacia un contexto donde no se necesiten hacer peticiones HTTP ni est\'e involucrada la base de datos.
+
+Incluso si se lograra exportar la funci\'on de evaluaci\'on, el c\'alculo de esta es muy complejo y no alcanzar\'ia el nivel de rapidez necesitado.
+
 \subsection{Estructura del grafo de restricciones}
 
 \section{Algoritmos y t\'ecnicas implementadas}
