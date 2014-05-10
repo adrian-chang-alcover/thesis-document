@@ -96,7 +96,18 @@ Anteriormente se hab\'ia comentado que el sistema nos ofrece una funci\'on de ev
 
 Originalmente dicha funci\'on de evaluaci\'on se encontraba dentro del propio sistema, acceder a ella era mediante peticiones HTTP y el proceso de evaluaci\'on hac\'ia un uso excesivo de la base de datos. Todos estos factores hac\'ian el proceso muy lento. En situaciones donde se requiere sucesivas evaluaciones esta propuesta no era factible. Actualmente se est\'a trabajando en exportar la implementaci\'on de la funci\'on hacia un contexto donde no se necesiten hacer peticiones HTTP ni est\'e involucrada la base de datos.
 
-Incluso si se lograra exportar la funci\'on de evaluaci\'on, el c\'alculo de esta es muy complejo y no alcanzar\'ia el nivel de rapidez necesitado.
+Incluso si se lograra exportar la funci\'on de evaluaci\'on, el c\'alculo de esta es muy complejo y no alcanzar\'ia el nivel de rapidez necesario. Con el objetivo de optimizar el proceso y de disminuir el n\'umero de evaluaciones de la funci\'on de felicidad, se definieron 4 restricciones ajenas al sistema que todo horario debe cumplir:
+
+\begin{description}
+
+\item[Restricci\'on de local]: En un local no se debe impartir m\'as de una clase al mismo tiempo.
+\item[Restricci\'on de profesor]: Un profesor no debe tener m\'as de una clase planificada al mismo tiempo.
+\item[Restricci\'on de grupo]: Un grupo no debe tener m\'as de una clase asignada al mismo tiempo.
+\item[Restricci\'on de orden cronol\'ogico entre actividades]: Se debe respetar el orden cronol\'ogico entre las actividades entablecido en la tabla \emph{partitions}.
+
+\end{description}
+
+De esta forma solo se pasa a evaluar la funci\'on de felicidad si el horario cumple las cuatro restricciones anteriores.
 
 \subsection{Estructura del grafo de restricciones}
 
