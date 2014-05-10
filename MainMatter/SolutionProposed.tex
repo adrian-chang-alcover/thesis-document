@@ -86,7 +86,9 @@ En el sistema un horario est\'a definido por un conjunto de actividades (tabla \
 	\item[Tipo de turno] si es conferencia, clase pr\'actica, laboratorio, etc.
 \end{description}
 
-Las variables son tuplas de la forma <grupo, asignatura, tipo de turno> y los valores <día, profesor, turno, local>. 
+Las variables son tuplas de la forma <grupo, asignatura, tipo de turno> y los valores <día, profesor, turno, local>. Al final cada variable tendr\'a asignado un valor de su dominio, habiendo hecho esto, cada asignaci\'on tendr\'a toda la informaci\'on necesaria para definir una actividad.
+
+Las variables son todas las combinaciones v\'alidas de grupo, asignatura y tipo de turno. Por v\'alida se refiere a que no tiene sentido una variable donde el grupo no reciba dicha asignatura. Igual no tiene sentido incluir la dimensi\'on local dentro de las variables, porque no todos los locales tienen por que estar ocupados, sucede lo mismo con las dimensiones d\'ia, profesor y turno. Sin embargo, el horario tiene que garantizar que todos los grupos den todos los turnos de sus asignaturas correspondientes. Es por eso que se definieron las variables y los valores de esa forma y no de otra. 
 
 \subsection{Restricciones}
 
