@@ -111,6 +111,12 @@ De esta forma solo se pasa a evaluar la funci\'on de felicidad si el horario cum
 
 \subsection{Estructura del grafo de restricciones}
 
+Todo CSP puede ser representado por un grafo de restricciones, donde los v\'ertices son las variables y las aristas indican que dos variables est\'an relacionadas en alguna restricci\'on. Este grafo es usado en las t\'ecnicas \emph{forward checking} y \emph{arc consistency} donde luego de asignar una variable se analiza las consecuencias que esta pudiera tener en las variables vecinas en el grafo de restricciones.
+
+Analizar la estructura del grafo de restricciones ayudar\'ia a descomponer el problema en subproblemas independientes reduciendo exponencialmente la complejidad del mismo. Si en el grafo existen m\'as de una componente conexa entonces el problema puede ser divido en subproblemas independientes. Las t\'ecnicas \emph{forward checking} y \emph{arc consistency} son favorecidas si el grafo es poco denso.
+
+Desafortunadamente el grafo de restricciones para este problema es completo.
+
 \section{Algoritmos y t\'ecnicas implementadas}
 
 \subsection{Backtracking Recursive}
