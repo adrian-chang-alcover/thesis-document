@@ -115,7 +115,7 @@ Todo CSP puede ser representado por un grafo de restricciones, donde los v\'erti
 
 Analizar la estructura del grafo de restricciones ayudar\'ia a descomponer el problema en subproblemas independientes reduciendo exponencialmente la complejidad del mismo. Si en el grafo existen m\'as de una componente conexa entonces el problema puede ser divido en subproblemas independientes. Las t\'ecnicas \emph{forward checking} y \emph{arc consistency} son favorecidas si el grafo es poco denso.
 
-Desafortunadamente el grafo de restricciones para este problema es completo.
+Desafortunadamente el grafo de restricciones para este problema es completo. En primer lugar, dada la amplia gama de restricciones que pueden ser expresadas en el sistema, obliga a que si una sola actividad es modificada es necesario evaluar todo el horario para obtener su grado de felicidad. En segundo lugar, est\'an las cuatro restricciones definidas anteriormente, por ejemplo, la restricci\'on de local, expresa que no pueden existir dos actividades que requieran del mismo local simultaneamente, para ello es necesario chequear todas las variables existentes. 
 
 \section{Algoritmos y t\'ecnicas implementadas}
 
