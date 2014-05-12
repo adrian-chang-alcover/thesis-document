@@ -103,7 +103,7 @@ Incluso si se lograra exportar la funci\'on de evaluaci\'on, el c\'alculo de est
 \item[Restricci\'on de local]: En un local no se debe impartir m\'as de una clase al mismo tiempo.
 \item[Restricci\'on de profesor]: Un profesor no debe tener m\'as de una clase planificada al mismo tiempo.
 \item[Restricci\'on de grupo]: Un grupo no debe tener m\'as de una clase asignada al mismo tiempo.
-\item[Restricci\'on de orden cronol\'ogico entre actividades]: Se debe respetar el orden cronol\'ogico entre las actividades entablecido en la tabla \emph{partitions}.
+\item[Restricci\'on de orden cronol\'ogico entre actividades]: Se debe respetar el orden cronol\'ogico entre las actividades establecido en la tabla \emph{partitions}.
 
 \end{description}
 
@@ -118,6 +118,14 @@ Analizar la estructura del grafo de restricciones ayudar\'ia a descomponer el pr
 Desafortunadamente el grafo de restricciones para este problema es completo. En primer lugar, dada la amplia gama de restricciones que pueden ser expresadas en el sistema, obliga a que si una sola actividad es modificada es necesario evaluar todo el horario para obtener su grado de felicidad. En segundo lugar, est\'an las cuatro restricciones definidas anteriormente, por ejemplo, la restricci\'on de local, expresa que no pueden existir dos actividades que requieran del mismo local simultaneamente, para ello es necesario chequear todas las variables existentes. 
 
 \section{Algoritmos y t\'ecnicas implementadas}
+
+En el cap\'itulo ``Problemas de Satisfacci\'on de Restricciones'' se menciona que el tamaño del espacio de b\'usqueda para un CSP es $O(d^{n})$, donde $d$ es el tamaño m\'aximo de los dominios de valores y $n$ la cantidad de variables. Aproximadamente exiten unas 260 variables por semana, cada semestre tiene unas 17 semanas, dando un total de $4\,420$ variables por semestre. El tamaño promedio de los dominios de valores es de 180, dando unas $180^{4\,420}$ posibles soluciones, este n\'umero es extremadamente grande.
+
+Con el objetivo de disminuir el n\'umero de variables se asume que las semanas del semestre son independientes una de otras, quiere esto decir que se puede generar el horario por semanas. Aunque el sistema permite modelar restricciones que involucren actividades en semanas diferentes, estas son muy espec\'ificas y se puede prescindir de ellas en aras de disminuir exponencialmente el espacio de b\'usqueda. Asumiendo esto quedar\'ian unas $180^{260}$ posibles soluciones para el horario de una semana.
+
+generar primera semana y luego condicionar el resto
+
+A continuaci\'on se mostrar\'an los algoritmos y t\'ecnicas utilizadas para darle soluci\'on al problema, as\'i como el diseño de la jerarqu\'ia de clases.
 
 \subsection{Backtracking Recursive}
 
