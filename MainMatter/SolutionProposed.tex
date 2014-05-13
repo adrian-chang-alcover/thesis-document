@@ -155,6 +155,16 @@ En la figura \ref{mrv_ruby} se muestra la clase \textsf{MinimumRemainingValues} 
 
 \subsection{Forward Checking}
 
+En la clase \textsf{ForwardChecking} se tuvo que redefinir el m\'etodo \textsf{recursive\_backtracking} (ver figura \ref{fc_1_ruby}) por tres razones:
+
+\begin{itemize}
+
+\item Luego de cada asignaci\'on se tienen que filtrar los dominios de las variables vecinas, para ello se llama al m\'etodo \textsf{filter} el cual es un alias al m\'etodo \textsf{forward\_checking}.
+\item Dado que los valores en cada domminio son consistentes con las asignaciones previas, producto de haber aplicado \textsf{forward\_checking} tras cada asignaci\'on, no es necesario chequear consistencia antes de asignar un valor a una variable.
+\item Cuando se retorna de un llamado recursivo los dominios de cada variable deben quedar como estaban antes de hacer el llamado, para ello en la variable \textsf{@domains\_stack} se guarda el estado de los dominios antes de hacer un llamado recursivo.
+
+\end{itemize}
+
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[scale=0.95]{Graphics/fc_1_ruby}
@@ -162,6 +172,8 @@ En la figura \ref{mrv_ruby} se muestra la clase \textsf{MinimumRemainingValues} 
 		\label{fc_1_ruby}
 	\end{center}	
 \end{figure}
+
+En el m\'etodo \textsf{forward\_checking} de la clase \textsf{ForwardChecking}
 
 \begin{figure}[h]
 	\begin{center}
@@ -172,5 +184,7 @@ En la figura \ref{mrv_ruby} se muestra la clase \textsf{MinimumRemainingValues} 
 \end{figure}
 
 \subsection{Arc Consistency}
+
+pep
 
 \subsection{B\'usqueda Local con Min-Conflicts}
