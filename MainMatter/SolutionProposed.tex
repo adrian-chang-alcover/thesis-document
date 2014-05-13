@@ -143,15 +143,33 @@ En la figura \ref{rb_ruby} se muestra el m\'etdo principal \textsf{recursive\_ba
 
 \subsection{Minimum Remaining Values}
 
+En la figura \ref{mrv_ruby} se muestra la clase \textsf{MinimumRemainingValues} que hereda de \textsf{RecursiveBacktracking}. Esta clase lo \'unico que hace es sobrescribir el m\'etodo \textsf{select\_unassigned\_variable}, retornando la variable sin asignar de menor dominio. Este orden es est\'atico, o sea, no cambia durante la b\'usqueda, a menos que se apliquen las t\'ecnicas de filtrado \emph{forward checking} y \emph{arc consistency} que producen un cambio en los dominios de valores durante la b\'usqueda.
+
 \begin{figure}[h]
 	\begin{center}
-		\includegraphics[scale=0.9]{Graphics/mrv_ruby}
+		\includegraphics[scale=0.88]{Graphics/mrv_ruby}
 		\caption{La clase \textsf{MinimumRemainingValues}.}
 		\label{mrv_ruby}
 	\end{center}	
 \end{figure}
 
 \subsection{Forward Checking}
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=0.95]{Graphics/fc_1_ruby}
+		\caption{M\'etodo \textsf{recursive\_backtracking} de la clase \textsf{ForwardChecking}.}
+		\label{fc_1_ruby}
+	\end{center}	
+\end{figure}
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[scale=0.9]{Graphics/fc_2_ruby}
+		\caption{M\'etodo \textsf{forward\_checking} de la clase \textsf{ForwardChecking}.}
+		\label{fc_2_ruby}
+	\end{center}	
+\end{figure}
 
 \subsection{Arc Consistency}
 
