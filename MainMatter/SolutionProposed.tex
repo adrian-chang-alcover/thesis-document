@@ -187,8 +187,6 @@ En el m\'etodo \textsf{forward\_checking} de la clase \textsf{ForwardChecking} (
 
 La clase \textsf{ArcConsistency} hereda de \textsf{ForwardChecking}, dado que la t\'ecnica \emph{arc consistency} es una extenci\'on de \emph{forward checking}, donde luego de eliminar valores inconsistentes se vuelven a chequear los arcos que apuntan a la variable con dichos valores. Con esto se logra reutilizar el m\'etodo \textsf{recursive\_backtracking} redefinido en la clase \textsf{ForwardChecking}.
 
-Las figuras \ref{AC3_1_ruby} y \ref{AC3_2_ruby} muestran una implementaci\'on de los m\'etodos para consistencia de arcos descritos en el cap\'itulo ``Problemas de Satisfacci\'on de Restricciones''. El m\'etodo \textsf{AC3} es un alias al m\'etodo \textsf{filter} llamado en \textsf{recursive\_backtracking} de la clase \textsf{ForwardChecking}.
-
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[scale=0.75]{Graphics/AC3_1_ruby}
@@ -204,6 +202,8 @@ Las figuras \ref{AC3_1_ruby} y \ref{AC3_2_ruby} muestran una implementaci\'on de
 		\label{AC3_2_ruby}
 	\end{center}	
 \end{figure}
+
+Las figuras \ref{AC3_1_ruby} y \ref{AC3_2_ruby} muestran una implementaci\'on de los m\'etodos para consistencia de arcos descritos en el cap\'itulo ``Problemas de Satisfacci\'on de Restricciones''. El m\'etodo \textsf{AC3} es un alias al m\'etodo \textsf{filter} llamado en \textsf{recursive\_backtracking} de la clase \textsf{ForwardChecking}.
 
 \subsection{B\'usqueda Local con Min-Conflicts}
 
