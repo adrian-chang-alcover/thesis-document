@@ -207,6 +207,8 @@ Las figuras \ref{AC3_1_ruby} y \ref{AC3_2_ruby} muestran una implementaci\'on de
 
 \subsection{B\'usqueda Local con Min-Conflicts}
 
+En la figura \ref{mc_ruby} se muestra una implementaci\'on del algoritmo de b\'usqueda local con \emph{min-conflicts} abordado en la secci\'on ``B\'usqueda Local para Problemas de Satisfacci\'on de Restricciones'' del cap\'itulo ``Problemas de Satisfacci\'on de Restricciones''. 
+
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[scale=0.7]{Graphics/mc_ruby}
@@ -214,3 +216,10 @@ Las figuras \ref{AC3_1_ruby} y \ref{AC3_2_ruby} muestran una implementaci\'on de
 		\label{mc_ruby}
 	\end{center}	
 \end{figure}
+
+En el algoritmo de las variables inconsistentes se selecciona una al azar:
+\begin{center}	\textsf{var = inconsistent\_variables.sample}	\end{center}
+
+Luego de esa variable se selecciona su mejor valor, es decir, el valor que cumpla la mayor cantidad de restricciones posibles:
+\begin{center}	\textsf{value = best\_value(var, assignment)}	\end{center}
+
