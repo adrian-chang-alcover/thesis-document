@@ -1,6 +1,6 @@
 \chapter{Propuesta de Solución}
 
-En este cap\'itulo se presenta una posible soluci\'on al problema de generar un horario universitario de clases de forma autom\'atica, para ello se modelar\'a como un Problema de Satisfacci\'on de Restricciones. Del Sistema de Gesti\'on de Horarios se explicar\'a la modelaci\'on de la entidades involucradas, la funci\'on de felicidad del sistema y un API para interactuar con el mismo. Luego se mostrar\'a c\'omo se definieron las variables y los dominios de valores de las mismas, las restricciones del problema y la estructura del grafo de restricciones. Por \'ultimo se examinar\'an los algoritmos y t\'ecnicas utilizadas para darle soluci\'on al problema.
+En este cap\'itulo se presenta una posible soluci\'on al problema de generar un horario universitario de clases de forma autom\'atica, para ello se modelar\'a como un Problema de Satisfacci\'on de Restricciones. Del Sistema de Gesti\'on de Horarios se explicar\'a la modelaci\'on de las entidades involucradas, la funci\'on de felicidad del sistema y un API para interactuar con el mismo. Luego se mostrar\'a c\'omo se definieron las variables y los dominios de valores de las mismas, las restricciones del problema y la estructura del grafo de restricciones. Por \'ultimo se examinar\'an los algoritmos y t\'ecnicas utilizadas para darle soluci\'on al problema.
 
 \section{Interacci\'on con el Sistema de Gesti\'on de Horarios}
 
@@ -30,9 +30,9 @@ La tabla \emph{partitions} se utiliza para conocer dado una semana la cantidad y
 
 \subsection{Funci\'on de felicidad del sistema}
 
-El Sistema de Gesti\'on de Horarios tiene un m\'odulo dedicado a la especificaci\'on de restricciones. En \'el cada profesor puede especificar sus condiciones o preferencias. Una gran variedad de restricciones pueden ser modeladas, por ejemplo, que un profesor prefiera que todos sus turnos de clases sean en un aula determinada o en un d\'ia espec\'ifico de la semana, que los turnos de conferencia sean en los primeros dias de la semana o que dos turnos de conferencia de una asignatura sean en turnos consecutivos.
+El Sistema de Gesti\'on de Horarios tiene un m\'odulo dedicado a la especificaci\'on de restricciones. En \'el cada profesor puede especificar sus condiciones o preferencias. Una gran variedad de restricciones pueden ser modeladas, por ejemplo, que un profesor prefiera que todos sus turnos de clases sean en un aula determinada o en un d\'ia espec\'ifico de la semana, que los turnos de conferencia sean en los primeros d\'ias de la semana o que dos turnos de conferencia de una asignatura sean en turnos consecutivos.
 
-Cada profesor puede definir varias restricciones y a cada una de ellas le puede asociar una prioridad. Pueden existir restricciones a las que el profesor le gustar\'ia que se tomaran en cuenta y pueden exitir otras restricciones que tengan una importacia de primer orden para \'el, por ejemplo la imposibilidad de impartir clases un determinado d\'ia de la semana, a estas \'ultimas restricciones el profesor debe darles una prioridad alta.
+Cada profesor puede definir varias restricciones y a cada una de ellas le puede asociar una prioridad. Pueden existir restricciones a las que el profesor le gustar\'ia que se tomaran en cuenta y pueden existir otras restricciones que tengan una importancia de primer orden para \'el, por ejemplo la imposibilidad de impartir clases un determinado d\'ia de la semana, a estas \'ultimas restricciones el profesor debe darles una prioridad alta.
 
 El sistema define la felicidad de un profesor como el grado de cumplimiento de sus restricciones en el horario actual. Dicha medida es calculada por la siguiente funci\'on:
 
@@ -68,7 +68,7 @@ Paralelo a este trabajo se est\'a implementando un API para interactuar con el S
 
 \section{Modelaci\'on como un CSP}
 
-Al principio del cap\'itulo ``Problemas de Satisfacción de Restricciones'' se exponen una serie de beneficios que aporta modelar un problema como un CSP. A diferencia de las meta heur\'isticas con que se suelen atacar este tipo de problemas, a los CSPs se le pueden aplicar algoritmos completos, esto quiere decir, que si existe un horario que logre satisfacer todas las restricciones impuestas por los profesores, estos algoritmos completos de seguro la van a encontrar, no sucediendo as\'i con m\'etodos de b\'uqueda local.
+Al principio del cap\'itulo ``Problemas de Satisfacción de Restricciones'' se exponen una serie de beneficios que aporta modelar un problema como un CSP. A diferencia de las meta heur\'isticas con que se suelen atacar este tipo de problemas, a los CSPs se le pueden aplicar algoritmos completos, esto quiere decir, que si existe un horario que logre satisfacer todas las restricciones impuestas por los profesores, estos algoritmos completos de seguro la van a encontrar, no sucediendo as\'i con m\'etodos de b\'usqueda local.
 
 En esta secci\'on se explicar\'a la modelaci\'on del problema como un CSP. Se definir\'an las variables con sus valores posibles, las restricciones y c\'omo queda la estructura del grafo de restricciones.
 
@@ -113,13 +113,13 @@ De esta forma solo se pasa a evaluar la funci\'on de felicidad si el horario cum
 
 Todo CSP puede ser representado por un grafo de restricciones, donde los v\'ertices son las variables y las aristas indican que dos variables est\'an relacionadas en alguna restricci\'on. Este grafo es usado en las t\'ecnicas \emph{forward checking} y \emph{arc consistency} donde luego de asignar una variable se analiza las consecuencias que esta pudiera tener en las variables vecinas en el grafo de restricciones.
 
-Analizar la estructura del grafo de restricciones ayudar\'ia a descomponer el problema en subproblemas independientes reduciendo exponencialmente la complejidad del mismo. Si en el grafo existen m\'as de una componente conexa entonces el problema puede ser divido en subproblemas independientes. Las t\'ecnicas \emph{forward checking} y \emph{arc consistency} son favorecidas si el grafo es poco denso.
+Analizar la estructura del grafo de restricciones ayudar\'ia a descomponer el problema en subproblemas independientes reduciendo exponencialmente la complejidad del mismo. Si en el grafo existe m\'as de una componente conexa entonces el problema puede ser divido en subproblemas independientes. Las t\'ecnicas \emph{forward checking} y \emph{arc consistency} son favorecidas si el grafo es poco denso.
 
-Desafortunadamente el grafo de restricciones para este problema es completo. En primer lugar, dada la amplia gama de restricciones que pueden ser expresadas en el sistema, obliga a que si una sola actividad es modificada es necesario evaluar todo el horario para obtener su grado de felicidad. En segundo lugar, est\'an las cuatro restricciones definidas anteriormente, por ejemplo, la restricci\'on de local, expresa que no pueden existir dos actividades que requieran del mismo local simultaneamente, para ello es necesario chequear todas las variables existentes. 
+Desafortunadamente el grafo de restricciones para este problema es completo. En primer lugar, dada la amplia gama de restricciones que pueden ser expresadas en el sistema, obliga a que si una sola actividad es modificada es necesario evaluar todo el horario para obtener su grado de felicidad. En segundo lugar, est\'an las cuatro restricciones definidas anteriormente, por ejemplo, la restricci\'on de local, expresa que no pueden existir dos actividades que requieran del mismo local simult\'aneamente, para ello es necesario chequear todas las variables existentes. 
 
 \section{Algoritmos y t\'ecnicas implementadas}
 
-En el cap\'itulo ``Problemas de Satisfacci\'on de Restricciones'' se menciona que el tamaño del espacio de b\'usqueda para un CSP es $O(d^{n})$, donde $d$ es el tamaño m\'aximo de los dominios de valores y $n$ la cantidad de variables. Aproximadamente exiten unas 260 variables por semana, cada semestre tiene unas 17 semanas, dando un total de $4\,420$ variables por semestre. El tamaño promedio de los dominios de valores es de 180, dando unas $180^{4\,420}$ posibles soluciones, este n\'umero es extremadamente grande.
+En el cap\'itulo ``Problemas de Satisfacci\'on de Restricciones'' se menciona que el tamaño del espacio de b\'usqueda para un CSP es $O(d^{n})$, donde $d$ es el tamaño m\'aximo de los dominios de valores y $n$ la cantidad de variables. Aproximadamente existen unas 260 variables por semana, cada semestre tiene unas 17 semanas, dando un total de $4\,420$ variables por semestre. El tamaño promedio de los dominios de valores es de 180, dando unas $180^{4\,420}$ posibles soluciones, este n\'umero es extremadamente grande.
 
 Con el objetivo de disminuir el n\'umero de variables se asume que las semanas del semestre son independientes una de otras, quiere esto decir que se puede generar el horario por semanas. Aunque el sistema permite modelar restricciones que involucren actividades en semanas diferentes, estas son muy espec\'ificas y se puede prescindir de ellas en aras de disminuir exponencialmente el espacio de b\'usqueda. Asumiendo esto, quedar\'ian unas $180^{260}$ posibles soluciones para el horario de una semana.
 
@@ -185,7 +185,7 @@ En el m\'etodo \textsf{forward\_checking} de la clase \textsf{ForwardChecking} (
 
 \subsection{Arc Consistency}
 
-La clase \textsf{ArcConsistency} hereda de \textsf{ForwardChecking}, dado que la t\'ecnica \emph{arc consistency} es una extenci\'on de \emph{forward checking}, donde luego de eliminar valores inconsistentes se vuelven a chequear los arcos que apuntan a la variable con dichos valores. Con esto se logra reutilizar el m\'etodo \textsf{recursive\_backtracking} redefinido en la clase \textsf{ForwardChecking}.
+La clase \textsf{ArcConsistency} hereda de \textsf{ForwardChecking}, dado que la t\'ecnica \emph{arc consistency} es una extensi\'on de \emph{forward checking}, donde luego de eliminar valores inconsistentes se vuelven a chequear los arcos que apuntan a la variable con dichos valores. Con esto se logra reutilizar el m\'etodo \textsf{recursive\_backtracking} redefinido en la clase \textsf{ForwardChecking}.
 
 \begin{figure}[h]
 	\begin{center}
