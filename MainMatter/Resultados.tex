@@ -1,8 +1,23 @@
 \chapter{An\'alisis de Resultados}
 
-En este cap\'itulo se analizan los resultados de haber aplicado los algoritmos implementados a diferentes CSPs. Para ello probamos dos instancias del problema de los horarios obtenidos mediante la modificaci\'on y la adici\'on de restricciones
+En este cap\'itulo se analizan los resultados de haber aplicado los algoritmos implementados a diferentes CSPs. Para ello probamos dos instancias del problema de los horarios obtenidos mediante la modificaci\'on y la adici\'on de restricciones. Se comparan distintas metodolog\'ias para generar el horario completo de un semestre. Adem\'as se implement\'o el problema de las n-reinas y un problema de criptograf\'ia sencillo con el objetivo de comparar los algoritmos implementados frente a diferentes problemas.
 
 \section{Comparaci\'on entre distintas instancias del problema de los horarios}
+
+\begin{table}[h]
+	\caption{Resultado de haber aplicado los algoritmos implementados a distintas instancias del problema de los horarios}
+	\begin{center}
+		\label{1semana}
+		\begin{tabular}{lcc}
+			Algoritmos & Instancia f\'acil & Instancia dura \\ \hline
+			RecursiveBacktracking & 5 & 10 \\
+			MinimumRemainingValues & 5 & 10 \\
+			ForwardChecking & 5 & 10 \\
+			ArcConsistency & 5 & 10 \\
+			MinConflicts & 5 & 10
+		\end{tabular}
+	\end{center}
+\end{table}
 
 \section{Comparaci\'on entre distintas metodolog\'ias para generar un horario completo}
 
