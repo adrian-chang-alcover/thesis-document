@@ -7,7 +7,7 @@ En este cap\'itulo se analizan los resultados de haber aplicado los algoritmos i
 En esta secci\'on se analizan los resultados de generar el horario de una semana para dos instancias diferentes del problema de los horarios utilizando los algoritmos implementados. La primera instancia probada, ``instancia f\'acil'', consta de solo las 4 restricciones vistas en la secci\'on ``Modelaci\'on como un CSP'' del cap\'itulo ``Propuesta de Solución'', las restricciones de local, de profesor, de grupo y de orden cronol\'ogico entre actividades. A la segunda instancia, ``instancia dura'', se le adicionaron restricciones de preferencias de profesores con respecto a d\'ias de la semana o secci\'on del d\'ia. Adem\'as se le adicion\'o la restricci\'on que toda actividad fuera de la facultad debe ser dada al mismo tiempo por todos los grupos del año. Ambas instancias del problema tienen 274 variables y el tamaño promedio de los dominios es 180.
 
 \begin{table}[h]
-	\caption{Resultado de haber aplicado los algoritmos implementados a distintas instancias del problema de los horarios}
+	\caption{Resultados de haber aplicado los algoritmos implementados a distintas instancias del problema de los horarios}
 	\begin{center}
 		\label{1semana}
 		\begin{tabular}{|l|c|c||}
@@ -32,3 +32,24 @@ En la tabla \ref{1semana} se muestran los resultados. El algoritmo que m\'as r\'
 \section{Comparaci\'on entre distintas metodolog\'ias para generar un horario completo}
 
 \section{Comparaci\'on entre distintos problemas}
+
+\begin{table}[h]
+	\caption{Resultados de haber aplicado los algoritmos implementados a el problema de las n-reinas y a un problema sencillo de criptograf\'ia}
+	\begin{center}
+		\label{2problemas}
+		\begin{tabular}{|l|c|c||}
+			\hline \hline
+			Algoritmos & n-reinas & criptograf\'ia \\ \hline
+			RB & 33 segundos & 0.0015 segundos \\
+			 & $48\,683$ nodos explorados & 12 nodos explorados \\ \hline
+			MRV & 34 segundos &  0.0018 segundos \\
+			 & $48\,683$ nodos explorados & 12 nodos explorados \\ \hline
+			FC & 0.58 segundos & 0.0186 segundos \\
+			 & 275 nodos explorados & 11 nodos explorados \\ \hline
+			AC & 6.67 segundos &  0.0263 segundos \\
+			 & 96 nodos explorados & 11 nodos explorados \\ \hline
+			MC & 0.148 segundos & 0.039 segundos \\
+			 & 38 iteraciones & 46 iteraciones \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
