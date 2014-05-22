@@ -31,6 +31,23 @@ En la tabla \ref{1semana} se muestran los resultados. El algoritmo que m\'as r\'
 
 \section{Comparaci\'on entre distintas metodolog\'ias para generar un horario completo}
 
+\begin{table}[h]
+	\caption{Resultados de distintas metodolog\'ias para generar el horario de un semestre completo}
+	\begin{center}
+		\label{semestre}
+		\begin{tabular}{|l|c||}
+			\hline \hline
+			Metodolog\'ias & Instancia f\'acil \\ \hline
+			RB + RB & 10.9 segundos en la primera semana \\
+			 & 16.4 segundos en el resto de las semanas \\ \hline
+			RB + FC & 10.8 segundos en la primera semana \\
+			 & 2 horas y 24 minutos en el resto de las semanas \\ \hline
+			RB + MC & 10.9 segundos en la primera semana \\
+			 & 1 minuto y 7 segundos en el resto de las semanas \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
 \section{Comparaci\'on entre distintos problemas}
 
 En esta secci\'on se analizan los resultados de haber aplicado los algoritmos al problema de las n-reinas y a un problema de criptograf\'ia sencillo, con el objetivo de comparar c\'omo se comportan los m\'etodos frente a diferentes CSPs. El problema de las n-reinas se implement\'o con 25 reinas. El problema de criptograf\'ia consisten en asignarle a cada letra involucrada un d\'igito del 0 al 9 para que la siguiente suma tenga sentido:
