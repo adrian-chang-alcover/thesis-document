@@ -31,8 +31,10 @@ En la tabla \ref{1semana} se muestran los resultados. El algoritmo que m\'as r\'
 
 \section{Comparaci\'on entre distintas metodolog\'ias para generar un horario completo}
 
+En la secci\'on ``Algoritmos y t\'ecnicas implementadas'' del cap\'itulo ``Propuesta de Solución'' se propone como metodolog\'ia para generar el horario de un semestre completo, generar el horario de la primera semana con cualquier algoritmo y luego generar las dem\'as semanas a partir del horario de la semana anterior.
+
 \begin{table}[h]
-	\caption{Resultados de distintas metodolog\'ias para generar el horario de un semestre completo}
+	\caption{Resultados de distintas metodolog\'ias para generar el horario de un semestre completo para la instancia f\'acil}
 	\begin{center}
 		\label{semestre}
 		\begin{tabular}{|l|c||}
@@ -47,6 +49,8 @@ En la tabla \ref{1semana} se muestran los resultados. El algoritmo que m\'as r\'
 		\end{tabular}
 	\end{center}
 \end{table}
+
+En la tabla \ref{semestre} se muestran los resultados de aplicar distintas metodolog\'ias a la instancia f\'acil. En todas se le aplica \textsf{RecursiveBacktracking} a la primera semana, por ejemplo la notaci\'on ``RB + FC'' significa que a la primera semana se le aplic\'o \textsf{RecursiveBacktracking} y luego al resto de las semanas \textsf{ForwardChecking}. Los resultados confirman lo mencionado en el cap\'itulo anterior, que para el resto de las semanas es conveniente usar \textsf{RecursiveBacktracking} o \textsf{MinConflicts}, dado que los valores en los dominios est\'an condicionados y quiz\'as una t\'ecnica de filtrado resulte innecesaria.
 
 \section{Comparaci\'on entre distintos problemas}
 
