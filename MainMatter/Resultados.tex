@@ -6,7 +6,7 @@ En este cap\'itulo se analizan los resultados de haber aplicado los algoritmos i
 
 En esta secci\'on se analizan los resultados de generar el horario de una semana para dos instancias diferentes del problema de los horarios utilizando los algoritmos implementados. La primera instancia probada, ``instancia f\'acil'', consta de solo las 4 restricciones vistas en la secci\'on ``Modelaci\'on como un CSP'' del cap\'itulo ``Propuesta de Solución'', las restricciones de local, de profesor, de grupo y de orden cronol\'ogico entre actividades. A la segunda instancia, ``instancia dura'', se le adicionaron restricciones de preferencias de profesores con respecto a d\'ias de la semana o secci\'on del d\'ia. Adem\'as se le adicion\'o la restricci\'on que toda actividad fuera de la facultad debe ser dada al mismo tiempo por todos los grupos del año.
 
-En la cuarta semana del primer semestre de la facultad de Matem\'atica y Computaci\'on de la Universidad de La Habana, 4to año de Computaci\'on no tiene clases palinificadas y comienza sus clases 1er año de Matem\'atica dado que estos reciben un curso introductorio al comienzo del semestre. Con el objetivo de generar un horario donde todos los años est\'en involucrados, se genera el horario para la quinta semana del semestre. Ambas instancias del problema tienen 274 variables y el tamaño promedio de los dominios es 180.
+En la cuarta semana del primer semestre de la facultad de Matem\'atica y Computaci\'on de la Universidad de La Habana, 4to año de Computaci\'on no tiene clases palinificadas y comienza sus clases 1er año de Matem\'atica dado que estos reciben un curso introductorio al comienzo del semestre. Con el objetivo de generar un horario donde todos los años de ambas carreras est\'en involucrados, se genera el horario para la quinta semana del semestre. Ambas instancias del problema tienen 274 variables y el tamaño promedio de los dominios es 180.
 
 \begin{table}[h]
 	\caption{Resultados de haber aplicado los algoritmos implementados a distintas instancias del problema de los horarios}
@@ -60,7 +60,7 @@ En la tabla \ref{semestre} se muestran los resultados de aplicar distintas metod
 		\label{2semestre}
 		\begin{tabular}{|l|c||}
 			\hline \hline
-			Metodolog\'ias & Instancia dural \\ \hline
+			Metodolog\'ias & Instancia dura \\ \hline
 			RB + RB & 46 segundos en la primera semana \\
 			 &  m\'as de 10 horas en el resto de las semanas \\ \hline
 			RB + FC & 44 segundos en la primera semana \\
