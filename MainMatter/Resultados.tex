@@ -41,6 +41,25 @@ En la secci\'on ``Algoritmos y t\'ecnicas implementadas'' del cap\'itulo ``Propu
 			\hline \hline
 			Metodolog\'ias & Instancia f\'acil \\ \hline
 			RB + RB & 10.9 segundos en la primera semana \\
+			 &  m\'as de 10 horas en el resto de las semanas \\ \hline
+			RB + FC & 44 segundos en la primera semana \\
+			 & 2 horas y 27 minutos en el resto de las semanas \\ \hline
+			RB + MC & 43 segundos en la primera semana \\
+			 & 2 minutos y 16 segundos en el resto de las semanas \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+En la tabla \ref{semestre} se muestran los resultados de aplicar distintas metodolog\'ias a la instancia f\'acil. En todas se le aplica \textsf{RecursiveBacktracking} a la primera semana, por ejemplo la notaci\'on ``RB + FC'' significa que a la primera semana se le aplic\'o \textsf{RecursiveBacktracking} y luego al resto de las semanas \textsf{ForwardChecking}. Los resultados confirman lo mencionado en el cap\'itulo anterior, que para el resto de las semanas es conveniente usar \textsf{RecursiveBacktracking} o \textsf{MinConflicts}, dado que los valores en los dominios est\'an condicionados y quiz\'as una t\'ecnica de filtrado resulte innecesaria.
+
+\begin{table}[h]
+	\caption{Resultados de distintas metodolog\'ias para generar el horario de un semestre completo para la instancia dura}
+	\begin{center}
+		\label{semestre}
+		\begin{tabular}{|l|c||}
+			\hline \hline
+			Metodolog\'ias & Instancia dura \\ \hline
+			RB + RB & 46 segundos en la primera semana \\
 			 & 16.4 segundos en el resto de las semanas \\ \hline
 			RB + FC & 10.8 segundos en la primera semana \\
 			 & 2 horas y 24 minutos en el resto de las semanas \\ \hline
@@ -49,8 +68,6 @@ En la secci\'on ``Algoritmos y t\'ecnicas implementadas'' del cap\'itulo ``Propu
 		\end{tabular}
 	\end{center}
 \end{table}
-
-En la tabla \ref{semestre} se muestran los resultados de aplicar distintas metodolog\'ias a la instancia f\'acil. En todas se le aplica \textsf{RecursiveBacktracking} a la primera semana, por ejemplo la notaci\'on ``RB + FC'' significa que a la primera semana se le aplic\'o \textsf{RecursiveBacktracking} y luego al resto de las semanas \textsf{ForwardChecking}. Los resultados confirman lo mencionado en el cap\'itulo anterior, que para el resto de las semanas es conveniente usar \textsf{RecursiveBacktracking} o \textsf{MinConflicts}, dado que los valores en los dominios est\'an condicionados y quiz\'as una t\'ecnica de filtrado resulte innecesaria.
 
 \section{Comparaci\'on entre distintos problemas}
 
