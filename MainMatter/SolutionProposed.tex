@@ -131,7 +131,7 @@ A continuaci\'on se mostrar\'an los algoritmos y t\'ecnicas utilizadas para darl
 
 La clase \textsf{RecursiveBacktracking} es la base de la jerarqu\'ia, sobre ella se aplican todas las heur\'isticas y t\'ecnicas de filtrado. Su creaci\'on requiere de los par\'ametros \textsf{domains} y \textsf{constraints}. El par\'ametro \textsf{domains} es un diccionario donde las llaves son las variables y los valores son arrays indicando el dominio de valores de cada variable y el par\'ametro \textsf{constraints} es un array de m\'etodos que devuelven \emph{true} o \emph{false} en dependencia si la restricci\'on se cumple. En estos dos par\'ametros se encuentra toda la informaci\'on necesaria para definir un CSP.
 
-En la figura \ref{rb_ruby} se muestra el m\'etdo principal \textsf{recursive\_backtracking} de la clase \textsf{RecursiveBacktracking}. El par\'ametro \textsf{assignment} es la asignaci\'on que se va construyendo en cada llamado recursivo. Esta es una implementaci\'on en Ruby 1.9 del m\'etodo expuesto en el cap\'itulo ``Problemas de Satisfacci\'on de Restricciones''. Los nombres de los m\'etodos utilizados en \'el dan una clara idea de lo que hacen.
+En la figura \ref{rb_ruby} se muestra el m\'etodo principal \textsf{recursive\_backtracking} de la clase \textsf{RecursiveBacktracking}. El par\'ametro \textsf{assignment} es la asignaci\'on que se va construyendo en cada llamado recursivo. Esta es una implementaci\'on en Ruby 1.9 del m\'etodo expuesto en el cap\'itulo ``Problemas de Satisfacci\'on de Restricciones''. Los nombres de los m\'etodos utilizados en \'el dan una clara idea de lo que hacen.
 
 \begin{figure}
 	\begin{center}
