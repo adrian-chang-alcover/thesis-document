@@ -2,6 +2,43 @@
 
 En este cap\'itulo se analizan los resultados de haber aplicado los algoritmos implementados a diferentes CSPs. Para ello se prueban dos instancias del problema de los horarios obtenidos mediante la modificaci\'on y la adici\'on de restricciones. Se comparan distintas metodolog\'ias para generar el horario completo de un semestre. Adem\'as se implement\'o el problema de las n-reinas y un problema de criptograf\'ia sencillo con el objetivo de comparar los algoritmos implementados frente a diferentes problemas.
 
+\section{Comparaci\'on entre distintos problemas}
+
+En esta secci\'on se analizan los resultados de haber aplicado los algoritmos al problema de las n-reinas y a un problema de criptograf\'ia sencillo, con el objetivo de comparar c\'omo se comportan los m\'etodos frente a diferentes CSPs. El problema de las n-reinas se implement\'o con 25 reinas. El problema de criptograf\'ia consisten en asignarle a cada letra involucrada un d\'igito del 0 al 9 para que la siguiente suma tenga sentido:
+
+\begin{center}
+\quad D O N A L D
+	
++ G E R A L D
+
+---------------------
+
+= R O B E R T
+\end{center}
+
+\begin{table}[h]
+	\caption{Resultados de haber aplicado los algoritmos implementados a el problema de las n-reinas y a un problema sencillo de criptograf\'ia}
+	\begin{center}
+		\label{2problemas}
+		\begin{tabular}{|l|c|c||}
+			\hline \hline
+			\textbf{Algoritmos} & \textbf{n-reinas} & \textbf{criptograf\'ia} \\ \hline
+			RB & 33 segundos & 0.0015 segundos \\
+			{\tiny RecursiveBacktracking} & $48\,683$ nodos explorados & 12 nodos explorados \\ \hline
+			MRV & 34 segundos &  0.0018 segundos \\
+			{\tiny MinimumRemainingValues} & $48\,683$ nodos explorados & 12 nodos explorados \\ \hline
+			FC & 0.58 segundos & 0.0186 segundos \\
+			{\tiny ForwardChecking} & 275 nodos explorados & 11 nodos explorados \\ \hline
+			AC & 6.67 segundos &  0.0263 segundos \\
+			{\tiny ArcConsistency} & 96 nodos explorados & 11 nodos explorados \\ \hline
+			MC & 0.148 segundos & 0.039 segundos \\
+			{\tiny MinConflicts} & 38 iteraciones & 46 iteraciones \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+Los resultados de la tabla \ref{2problemas} confirmaron lo conveniente que es el algoritmo \textsf{MinConflicts} para el problema de las n-reinas. Para este problema las t\'ecnicas de filtrado \textsf{ForwardChecking} y \textsf{ArcConsistency} dieron mejor resultado que los algoritmos \textsf{RecursiveBacktracking} y \textsf{MinimumRemainingValues}, no sucediendo as\'i para el problema de criptograf\'ia. Note c\'omo para el problema de las n-reinas la t\'ecnica \textsf{ArcConsistency} explora menos nodos que \textsf{ForwardChecking} aunque le haya tomado m\'as tiempo. En ambos problemas no tiene sentido la aplicaci\'on de la heur\'istica \textsf{MinimumRemainingValues} por si sola, dado que cada variable tiene igual n\'umero de valores posibles en su dominio. En el problema de criptograf\'ia el algoritmo \textsf{MinConflicts} muchas veces se quedaba en un \'optimo local, no llegando a una soluci\'on.
+
 \section{Comparaci\'on entre distintas instancias del problema de los horarios}
 
 En esta secci\'on se analizan los resultados de generar el horario de una semana para dos instancias diferentes del problema de los horarios utilizando los algoritmos implementados. La primera instancia probada, ``instancia f\'acil'', consta de solo las 4 restricciones vistas en la secci\'on ``Modelaci\'on como un CSP'' del cap\'itulo ``Propuesta de Solución'', las restricciones de local, de profesor, de grupo y de orden cronol\'ogico entre actividades. A la segunda instancia, ``instancia dura'', se le adicionaron restricciones de preferencias de profesores con respecto a d\'ias de la semana o secci\'on del d\'ia. Adem\'as se le adicion\'o la restricci\'on que toda actividad fuera de la facultad debe ser dada al mismo tiempo por todos los grupos del año.
@@ -72,43 +109,6 @@ En la tabla \ref{semestre} se muestran los resultados de aplicar distintas metod
 \end{table}
 
 En la tabla \ref{2semestre} se le aplican las mismas metodolog\'ias a la instancia dura. El algoritmo que m\'as r\'apido resuelve la primera semana para ambas instancias es el \textsf{RecursiveBacktracking}, es por ello que siempre se comienza por dicho algoritmo. A diferencia de la instancia f\'acil, cuando al resto de las semanas de la instancia dura se le aplicaron \textsf{RecursiveBacktracking} no se encontr\'o soluci\'on en 10 horas. Sin embargo la metodolog\'ia ``RB + FC'' encontr\'o soluci\'on en un tiempo similar al de la instancia f\'acil. En ambas instancias la metodolog\'ia ``RB + MC'' dio buenos resultados.
-
-\section{Comparaci\'on entre distintos problemas}
-
-En esta secci\'on se analizan los resultados de haber aplicado los algoritmos al problema de las n-reinas y a un problema de criptograf\'ia sencillo, con el objetivo de comparar c\'omo se comportan los m\'etodos frente a diferentes CSPs. El problema de las n-reinas se implement\'o con 25 reinas. El problema de criptograf\'ia consisten en asignarle a cada letra involucrada un d\'igito del 0 al 9 para que la siguiente suma tenga sentido:
-
-\begin{center}
-\quad D O N A L D
-	
-+ G E R A L D
-
----------------------
-
-= R O B E R T
-\end{center}
-
-\begin{table}[h]
-	\caption{Resultados de haber aplicado los algoritmos implementados a el problema de las n-reinas y a un problema sencillo de criptograf\'ia}
-	\begin{center}
-		\label{2problemas}
-		\begin{tabular}{|l|c|c||}
-			\hline \hline
-			\textbf{Algoritmos} & \textbf{n-reinas} & \textbf{criptograf\'ia} \\ \hline
-			RB & 33 segundos & 0.0015 segundos \\
-			{\tiny RecursiveBacktracking} & $48\,683$ nodos explorados & 12 nodos explorados \\ \hline
-			MRV & 34 segundos &  0.0018 segundos \\
-			{\tiny MinimumRemainingValues} & $48\,683$ nodos explorados & 12 nodos explorados \\ \hline
-			FC & 0.58 segundos & 0.0186 segundos \\
-			{\tiny ForwardChecking} & 275 nodos explorados & 11 nodos explorados \\ \hline
-			AC & 6.67 segundos &  0.0263 segundos \\
-			{\tiny ArcConsistency} & 96 nodos explorados & 11 nodos explorados \\ \hline
-			MC & 0.148 segundos & 0.039 segundos \\
-			{\tiny MinConflicts} & 38 iteraciones & 46 iteraciones \\ \hline
-		\end{tabular}
-	\end{center}
-\end{table}
-
-Los resultados de la tabla \ref{2problemas} confirmaron lo conveniente que es el algoritmo \textsf{MinConflicts} para el problema de las n-reinas. Para este problema las t\'ecnicas de filtrado \textsf{ForwardChecking} y \textsf{ArcConsistency} dieron mejor resultado que los algoritmos \textsf{RecursiveBacktracking} y \textsf{MinimumRemainingValues}, no sucediendo as\'i para el problema de criptograf\'ia. Note c\'omo para el problema de las n-reinas la t\'ecnica \textsf{ArcConsistency} explora menos nodos que \textsf{ForwardChecking} aunque le haya tomado m\'as tiempo. En ambos problemas no tiene sentido la aplicaci\'on de la heur\'istica \textsf{MinimumRemainingValues} por si sola, dado que cada variable tiene igual n\'umero de valores posibles en su dominio. En el problema de criptograf\'ia el algoritmo \textsf{MinConflicts} muchas veces se quedaba en un \'optimo local, no llegando a una soluci\'on.
 
 \section{Conclusiones}
 
