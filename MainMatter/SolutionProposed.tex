@@ -68,7 +68,7 @@ Paralelo a este trabajo se est\'a implementando un API para interactuar con el S
 
 \section{Modelaci\'on como un CSP}
 
-Al principio del cap\'itulo ``Problemas de Satisfacción de Restricciones'' se exponen una serie de beneficios que aporta modelar un problema como un CSP. A diferencia de las meta heur\'isticas con que se suelen atacar este tipo de problemas, a los CSPs se le pueden aplicar algoritmos completos, esto quiere decir, que si existe un horario que logre satisfacer todas las restricciones impuestas por los profesores, estos algoritmos completos de seguro la van a encontrar, no sucediendo as\'i con m\'etodos de b\'usqueda local.
+Al principio del cap\'itulo ``Problemas de Satisfacción de Restricciones'' se exponen una serie de beneficios que aporta modelar un problema como un CSP. A diferencia de las meta heur\'isticas con que se suelen atacar este tipo de problemas, a los CSPs se le pueden aplicar algoritmos completos. Si existe un horario que logre satisfacer todas las restricciones impuestas por los profesores, estos algoritmos completos de seguro la van a encontrar, no sucediendo as\'i con m\'etodos de b\'usqueda local.
 
 En esta secci\'on se explicar\'a la modelaci\'on del problema como un CSP. Se definir\'an las variables con sus valores posibles, las restricciones y c\'omo queda la estructura del grafo de restricciones.
 
@@ -86,7 +86,7 @@ En el sistema un horario est\'a definido por un conjunto de actividades (tabla \
 	\item[Tipo de turno] si es conferencia, clase pr\'actica, laboratorio, etc.
 \end{description}
 
-Las variables son tuplas de la forma <grupo, asignatura, tipo de turno> y los valores <día, profesor, turno, local>. Al final cada variable tendr\'a asignado un valor de su dominio, habiendo hecho esto, cada asignaci\'on tendr\'a toda la informaci\'on necesaria para definir una actividad.
+Las variables son tuplas de la forma \textsf{<grupo, asignatura, tipo de turno>} y los valores \textsf{<día, profesor, turno, local>}. Al final cada variable tendr\'a asignado un valor de su dominio, habiendo hecho esto, cada asignaci\'on tendr\'a toda la informaci\'on necesaria para definir una actividad.
 
 Las variables son todas las combinaciones v\'alidas de grupo, asignatura y tipo de turno. Por v\'alida se refiere a que no tiene sentido una variable donde el grupo no reciba dicha asignatura. Igual no tiene sentido incluir la dimensi\'on local dentro de las variables, porque no todos los locales tienen por que estar ocupados, sucede lo mismo con las dimensiones d\'ia, profesor y turno. Sin embargo, el horario tiene que garantizar que todos los grupos den todos los turnos de sus asignaturas correspondientes. Es por eso que se definieron las variables y los valores de esa forma y no de otra. 
 

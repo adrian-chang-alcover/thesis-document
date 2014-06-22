@@ -67,7 +67,7 @@ las más comunes:
 	\item[Esparcimiento de encuentros:] Los encuentros deben estar esparcidos en el tiempo. Por ejemplo, un
 		estudiante no debe tener más de un examen el mismo día.
 	\item[Coherencia entre encuentros:] Estas restricciones son diseñadas para producir un horario más organizado
-		y conveniente. A menudo entran en contradicción con el esparcimiento de encuentros. Ejemplos de ellas es,
+		y conveniente. A menudo entran en contradicción con el esparcimiento de encuentros. Ejemplo de ella es,
 		que un profesor prefiera dar todos sus turnos en los primeros tres d\'ias de la semana, dejándole los
 		últimos dos d\'ias libre.
 	\item[Capacidad de las aulas:] La cantidad de estudiantes no debe exceder la capacidad del aula.
@@ -165,7 +165,7 @@ es la razón por qué es tan difícil adaptar un sistema hecho para otra institu
 Un proyecto en desarrollo por la Universidad de Nottingham conjunto con la Universidad de Napier, la Universidad
 de Reading, la Universidad de Sydney y la Universidad de Toronto intenta encontrar una forma de escribir cualquier
 requerimiento, usando fórmulas lógicas. Esto permitirá utilizar herramientas desarrolladas por otras entidades tan
-solo redefiniendo nuestros propios requerimientos.
+solo redefiniendo los requerimientos deseados.
 
 \section{Técnicas para automatizar el diseño de un horario}
 
@@ -236,11 +236,11 @@ En (Boizumault, Delon y P\'eridy, 1995) se ha diseñado un programa para horario
 
 \section{Modelaci\'on de los datos del problema}
 
-El problema de los horarios puede variar considerablemente entre universidades, por lo tanto en aras de que pueda ser aplicable a diferentes instituciones, un sistema debe ser flexible en la manera en que sus restricciones y recursos son especificados.
+El problema de los horarios puede variar considerablemente entre universidades. En aras de que pueda ser aplicable a diferentes instituciones, un sistema debe ser flexible en la manera en que sus restricciones y recursos son especificados.
 
 Un módulo para horarios de universidad está siendo desarrollado por el Grupo de Planificación y Programación Automatizada de la Universidad de Nottingham, el cual incorpora un sistema altamente flexible en el que los objetos (dígase encuentros y recursos) pueden ser definidos y agrupados. Por simplicidad, la siguiente descripción trata sobre recursos, pero los encuentros pueden ser definidos y agrupados de la misma manera.
 
-Cada tipo de recurso (ejemplo aulas) tiene en conjunto de atributos que permite definir recursos individuales. En la tabla \ref{table:atributes} se muestran cuatro atributos que las aulas pueden tener.
+Cada tipo de recurso (ejemplo aulas) tiene un conjunto de atributos que permite definir recursos individuales. En la tabla \ref{table:atributes} se muestran cuatro atributos que las aulas pueden tener.
 
 \begin{table}[h]
 	\caption{Conjunto de atributos para las aulas}
@@ -271,4 +271,4 @@ La ardua tarea de crear un horario para una universidad puede ser facilitada con
 
 En los últimos cuarenta años ha habido un constante flujo de artículos relacionados con la optimización de horarios, aunque recientemente se ha incrementado considerablemente el inter\'es por este tema. Un indicador de este incremento es el \'exito que han tenido las conferencias de \emph{``Practice and Theory of Automated Timetabling''} (PATAT 2010) en Northern Ireland.
 
-Muchos investigadores de todo el mundo están desarrollando nuevas herramientas para automatizar este proceso, tambi\'en se ha publicado un gran volumen de resultados. Aun así, no existe un estándar que permita comparar los diferentes m\'etodos utilizados, aunque un grupo de universidades está trabajando en ello. Con las conferencias de PATAT establecidas como un evento regular parece que se desarrollará mucho trabajo en esta \'area.
+Investigadores de todo el mundo están desarrollando nuevas herramientas para automatizar este proceso, tambi\'en se ha publicado un gran volumen de resultados. Aun así, no existe un estándar que permita comparar los diferentes m\'etodos utilizados, aunque un grupo de universidades está trabajando en ello. Con las conferencias de PATAT establecidas como un evento regular parece que se desarrollará mucho trabajo en esta \'area.
