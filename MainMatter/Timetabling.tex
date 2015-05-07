@@ -171,7 +171,7 @@ solo redefiniendo los requerimientos deseados.
 
 Para determinadas instancias del problema heurísticas específicas pueden dar buenos resultados, pero con el devenir del tiempo los horarios de universidades se han vuelto más complejos. Actualmente hay una tendencia que fue confirmada
 con las presentaciones de la primera conferencia internacional de \emph{``Practice And Theory of Automated Timetabling''}
-\cite{D Abramson and J Abela}, de resolver el problema con algoritmos más generales, o meta heurísticas, como
+\cite{D Abramson and J Abela}, de resolver el problema con algoritmos más generales, o meta-heurísticas, como
 recocido simulado, algoritmos evolutivos y búsqueda tabú. Las heurísticas específicas pueden ser utilizadas
 para disminuir el número de posibles soluciones a procesar o para optimizar localmente una solución. La Programación
 Lógica de Restricciones (\emph{Constraint Logic Programming}) es también otra técnica utilizada.
@@ -214,7 +214,7 @@ La Universidad de Napier está trabajando con algoritmos mem\'eticos para diseñ
 Recocido simulado es una estrategia de búsqueda que sigue la pista de una solución factible. En cada iteración un vecino es generado, otro horario factible, ligero y aleatoriamente alterado por el horario actual. Este nuevo horario es aceptado si es mejor que el anterior. Si el nuevo horario no es mejor este aún puede ser aceptado con una probabilidad relacionada al parámetro llamado ``temperatura''. La temperatura y por tanto la probabilidad de que un vecino de menor calidad sea aceptado decrece con cada iteración o tras un número de iteraciones (este número puede ser constante o puede crecer a medida que la temperatura disminuya). Este proceso es análogo al proceso de enfriamiento de un recocido real. Un inconveniente del recocido simulado es que el proceso de enfriamiento puede tomar gran tiempo en aras de obtener buenos resultados.
 
 En el TISSUE de Swansea se ha aplicado satisfactoriamente esta t\'ecnica en la generación de horarios para exámenes
-\cite{J Thompson and KA Dowsland, J Thompson and KA Dowsland 2}. Los autores, Thompson y Dowsland usaron un modelo de coloración de grafos. Para simplificar el problema ellos lo dividieron en dos fases, la primera encontrar una solución factible y luego optimizar las restricciones suaves. Sin embargo esta t\'ecnica produce un espacio de búsqueda muy disperso, por lo que usan las cadenas de Kempe para lograr un espacio de búsqueda más conectado. Más que una simple función geom\'etrica de enfriamiento, Dowsland usa una función no monótona que aumenta la temperatura si un horario vecino es rechazado. Además la razón entre los vecinos rechazados y los aceptados incrementa a medida que progresa la búsqueda.
+\cite{J Thompson and KA Dowsland, J Thompson and KA Dowsland 2}. Los autores, Thompson y Dowsland usaron un modelo de coloración de grafos. Para simplificar el problema ellos lo dividieron en dos fases, la primera encontrar una solución factible y luego optimizar las restricciones suaves. Sin embargo esta t\'ecnica produce un espacio de búsqueda muy disperso, por lo que usan las cadenas de Kempe para lograr un espacio de búsqueda más conectado \cite{Kempe chain, Kempe chain 2}. Más que una simple función geom\'etrica de enfriamiento, Dowsland usa una función no monótona que aumenta la temperatura si un horario vecino es rechazado. Además la razón entre los vecinos rechazados y los aceptados incrementa a medida que progresa la búsqueda.
 
 \subsection{Búsqueda Tab\'u}
 
@@ -267,7 +267,7 @@ Este sistema de la Universidad de Nottingham provee una plataforma poderosa y fl
 
 \section{Conclusiones}
 
-La ardua tarea de crear un horario para una universidad puede ser facilitada considerablemente por la automatización. Sin embargo, dada la inmensa complejidad y variedad de este problema aún queda mucho camino por recorrer. Los algoritmos más exitosos hasta el momento han sido combinaciones de meta heurísticas generales con un alto grado de conocimiento heurístico específico para cada problema.
+La ardua tarea de crear un horario para una universidad puede ser facilitada considerablemente por la automatización. Sin embargo, dada la inmensa complejidad y variedad de este problema aún queda mucho camino por recorrer. Los algoritmos más exitosos hasta el momento han sido combinaciones de meta-heurísticas generales con un alto grado de conocimiento heurístico específico para cada problema.
 
 En los últimos cuarenta años ha habido un constante flujo de artículos relacionados con la optimización de horarios, aunque recientemente se ha incrementado considerablemente el inter\'es por este tema. Un indicador de este incremento es el \'exito que han tenido las conferencias de \emph{``Practice and Theory of Automated Timetabling''} (PATAT 2010) en Northern Ireland.
 
